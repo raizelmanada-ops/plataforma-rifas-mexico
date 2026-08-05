@@ -305,19 +305,19 @@ export default function Home() {
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '16px', marginTop: '24px', zIndex: 10, position: 'relative' }}>
               <div style={{ backgroundColor: 'rgba(0,0,0,0.8)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', minWidth: '80px', boxSizing: 'border-box' }}>
                 <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'white' }}>{timeLeft.days}</div>
-                <div style={{ fontSize: '0.625rem', color: '#6b7280', textTransform: 'uppercase' }}>Días</div>
+                <div style={{ fontSize: '0.625rem', color: '#6b7280', textTransform: 'uppercase', marginTop: '4px' }}>Días</div>
               </div>
               <div style={{ backgroundColor: 'rgba(0,0,0,0.8)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', minWidth: '80px', boxSizing: 'border-box' }}>
                 <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'white' }}>{timeLeft.hours}</div>
-                <div className="text-[10px] text-gray-500 uppercase">Horas</div>
+                <div style={{ fontSize: '0.625rem', color: '#6b7280', textTransform: 'uppercase', marginTop: '4px' }}>Horas</div>
               </div>
-              <div className="bg-black/80 p-3 rounded-lg border border-white/5 min-w-[80px]">
-                <div className="text-2xl font-bold text-white">{timeLeft.minutes}</div>
-                <div className="text-[10px] text-gray-500 uppercase">Minutos</div>
+              <div style={{ backgroundColor: 'rgba(0,0,0,0.8)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', minWidth: '80px', boxSizing: 'border-box' }}>
+                <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'white' }}>{timeLeft.minutes}</div>
+                <div style={{ fontSize: '0.625rem', color: '#6b7280', textTransform: 'uppercase', marginTop: '4px' }}>Minutos</div>
               </div>
-              <div className="bg-black/80 p-3 rounded-lg border border-white/5 min-w-[80px]">
-                <div className="text-2xl font-bold text-danger animate-pulse">{timeLeft.seconds}</div>
-                <div className="text-[10px] text-gray-500 uppercase">Segundos</div>
+              <div style={{ backgroundColor: 'rgba(0,0,0,0.8)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', minWidth: '80px', boxSizing: 'border-box' }}>
+                <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#ef4444', animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}>{timeLeft.seconds}</div>
+                <div style={{ fontSize: '0.625rem', color: '#6b7280', textTransform: 'uppercase', marginTop: '4px' }}>Segundos</div>
               </div>
             </div>
 
