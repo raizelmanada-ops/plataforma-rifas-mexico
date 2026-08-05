@@ -51,7 +51,9 @@ export default function Home() {
     "/sierra-1.jpg",
     "/sierra-2.jpg",
     "/sierra-3.jpg",
-    "/sierra-4.jpg"
+    "/sierra-4.jpg",
+    "/sierra-5.jpg",
+    "/sierra-6.jpg"
   ];
 
   useEffect(() => {
