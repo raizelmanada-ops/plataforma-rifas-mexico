@@ -321,12 +321,12 @@ export default function Home() {
                       👩🏼‍💼
                     </div>
                   </div>
-                  <p className="text-[#00d2ff] font-bold text-xs mt-2 uppercase tracking-widest text-center">Asistente<br/>Virtual</p>
+                  <p className="text-[#00d2ff] font-bold text-xs mt-2 uppercase tracking-widest text-center">Mensaje<br/>Oficial</p>
                 </div>
                 
                 {/* Mensaje */}
                 <div className="flex-1">
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-4">¿Cómo apartar tu cupo en 3 simples pasos?</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-4">¡Sube el volumen y escucha este mensaje promocional!</h3>
                   
                   {/* Botón de Audio */}
                   <div className="flex justify-center md:justify-start">
@@ -354,7 +354,7 @@ export default function Home() {
                       ) : (
                         <>
                           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" /></svg>
-                          ESCUCHAR INSTRUCCIONES
+                          ESCUCHAR AUDIO OFICIAL
                         </>
                       )}
                     </button>
