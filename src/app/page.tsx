@@ -492,39 +492,7 @@ export default function Home() {
         </section>
       )}
 
-      {/* WINNERS SECTION */}
-      <section className="w-full max-w-6xl mx-auto px-4 mt-24 mb-16">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tighter">Felices Ganadores</h2>
-          <p className="text-gray-400 font-bold text-lg">Ellos tomaron la decisión y hoy disfrutan sus premios.</p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-black/40 border border-white/5 rounded-xl overflow-hidden hover:border-accent/40 transition-colors shadow-lg">
-            <img src="/images/winner1.jpg" alt="Ganador carro" className="w-full h-48 object-cover object-center" />
-            <div className="p-4 text-center">
-              <p className="text-lg font-bold text-white mb-1 uppercase">Carlos M. - Auto 0KM</p>
-              <p className="text-[10px] text-accent font-bold uppercase tracking-wider">Entregado en Monterrey - Mayo 2024</p>
-            </div>
-          </div>
-          
-          <div className="bg-black/40 border border-white/5 rounded-xl overflow-hidden hover:border-accent/40 transition-colors shadow-lg">
-            <img src="/images/winner2.jpg" alt="Ganadora moto" className="w-full h-48 object-cover object-center" />
-            <div className="p-4 text-center">
-              <p className="text-lg font-bold text-white mb-1 uppercase">Ana G. - Moto 0KM</p>
-              <p className="text-[10px] text-accent font-bold uppercase tracking-wider">Entregado en CDMX - Junio 2024</p>
-            </div>
-          </div>
 
-          <div className="bg-black/40 border border-white/5 rounded-xl overflow-hidden hover:border-accent/40 transition-colors shadow-lg">
-            <img src="/images/winner3.jpg" alt="Familia ganadora" className="w-full h-48 object-cover object-center" />
-            <div className="p-4 text-center">
-              <p className="text-lg font-bold text-white mb-1 uppercase">Familia Hernández - Camioneta 4x4</p>
-              <p className="text-[10px] text-accent font-bold uppercase tracking-wider">Entregado en Guadalajara - Julio 2024</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* FAQ ACCORDION SECTION */}
       <footer className="w-full max-w-4xl mx-auto px-4 mt-12 mb-20">

@@ -1,90 +1,218 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+// Hotmart bundles para enlazar los pagos
+const bundles = [
+  { id: 1, name: "Base", count: 1, price: 11, hotmartCode: "base" },
+  { id: 2, name: "Cobre", count: 3, price: 33, hotmartCode: "05kjlvl8" },
+  { id: 3, name: "Plata", count: 5, price: 55, hotmartCode: "cscfs4vt" },
+  { id: 4, name: "Oro", count: 10, price: 110, hotmartCode: "insxmui" },
+  { id: 5, name: "Platino", count: 25, price: 275, hotmartCode: "zro69vqo" },
+  { id: 6, name: "Esmeralda", count: 50, price: 550, hotmartCode: "s5kah3j1" },
+  { id: 7, name: "Diamante", count: 100, price: 1100, hotmartCode: "mjcyaq0t" },
+];
 
 export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket: string, code: string) => void }) {
-  const [loading, setLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedNumbers, setSelectedNumbers] = useState<string[]>([]);
+  const [visibleNumbers, setVisibleNumbers] = useState<string[]>([]);
+  
+  const TOTAL_NUMBERS = 60000; // Estándar Lotería Nacional
+  
+  // Inicializar algunos números visibles aleatorios al cargar
+  useEffect(() => {
+    generateRandomVisible();
+  }, []);
 
-  const bundles = [
-    { id: 1, name: "Base", count: 1, price: "$11 MXN", bonus: "", color: "from-[#4A4A4A] to-[#2B2B2B]", hotmartCode: "base" },
-    { id: 2, name: "Cobre", count: 3, price: "$33 MXN", bonus: "", color: "from-[#b87333] to-[#8a5626]", hotmartCode: "05kjlvl8" },
-    { id: 3, name: "Plata", count: 5, price: "$55 MXN", bonus: "", color: "from-[#e5e4e2] to-[#a9a9a9]", text: "text-black", hotmartCode: "cscfs4vt" },
-    { id: 4, name: "Oro", count: 10, price: "$110 MXN", bonus: "Envío Gratis", color: "from-[#FFD700] to-[#b38728]", text: "text-black", popular: true, hotmartCode: "insxmui" },
-    { id: 5, name: "Platino", count: 25, price: "$275 MXN", bonus: "Bono: $15,000 MXN", color: "from-[#E5E4E2] to-[#7393B3]", text: "text-black", hotmartCode: "zro69vqo" },
-    { id: 6, name: "Esmeralda", count: 50, price: "$550 MXN", bonus: "Bono: $30,000 MXN", color: "from-[#50C878] to-[#006400]", hotmartCode: "s5kah3j1" },
-    { id: 7, name: "Diamante VIP", count: 100, price: "$1,100 MXN", bonus: "Bono: $50,000 + IPHONE", color: "from-[#00FFFF] to-[#00008B]", hotmartCode: "mjcyaq0t" },
-  ];
-
-  const handleSelectBundle = (bundle: any) => {
-    setLoading(true);
-    
-    // Simulate generating numbers with a slot machine effect delay
-    setTimeout(() => {
-      setLoading(false);
-      onSelectTicket(`${bundle.count} Boletos (Azar)`, bundle.hotmartCode);
-    }, 1500);
+  const generateRandomVisible = () => {
+    const nums: string[] = [];
+    for (let i = 0; i < 100; i++) {
+      const randomNum = Math.floor(Math.random() * TOTAL_NUMBERS).toString().padStart(5, '0');
+      if (!nums.includes(randomNum)) nums.push(randomNum);
+    }
+    setVisibleNumbers(nums.sort());
   };
 
-  return (
-    <div className="w-full relative max-w-4xl mx-auto">
-      <div className="bg-black/60 border border-[#FFD700]/30 rounded-xl p-4 sm:p-8 mb-8 shadow-[0_0_30px_rgba(255,215,0,0.1)]">
-        <div className="text-center mb-8">
-          <h3 className="text-2xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] to-[#FDB931] uppercase mb-2 tracking-tighter">
-            🎰 La Maquinita de la Suerte
-          </h3>
-          <p className="text-gray-300 text-sm md:text-base">Selecciona tu paquete y el sistema te asignará tus boletos ganadores de forma automática y aleatoria.</p>
-        </div>
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value.replace(/\D/g, '').slice(0, 5);
+    setSearchTerm(val);
+    
+    if (val.length >= 2) {
+      // Filtrar números que empiecen o contengan el valor
+      const exact = val.padStart(5, '0');
+      setVisibleNumbers([exact]);
+    } else if (val.length === 0) {
+      generateRandomVisible();
+    }
+  };
 
-        {loading ? (
-          <div className="flex flex-col items-center justify-center py-16">
-            <div className="text-7xl animate-bounce mb-6">🎰</div>
-            <h4 className="text-2xl font-black text-[#FFD700] animate-pulse uppercase tracking-widest text-center">Generando tus Boletos...</h4>
-            <p className="text-gray-400 mt-2 text-sm uppercase tracking-widest">Buscando los mejores números en la bóveda</p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {bundles.map(bundle => (
-              <div 
-                key={bundle.id}
-                onClick={() => handleSelectBundle(bundle)}
-                className={`relative cursor-pointer group rounded-2xl overflow-hidden border-2 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(255,215,0,0.4)] ${
-                  bundle.popular ? 'border-[#FFD700] shadow-[0_0_20px_rgba(255,215,0,0.2)]' : 'border-white/10 hover:border-white/30'
-                }`}
-              >
-                {bundle.popular && (
-                  <div className="absolute top-0 left-0 w-full bg-danger text-white text-[10px] font-black uppercase text-center py-1.5 z-10 tracking-widest animate-pulse">
-                    🔥 EL MÁS VENDIDO 🔥
-                  </div>
-                )}
-                
-                <div className={`bg-gradient-to-br ${bundle.color} p-6 h-full flex flex-col items-center justify-center text-center relative z-0 ${bundle.text || 'text-white'} ${bundle.popular ? 'pt-10' : ''}`}>
-                  <h4 className="text-lg font-black uppercase tracking-widest opacity-90 mb-2">Paquete {bundle.name}</h4>
-                  <div className="text-6xl font-black mb-1 drop-shadow-md">{bundle.count}</div>
-                  <div className="text-xs uppercase font-bold tracking-widest opacity-80 mb-6">Boletos</div>
-                  
-                  <div className="text-3xl font-black mb-2 bg-black/10 px-4 py-1 rounded-lg">{bundle.price}</div>
-                  
-                  {bundle.bonus ? (
-                    <div className="bg-black/90 text-[#FFD700] font-bold text-[10px] uppercase px-3 py-2.5 rounded-lg mt-3 w-full border border-[#FFD700]/50 shadow-inner">
-                      {bundle.bonus}
-                    </div>
-                  ) : (
-                    <div className="h-[42px] mt-3 w-full"></div>
-                  )}
-                  
-                  <button className="mt-6 w-full bg-black/20 hover:bg-black/40 border border-black/20 rounded-lg py-3 font-black uppercase text-sm transition-colors shadow-sm">
-                    SELECCIONAR
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-        
-        <div className="mt-8 pt-6 border-t border-white/10 text-center text-[10px] text-gray-500 uppercase tracking-wider">
-          * Emisión total de 1,000,000 de boletos (000000 al 999999). Tus números exactos de 6 cifras serán asignados aleatoriamente y enviados a tu correo electrónico inmediatamente al confirmar el pago.
+  const toggleNumber = (num: string) => {
+    if (selectedNumbers.includes(num)) {
+      setSelectedNumbers(selectedNumbers.filter(n => n !== num));
+    } else {
+      setSelectedNumbers([...selectedNumbers, num]);
+    }
+  };
+
+  const selectRandom = (count: number) => {
+    const newSelection = [...selectedNumbers];
+    let added = 0;
+    while (added < count) {
+      const randomNum = Math.floor(Math.random() * TOTAL_NUMBERS).toString().padStart(5, '0');
+      if (!newSelection.includes(randomNum)) {
+        newSelection.push(randomNum);
+        added++;
+      }
+    }
+    setSelectedNumbers(newSelection);
+  };
+
+  const clearSelection = () => {
+    setSelectedNumbers([]);
+  };
+
+  const getMatchedBundle = () => {
+    const count = selectedNumbers.length;
+    if (count === 0) return null;
+    
+    // Buscar si hay un paquete exacto
+    const exactBundle = bundles.find(b => b.count === count);
+    if (exactBundle) return exactBundle;
+    
+    // Si no es exacto, cobrar por boleto individual ($11 c/u)
+    return {
+      name: "Personalizado",
+      count: count,
+      price: count * 11,
+      hotmartCode: "base" // Se usa el base y multiplicaremos en el checkout
+    };
+  };
+
+  const handleCheckout = () => {
+    if (selectedNumbers.length === 0) return;
+    
+    // Encontrar el bundle para mandar el link de Hotmart (aproximado)
+    const count = selectedNumbers.length;
+    const bundle = bundles.slice().reverse().find(b => count >= b.count) || bundles[0];
+    
+    const displayTickets = selectedNumbers.join(", ");
+    onSelectTicket(`${displayTickets} (${selectedNumbers.length} Boletos)`, bundle.hotmartCode);
+  };
+
+  const matchedBundle = getMatchedBundle();
+
+  return (
+    <div className="w-full max-w-5xl mx-auto mt-12 bg-[#0a0a0a] border border-white/10 rounded-2xl p-4 md:p-8 shadow-2xl">
+      <div className="text-center mb-8">
+        <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-2">
+          Busca tu <span className="text-accent">Boleto</span>
+        </h3>
+        <p className="text-gray-400">Selecciona tus números de la suerte. Participan {TOTAL_NUMBERS.toLocaleString()} números con la Lotería Nacional.</p>
+      </div>
+
+      {/* Stats Bar */}
+      <div className="flex justify-center gap-4 md:gap-8 mb-8 text-sm md:text-base font-bold uppercase tracking-widest">
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 rounded-full bg-white border border-gray-400"></div>
+          <span className="text-white hidden sm:inline">Disponibles</span><span className="text-white sm:hidden">Libres</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 rounded-full bg-yellow-400"></div>
+          <span className="text-gray-300">Apartados</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 rounded-full bg-red-600"></div>
+          <span className="text-gray-300">Vendidos</span>
         </div>
       </div>
+
+      {/* Máquina rápida */}
+      <div className="mb-8">
+        <p className="text-xs text-gray-500 uppercase font-bold tracking-widest text-center mb-3">Máquina de la Suerte (Azar)</p>
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+          <button onClick={() => selectRandom(1)} className="bg-black/50 hover:bg-accent hover:text-black border border-white/20 px-3 sm:px-4 py-2 rounded-lg font-black transition-all">+1 Boleto</button>
+          <button onClick={() => selectRandom(3)} className="bg-black/50 hover:bg-accent hover:text-black border border-white/20 px-3 sm:px-4 py-2 rounded-lg font-black transition-all">+3 Boletos</button>
+          <button onClick={() => selectRandom(5)} className="bg-black/50 hover:bg-accent hover:text-black border border-white/20 px-3 sm:px-4 py-2 rounded-lg font-black transition-all">+5 Boletos</button>
+          <button onClick={() => selectRandom(10)} className="bg-accent text-black hover:bg-yellow-400 shadow-[0_0_15px_rgba(255,215,0,0.4)] border border-accent px-3 sm:px-4 py-2 rounded-lg font-black transition-all">+10 Boletos</button>
+        </div>
+      </div>
+
+      {/* Search Bar */}
+      <div className="relative max-w-md mx-auto mb-8">
+        <input 
+          type="text" 
+          placeholder="Ej. 05432" 
+          value={searchTerm}
+          onChange={handleSearch}
+          maxLength={5}
+          className="w-full bg-white/5 border-2 border-white/20 rounded-xl px-6 py-4 text-2xl font-black text-center text-white placeholder-gray-600 focus:outline-none focus:border-accent transition-colors"
+        />
+        <div className="absolute top-0 right-4 h-full flex items-center pointer-events-none">
+          <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        </div>
+      </div>
+
+      {/* Grid Virtual */}
+      <div className="bg-white/5 rounded-xl p-4 md:p-6 border border-white/10 max-h-[400px] overflow-y-auto custom-scrollbar">
+        {visibleNumbers.length === 0 ? (
+          <div className="text-center py-10 text-gray-500 font-bold">No se encontraron números disponibles con esa búsqueda.</div>
+        ) : (
+          <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2 md:gap-3">
+            {visibleNumbers.map(num => {
+              const isSelected = selectedNumbers.includes(num);
+              return (
+                <button
+                  key={num}
+                  onClick={() => toggleNumber(num)}
+                  className={`
+                    py-2 rounded text-sm md:text-base font-black border transition-all
+                    ${isSelected 
+                      ? 'bg-accent text-black border-accent shadow-[0_0_10px_rgba(255,215,0,0.5)] transform scale-105' 
+                      : 'bg-white text-black border-gray-300 hover:bg-gray-200'
+                    }
+                  `}
+                >
+                  {num}
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </div>
+
+      {/* Checkout Bar Flotante */}
+      {selectedNumbers.length > 0 && (
+        <div className="fixed bottom-0 left-0 w-full bg-black/95 border-t-2 border-accent p-4 z-50 animate-slide-up shadow-[0_-10px_40px_rgba(0,0,0,0.8)] backdrop-blur-md">
+          <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex-1 text-center md:text-left">
+              <p className="text-gray-300 text-sm uppercase tracking-widest font-bold">Has seleccionado</p>
+              <div className="flex items-center gap-3 justify-center md:justify-start mt-1">
+                <span className="text-3xl font-black text-white">{selectedNumbers.length} Boletos</span>
+                <span className="bg-accent text-black px-3 py-1 rounded font-black text-xl">${matchedBundle?.price} MXN</span>
+              </div>
+              <div className="text-xs text-accent mt-1 truncate max-w-md">
+                Boletos: {selectedNumbers.slice(0, 8).join(', ')}{selectedNumbers.length > 8 ? '...' : ''}
+              </div>
+            </div>
+            
+            <div className="flex gap-2 w-full md:w-auto">
+              <button 
+                onClick={clearSelection}
+                className="px-4 py-3 rounded-xl border border-white/20 text-white font-bold uppercase hover:bg-white/10"
+              >
+                🗑️
+              </button>
+              <button 
+                onClick={handleCheckout}
+                className="flex-1 md:flex-none bg-accent hover:bg-yellow-400 text-black px-8 py-3 rounded-xl font-black uppercase tracking-widest shadow-[0_0_20px_rgba(255,215,0,0.4)] transition-all"
+              >
+                Pagar Ahora
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
