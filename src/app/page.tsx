@@ -545,44 +545,25 @@ export default function Home() {
 
 
 
-      {/* PREVIOUS WINNERS SECTION */}
+      {/* PREVIOUS WINNERS SECTION (FACEBOOK LINK) */}
       <section className="w-full max-w-6xl mx-auto px-4 mt-12 mb-8">
         <div className="text-center mb-8">
-          <h3 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-hover uppercase">Entregas y Ganadores</h3>
-          <p className="text-gray-400 text-sm mt-2">Ellos ya cumplieron su sueño. ¡El próximo puedes ser tú!</p>
+          <h3 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-hover uppercase">Transparencia y Entregas</h3>
+          <p className="text-gray-400 text-sm mt-2">Visita nuestra página oficial de Facebook para ver todas nuestras entregas en vivo.</p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Winner 1 */}
-          <div className="bg-[#111] rounded-2xl overflow-hidden border border-white/10 shadow-lg">
-            <div className="h-48 bg-gray-800 relative flex items-center justify-center">
-              <span className="text-gray-500 font-bold">ESPACIO FOTO GANADOR 1</span>
-            </div>
-            <div className="p-4 text-center">
-              <h4 className="text-[#FFD700] font-black text-lg">GMC Sierra 2023</h4>
-              <p className="text-gray-400 text-sm">Entregada en Monterrey, NL</p>
-            </div>
-          </div>
-          {/* Winner 2 */}
-          <div className="bg-[#111] rounded-2xl overflow-hidden border border-white/10 shadow-lg">
-            <div className="h-48 bg-gray-800 relative flex items-center justify-center">
-              <span className="text-gray-500 font-bold">ESPACIO FOTO GANADOR 2</span>
-            </div>
-            <div className="p-4 text-center">
-              <h4 className="text-[#FFD700] font-black text-lg">Ford Lobo Platinum</h4>
-              <p className="text-gray-400 text-sm">Entregada en Guadalajara, JAL</p>
-            </div>
-          </div>
-          {/* Winner 3 */}
-          <div className="bg-[#111] rounded-2xl overflow-hidden border border-white/10 shadow-lg">
-            <div className="h-48 bg-gray-800 relative flex items-center justify-center">
-              <span className="text-gray-500 font-bold">ESPACIO FOTO GANADOR 3</span>
-            </div>
-            <div className="p-4 text-center">
-              <h4 className="text-[#FFD700] font-black text-lg">Jeep Wrangler Rubicon</h4>
-              <p className="text-gray-400 text-sm">Entregada en CDMX</p>
-            </div>
-          </div>
+        <div className="flex justify-center">
+          <a 
+            href="https://facebook.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center gap-4 bg-[#1877F2] hover:bg-[#166fe5] text-white px-8 py-4 rounded-2xl font-black text-lg md:text-xl transition-all shadow-[0_0_20px_rgba(24,119,242,0.4)] hover:scale-105"
+          >
+            <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+              <path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/>
+            </svg>
+            VER GANADORES EN FACEBOOK
+          </a>
         </div>
       </section>
 
