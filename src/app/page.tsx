@@ -12,6 +12,24 @@ export default function Home() {
   const [selectedCode, setSelectedCode] = useState<string | null>(null);
   const [userData, setUserData] = useState<any>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const [searchPhone, setSearchPhone] = useState("");
+  const [searchResults, setSearchResults] = useState<any[] | null>(null);
+  const [isSearching, setIsSearching] = useState(false);
+  
+  const handleSearchTickets = async () => {
+    if (!searchPhone) return;
+    setIsSearching(true);
+    try {
+      const res = await fetch(`/api/search?phone=${encodeURIComponent(searchPhone)}`);
+      const data = await res.json();
+      setSearchResults(data.tickets || []);
+    } catch(e) {
+      console.error(e);
+      setSearchResults([]);
+    }
+    setIsSearching(false);
+  };
   
   // Configuración del sorteo conectada a la BD
   const [drawDate, setDrawDate] = useState("2026-09-15");
@@ -141,7 +159,14 @@ export default function Home() {
             </p>
           </div>
         )}
-        <div className="flex-1 flex justify-end">
+        <div className="flex-1 flex justify-end gap-2 md:gap-4">
+          <button 
+            onClick={() => setIsSearchModalOpen(true)}
+            className="flex items-center gap-2 text-xs md:text-sm"
+            style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: 'white', padding: '10px 16px', borderRadius: '50px', fontWeight: 'bold', border: '1px solid rgba(255,255,255,0.2)' }}
+          >
+            🔍 <span className="hidden md:inline">Mis Boletos</span>
+          </button>
           <a 
             href={`https://wa.me/${whatsappAdmin}?text=Hola,%20quiero%20información%20del%20sorteo`} 
             target="_blank" 
@@ -168,6 +193,30 @@ export default function Home() {
           </a>
         </div>
       </header>
+
+      {/* HERO SECTION - GMC SIERRA (FIRST VISUAL IMPACT) */}
+      <section className="w-full relative bg-black border-b border-[#FFD700]/30 shadow-[0_10px_30px_rgba(0,0,0,0.8)] z-10 mb-6">
+        <div className="w-full max-w-6xl mx-auto h-[40vh] md:h-[60vh] relative overflow-hidden">
+          {/* Placeholder for the GMC Sierra Image. Best if replaced with a high-res image of the actual prize */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10"></div>
+          <img 
+            src="https://images.unsplash.com/photo-1632313654497-6a1ea68379ba?q=80&w=1920&auto=format&fit=crop" 
+            alt="GMC Sierra Principal" 
+            className="w-full h-full object-cover object-center opacity-90"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 800 400" preserveAspectRatio="none"><rect width="800" height="400" fill="%23222"/><text x="400" y="200" fill="%23FFD700" font-size="24" font-family="sans-serif" text-anchor="middle" dominant-baseline="middle">FOTO PRINCIPAL GMC SIERRA AQUÍ</text></svg>';
+            }}
+          />
+          <div className="absolute bottom-6 left-0 w-full text-center z-20 px-4">
+            <div className="inline-block bg-[#FFD700] text-black px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest shadow-lg mb-2">
+              Sorteo Especial
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-white uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+              GMC Sierra + $20,000 MXN
+            </h2>
+          </div>
+        </div>
+      </section>
 
       {step === "grid" && (
         <section className="w-full max-w-6xl mx-auto px-4 text-center mt-4">
@@ -494,6 +543,60 @@ export default function Home() {
 
 
 
+      {/* PREVIOUS WINNERS SECTION */}
+      <section className="w-full max-w-6xl mx-auto px-4 mt-12 mb-8">
+        <div className="text-center mb-8">
+          <h3 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-hover uppercase">Entregas y Ganadores</h3>
+          <p className="text-gray-400 text-sm mt-2">Ellos ya cumplieron su sueño. ¡El próximo puedes ser tú!</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Winner 1 */}
+          <div className="bg-[#111] rounded-2xl overflow-hidden border border-white/10 shadow-lg">
+            <div className="h-48 bg-gray-800 relative flex items-center justify-center">
+              <span className="text-gray-500 font-bold">ESPACIO FOTO GANADOR 1</span>
+            </div>
+            <div className="p-4 text-center">
+              <h4 className="text-[#FFD700] font-black text-lg">GMC Sierra 2023</h4>
+              <p className="text-gray-400 text-sm">Entregada en Monterrey, NL</p>
+            </div>
+          </div>
+          {/* Winner 2 */}
+          <div className="bg-[#111] rounded-2xl overflow-hidden border border-white/10 shadow-lg">
+            <div className="h-48 bg-gray-800 relative flex items-center justify-center">
+              <span className="text-gray-500 font-bold">ESPACIO FOTO GANADOR 2</span>
+            </div>
+            <div className="p-4 text-center">
+              <h4 className="text-[#FFD700] font-black text-lg">Ford Lobo Platinum</h4>
+              <p className="text-gray-400 text-sm">Entregada en Guadalajara, JAL</p>
+            </div>
+          </div>
+          {/* Winner 3 */}
+          <div className="bg-[#111] rounded-2xl overflow-hidden border border-white/10 shadow-lg">
+            <div className="h-48 bg-gray-800 relative flex items-center justify-center">
+              <span className="text-gray-500 font-bold">ESPACIO FOTO GANADOR 3</span>
+            </div>
+            <div className="p-4 text-center">
+              <h4 className="text-[#FFD700] font-black text-lg">Jeep Wrangler Rubicon</h4>
+              <p className="text-gray-400 text-sm">Entregada en CDMX</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TRANSPARENCY BANNER */}
+      <div className="w-full bg-[#111] border-y border-[#FFD700]/30 py-6 mt-12 shadow-inner text-center px-4">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-center gap-4">
+          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center p-2 shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Loteria_Nacional_logo.svg/1024px-Loteria_Nacional_logo.svg.png" alt="Lotería Nacional" className="max-w-full max-h-full object-contain" />
+          </div>
+          <div className="text-left">
+            <h4 className="text-[#FFD700] font-black text-lg md:text-xl uppercase">Sorteo Autorizado y Transparente</h4>
+            <p className="text-gray-300 text-sm">Nuestro sorteo se basa en los últimos 5 dígitos del Premio Mayor de la <strong>Lotería Nacional</strong> para la Asistencia Pública. Garantizamos total legalidad.</p>
+          </div>
+        </div>
+      </div>
+
       {/* FAQ ACCORDION SECTION */}
       <footer className="w-full max-w-4xl mx-auto px-4 mt-12 mb-20">
         <div className="text-center mb-8">
@@ -535,19 +638,70 @@ export default function Home() {
         </details>
       </div>
 
-      {/* BOTÓN FLOTANTE DE WHATSAPP (MUY VISIBLE, SIN ANIMACIONES CONFLICTIVAS) */}
       <a 
         href={`https://wa.me/${whatsappAdmin}?text=Hola,%20tengo%20una%20duda%20sobre%20el%20sorteo.`} 
         target="_blank" 
         rel="noopener noreferrer" 
-        className="fixed bg-[#25D366] text-white p-4 rounded-full shadow-[0_0_25px_rgba(37,211,102,1)] hover:bg-[#128C7E] flex items-center justify-center border-2 border-white/20"
-        style={{ position: 'fixed', bottom: '90px', right: '20px', zIndex: 2147483647 }}
-        aria-label="Contactar por WhatsApp"
+        style={{ position: 'fixed', bottom: '24px', right: '24px', backgroundColor: '#25D366', color: 'white', padding: '16px', borderRadius: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 20px rgba(37,211,102,0.6)', zIndex: 1000, textDecoration: 'none' }}
       >
-        <svg viewBox="0 0 24 24" className="w-12 h-12 relative z-10" fill="currentColor">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
         </svg>
       </a>
+
+      {/* SEARCH TICKETS MODAL */}
+      {isSearchModalOpen && (
+        <div style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.8)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
+          <div style={{ backgroundColor: '#111', border: '1px solid #FFD700', borderRadius: '16px', padding: '24px', width: '100%', maxWidth: '400px', position: 'relative' }}>
+            <button 
+              onClick={() => { setIsSearchModalOpen(false); setSearchResults(null); setSearchPhone(""); }}
+              style={{ position: 'absolute', top: '16px', right: '16px', color: '#fff', fontSize: '24px', fontWeight: 'bold', background: 'transparent', border: 'none', cursor: 'pointer' }}
+            >
+              ×
+            </button>
+            <h3 style={{ color: '#FFD700', fontSize: '1.5rem', fontWeight: '900', marginBottom: '16px', textAlign: 'center', textTransform: 'uppercase' }}>Mis Boletos</h3>
+            <p style={{ color: '#ccc', fontSize: '14px', marginBottom: '16px', textAlign: 'center' }}>Ingresa tu número de WhatsApp para consultar tus boletos.</p>
+            
+            <input 
+              type="tel"
+              placeholder="Ej. 5512345678"
+              value={searchPhone}
+              onChange={e => setSearchPhone(e.target.value)}
+              style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(255,255,255,0.05)', color: 'white', fontSize: '16px', marginBottom: '16px', textAlign: 'center' }}
+            />
+            
+            <button 
+              onClick={handleSearchTickets}
+              disabled={isSearching}
+              style={{ width: '100%', padding: '12px', backgroundColor: '#FFD700', color: 'black', fontWeight: 'bold', borderRadius: '8px', border: 'none', cursor: 'pointer', fontSize: '16px', textTransform: 'uppercase' }}
+            >
+              {isSearching ? 'Buscando...' : 'Buscar Mis Boletos'}
+            </button>
+
+            {searchResults !== null && (
+              <div style={{ marginTop: '24px', maxHeight: '250px', overflowY: 'auto' }}>
+                {searchResults.length === 0 ? (
+                  <p style={{ color: '#ff4444', textAlign: 'center', fontWeight: 'bold' }}>No se encontraron boletos con ese número.</p>
+                ) : (
+                  <div>
+                    <p style={{ color: '#00ff66', textAlign: 'center', fontWeight: 'bold', marginBottom: '12px' }}>¡Encontramos {searchResults.length} boleto(s)!</p>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {searchResults.map((t: any, i: number) => (
+                        <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                          <span style={{ fontSize: '1.2rem', fontWeight: '900', color: 'white' }}>#{t.number}</span>
+                          <span style={{ fontSize: '12px', fontWeight: 'bold', padding: '4px 8px', borderRadius: '4px', backgroundColor: t.status === 'PAID' ? 'rgba(0,255,102,0.2)' : 'rgba(255,215,0,0.2)', color: t.status === 'PAID' ? '#00ff66' : '#FFD700' }}>
+                            {t.status === 'PAID' ? 'PAGADO' : 'APARTADO'}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </main>
   );
 }

@@ -19,7 +19,7 @@ function CheckoutContent() {
       <div className="max-w-md w-full bg-black/60 p-6 border border-[#FFD700]/30 rounded-2xl text-center shadow-[0_0_30px_rgba(255,215,0,0.15)] backdrop-blur-md">
         <h1 className="text-2xl md:text-3xl font-black text-[#FFD700] mb-2 uppercase tracking-tighter">¡Estás a un paso!</h1>
         <p className="text-gray-300 mb-6 text-sm">
-          Adquiere tu acceso a la <strong>Comunidad VIP de Motores</strong> (incluye Guía de Mantenimiento) y llévate de <span className="text-[#00ff66] font-bold">BONO GRATIS</span> tu participación oficial en el Sorteo con tu paquete de <span className="font-black text-[#FFD700] text-xl px-2">{ticket}</span>.
+          Al adquirir tu acceso a nuestra <strong>Comunidad VIP</strong>, recibes material educativo digital exclusivo sobre camionetas y tu folio de participación directa para el <strong className="text-white">Evento Digital GMC Sierra</strong> con tu paquete de <span className="font-black text-[#FFD700] text-xl px-2">{ticket}</span>.
         </p>
         
         <div className="w-full flex justify-center mb-6">
@@ -31,11 +31,11 @@ function CheckoutContent() {
           <ul className="text-sm space-y-3">
             <li className="flex items-start gap-2">
               <span className="text-[#FFD700]">🏆</span> 
-              <span><strong>Acceso VIP:</strong> Comunidad Amantes de los Motores y Guía de Mantenimiento.</span>
+              <span><strong>Acceso VIP:</strong> Comunidad Amantes de los Motores y Material Educativo Digital.</span>
             </li>
             <li className="flex items-start gap-2 bg-[#00ff66]/10 p-2 rounded border border-[#00ff66]/20">
               <span className="text-[#00ff66]">🎟️</span> 
-              <span><strong>Bono de Regalo:</strong> {ticket} para el Sorteo Oficial.</span>
+              <span><strong>Participación Directa:</strong> {ticket} para la dinámica de la GMC Sierra.</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-[#00d2ff]">🔒</span> 
