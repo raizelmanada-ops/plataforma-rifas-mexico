@@ -554,7 +554,7 @@ export default function Home() {
         
         <div className="flex justify-center">
           <a 
-            href="https://facebook.com" 
+            href="https://www.facebook.com/profile.php?id=61592664040163&locale=es_LA" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="flex items-center gap-4 bg-[#1877F2] hover:bg-[#166fe5] text-white px-8 py-4 rounded-2xl font-black text-lg md:text-xl transition-all shadow-[0_0_20px_rgba(24,119,242,0.4)] hover:scale-105"
@@ -568,15 +568,19 @@ export default function Home() {
       </section>
 
       {/* TRANSPARENCY BANNER */}
-      <div className="w-full bg-[#111] border-y border-[#FFD700]/30 py-6 mt-12 shadow-inner text-center px-4">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-center gap-4">
-          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center p-2 shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Loteria_Nacional_logo.svg/1024px-Loteria_Nacional_logo.svg.png" alt="Lotería Nacional" className="max-w-full max-h-full object-contain" />
+      <div className="w-full bg-[#111] border-y border-[#FFD700]/30 py-6 mt-12 shadow-inner text-center px-4" style={{ display: 'flex', justifyContent: 'center' }}>
+        <div style={{ maxWidth: '800px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
+          <div style={{ width: '80px', height: '80px', backgroundColor: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '8px', boxShadow: '0 0 15px rgba(255,255,255,0.2)' }}>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Loteria_Nacional_logo.svg/1024px-Loteria_Nacional_logo.svg.png" alt="Lotería Nacional" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
           </div>
-          <div className="text-left">
-            <h4 className="text-[#FFD700] font-black text-lg md:text-xl uppercase">Sorteo Autorizado y Transparente</h4>
-            <p className="text-gray-300 text-sm mb-2">Nuestro sorteo se basa en los últimos 5 dígitos del Premio Mayor de la <strong>Lotería Nacional</strong> para la Asistencia Pública. Garantizamos total legalidad.</p>
-            <p className="text-[10px] text-gray-500 uppercase font-bold">NOTA: Todos nuestros sorteos requieren al menos un 80% de venta de boletos para realizarse, en caso contrario se dará aviso en nuestras páginas y se asignará una nueva fecha.</p>
+          <div style={{ textAlign: 'center', padding: '0 10px' }}>
+            <h4 style={{ color: '#FFD700', fontWeight: '900', fontSize: '1.2rem', textTransform: 'uppercase', marginBottom: '8px' }}>Sorteo Autorizado y Transparente</h4>
+            <p style={{ color: '#ccc', fontSize: '14px', lineHeight: '1.5', marginBottom: '12px' }}>
+              Nuestro sorteo se basa en los últimos 5 dígitos del Premio Mayor de la <strong>Lotería Nacional</strong> para la Asistencia Pública. Garantizamos total legalidad.
+            </p>
+            <p style={{ color: '#888', fontSize: '10px', textTransform: 'uppercase', fontWeight: 'bold', lineHeight: '1.4' }}>
+              NOTA: Todos nuestros sorteos requieren al menos un 80% de venta de boletos para realizarse, en caso contrario se dará aviso en nuestras páginas y se asignará una nueva fecha.
+            </p>
           </div>
         </div>
       </div>
