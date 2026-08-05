@@ -129,15 +129,18 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
 
       {/* Máquina rápida */}
       <div className="mb-8">
-        <p className="text-xs text-gray-500 uppercase font-bold tracking-widest text-center mb-3">Máquina de la Suerte (Azar)</p>
+        <p className="text-xs text-gray-500 uppercase font-bold tracking-widest text-center mb-1">Máquina de la Suerte (Combos Rápidos)</p>
+        <p className="text-[#00ff66] text-sm md:text-base font-black text-center mb-4 uppercase drop-shadow-md">
+          🎁 ¡Bono: Llévate $20,000 MXN extra comprando 25+ boletos!
+        </p>
         <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
           <button onClick={() => selectRandom(1)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)' }} className="bg-black/50 hover:bg-accent hover:text-black transition-all">+1 Boleto</button>
           <button onClick={() => selectRandom(3)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)' }} className="bg-black/50 hover:bg-accent hover:text-black transition-all">+3</button>
           <button onClick={() => selectRandom(5)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)' }} className="bg-black/50 hover:bg-accent hover:text-black transition-all">+5</button>
           <button onClick={() => selectRandom(10)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)' }} className="bg-black/50 hover:bg-accent hover:text-black transition-all">+10</button>
-          <button onClick={() => selectRandom(25)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)' }} className="bg-black/50 hover:bg-accent hover:text-black transition-all">+25</button>
-          <button onClick={() => selectRandom(50)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)' }} className="bg-black/50 hover:bg-accent hover:text-black transition-all">+50</button>
-          <button onClick={() => selectRandom(100)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid #FFD700', backgroundColor: '#FFD700', color: 'black' }} className="hover:bg-yellow-400 shadow-[0_0_15px_rgba(255,215,0,0.4)] transition-all">+100</button>
+          <button onClick={() => selectRandom(25)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '2px solid #00ff66', color: '#00ff66' }} className="bg-black/50 hover:bg-[#00ff66] hover:text-black shadow-[0_0_15px_rgba(0,255,102,0.3)] transition-all">+25 + BONO</button>
+          <button onClick={() => selectRandom(50)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '2px solid #00ff66', color: '#00ff66' }} className="bg-black/50 hover:bg-[#00ff66] hover:text-black shadow-[0_0_15px_rgba(0,255,102,0.3)] transition-all">+50 + BONO</button>
+          <button onClick={() => selectRandom(100)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '2px solid #FFD700', backgroundColor: '#FFD700', color: 'black' }} className="hover:bg-yellow-400 shadow-[0_0_20px_rgba(255,215,0,0.5)] transition-all">+100 VIP</button>
         </div>
       </div>
 
