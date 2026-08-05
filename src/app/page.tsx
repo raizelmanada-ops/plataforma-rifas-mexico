@@ -44,6 +44,22 @@ export default function Home() {
   const [isMuted, setIsMuted] = useState(true);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+
+  // Carrusel Hero
+  const [heroImageIndex, setHeroImageIndex] = useState(0);
+  const heroImages = [
+    "/sierra-1.jpg",
+    "/sierra-2.jpg",
+    "/sierra-3.jpg",
+    "/sierra-4.jpg"
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setHeroImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 2500);
+    return () => clearInterval(timer);
+  }, [heroImages.length]);
   
   const toggleAudio = () => {
     if (audioRef.current) {
@@ -186,14 +202,29 @@ export default function Home() {
         <div className="w-full max-w-6xl mx-auto h-[40vh] md:h-[60vh] relative overflow-hidden">
           {/* Placeholder for the GMC Sierra Image. Best if replaced with a high-res image of the actual prize */}
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10"></div>
-          <img 
-            src="https://images.unsplash.com/photo-1632313654497-6a1ea68379ba?q=80&w=1920&auto=format&fit=crop" 
-            alt="GMC Sierra Principal" 
-            className="w-full h-full object-cover object-center opacity-90"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 800 400" preserveAspectRatio="none"><rect width="800" height="400" fill="%23222"/><text x="400" y="200" fill="%23FFD700" font-size="24" font-family="sans-serif" text-anchor="middle" dominant-baseline="middle">FOTO PRINCIPAL GMC SIERRA AQUÍ</text></svg>';
-            }}
-          />
+          {/* Carousel Images */}
+          {heroImages.map((src, index) => (
+            <img 
+              key={index}
+              src={src} 
+              alt={`GMC Sierra Foto ${index + 1}`} 
+              className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ${index === heroImageIndex ? 'opacity-90' : 'opacity-0'}`}
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 800 400" preserveAspectRatio="none"><rect width="800" height="400" fill="%23222"/><text x="400" y="200" fill="%23FFD700" font-size="24" font-family="sans-serif" text-anchor="middle" dominant-baseline="middle">FOTO SIERRA ' + (index + 1) + ' AQUÍ</text></svg>';
+              }}
+            />
+          ))}
+          
+          {/* Indicadores del Carrusel */}
+          <div className="absolute bottom-24 left-0 w-full flex justify-center gap-2 z-20">
+            {heroImages.map((_, index) => (
+              <div 
+                key={index} 
+                onClick={() => setHeroImageIndex(index)}
+                className={`h-2 rounded-full cursor-pointer transition-all duration-300 ${index === heroImageIndex ? 'w-8 bg-[#FFD700]' : 'w-2 bg-white/50'}`}
+              ></div>
+            ))}
+          </div>
           <div className="absolute bottom-6 left-0 w-full text-center z-20 px-4">
             <div className="inline-block bg-[#FFD700] text-black px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest shadow-lg mb-2">
               Sorteo Especial
