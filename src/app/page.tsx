@@ -147,48 +147,33 @@ export default function Home() {
 
   return (
     <main className="min-h-screen pb-12 flex flex-col items-center selection:bg-accent selection:text-black">
-      <header className="w-full relative z-10 flex justify-between items-center bg-black border-b border-[#FFD700]/30 shadow-md px-4" style={{ padding: '8px 16px' }}>
-        <div className="flex-1"></div>
+      <header style={{ width: '100%', position: 'relative', zIndex: 10, display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'black', borderBottom: '1px solid rgba(255,215,0,0.3)', padding: '12px 16px', gap: '12px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.5)' }}>
         {bannerUrl ? (
-          <img src={bannerUrl} alt="Sorteos Millonarios Banner" className="mx-auto" style={{ maxHeight: '100px', maxWidth: '100%', objectFit: 'contain' }} />
+          <img src={bannerUrl} alt="Sorteos Millonarios Banner" style={{ maxHeight: '80px', maxWidth: '100%', objectFit: 'contain', margin: '0 auto' }} />
         ) : (
-          <div className="py-2 text-center mx-auto">
-            <h1 className="text-2xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-b from-[#FFD700] to-[#b38728] uppercase font-serif">
+          <div style={{ textAlign: 'center', flex: '1 1 100%', minWidth: '250px' }} className="md:flex-1 md:text-left">
+            <h1 style={{ fontSize: '1.5rem', fontWeight: '900', color: 'transparent', backgroundImage: 'linear-gradient(to bottom, #FFD700, #b38728)', WebkitBackgroundClip: 'text', textTransform: 'uppercase', fontFamily: 'serif', margin: 0 }}>
               Sorteos Millonarios
             </h1>
-            <p className="text-[#00ff66] text-xs md:text-sm font-bold uppercase tracking-widest mt-1">
+            <p style={{ color: '#00ff66', fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', margin: '4px 0 0 0' }}>
               El Sorteo Entre Amigos de mayor confianza en México
             </p>
           </div>
         )}
-        <div className="flex-1 flex justify-end gap-2 md:gap-4">
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', flex: '1 1 auto', flexWrap: 'wrap' }}>
           <button 
             onClick={() => setIsSearchModalOpen(true)}
-            className="flex items-center gap-2 text-xs md:text-sm"
-            style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: 'white', padding: '10px 16px', borderRadius: '50px', fontWeight: 'bold', border: '1px solid rgba(255,255,255,0.2)' }}
+            style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: 'white', padding: '10px 16px', borderRadius: '50px', fontWeight: 'bold', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', cursor: 'pointer' }}
           >
-            🔍 <span className="hidden md:inline">Mis Boletos</span>
+            🔍 Mis Boletos
           </button>
           <a 
             href={`https://wa.me/${whatsappAdmin}?text=Hola,%20quiero%20información%20del%20sorteo`} 
             target="_blank" 
             rel="noopener noreferrer" 
-            style={{ 
-              backgroundColor: '#25D366', 
-              color: '#ffffff', 
-              padding: '12px 24px', 
-              borderRadius: '50px', 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '10px', 
-              fontWeight: '900',
-              fontSize: '18px',
-              border: '2px solid rgba(255,255,255,0.5)',
-              boxShadow: '0 0 20px rgba(37,211,102,0.8)',
-              textDecoration: 'none'
-            }}
+            style={{ backgroundColor: '#25D366', color: '#ffffff', padding: '10px 16px', borderRadius: '50px', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: '900', fontSize: '14px', border: '2px solid rgba(255,255,255,0.5)', boxShadow: '0 0 20px rgba(37,211,102,0.5)', textDecoration: 'none' }}
           >
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
             </svg>
             <span>WHATSAPP</span>
@@ -552,17 +537,17 @@ export default function Home() {
           <p className="text-gray-400 text-sm mt-2">Visita nuestra página oficial de Facebook para ver todas nuestras entregas en vivo.</p>
         </div>
         
-        <div className="flex justify-center">
+        <div className="flex justify-center" style={{ padding: '0 10px' }}>
           <a 
             href="https://www.facebook.com/profile.php?id=61592664040163&locale=es_LA" 
             target="_blank" 
             rel="noopener noreferrer" 
-            style={{ backgroundColor: '#1877F2', padding: '16px 32px', borderRadius: '16px', display: 'flex', alignItems: 'center', gap: '16px', boxShadow: '0 0 20px rgba(24,119,242,0.4)', color: 'white', fontWeight: '900', fontSize: '1.1rem', textDecoration: 'none' }}
+            style={{ backgroundColor: '#1877F2', padding: '12px 16px', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', boxShadow: '0 0 20px rgba(24,119,242,0.4)', color: 'white', fontWeight: '900', fontSize: '0.9rem', textDecoration: 'none', maxWidth: '100%', flexWrap: 'wrap', textAlign: 'center' }}
           >
-            <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
               <path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/>
             </svg>
-            VER GANADORES EN FACEBOOK
+            <span>VER GANADORES EN FACEBOOK</span>
           </a>
         </div>
       </section>
