@@ -195,6 +195,11 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
       {/* Checkout Bar Flotante */}
       {selectedNumbers.length > 0 && (
         <div style={{ position: 'fixed', bottom: '0', left: '0', width: '100%', backgroundColor: 'rgba(0,0,0,0.95)', borderTop: '4px solid #FFD700', padding: '12px 16px', zIndex: 100, boxShadow: '0 -10px 40px rgba(0,0,0,0.8)', backdropFilter: 'blur(10px)' }}>
+          <style dangerouslySetInnerHTML={{__html: `
+            #whatsapp-btn {
+              bottom: 90px !important;
+            }
+          `}} />
           <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '12px' }}>
             
             <div style={{ textAlign: 'center', flex: '1 1 auto' }}>
