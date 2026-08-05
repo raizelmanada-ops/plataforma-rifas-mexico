@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL_UNPOOLED")
+}
+
+model Customer {
+  id        String   @id @default(uuid())
+  name      String
+  phone     String
+  idNumber  String
+  address   String   @default("")
+  createdAt DateTime @default(now())
+  tickets   Ticket[]
+}
+
+model Ticket {
+  id         String   @id @default(uuid())
+  number     String   @unique // The 4-digit ticket number (e.g., "0292")
+  status     String   @default("RESERVED") // "RESERVED", "PAID"
+  customerId String?
+  customer   Customer? @relation(fields: [customerId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Config {
+  id            String   @id @default("default")
+  whatsappAdmin String   @default("5213312345678")
+  nequiNumber   String   @default("012345678901234567")
+  nequiName     String   @default("Juan Pérez")
+  prizes        String   @default("Ford Ranger XLT Bi-Turbo (2024)")
+  drawDate      String   @default("2024-11-21")
+  lotteryName   String   @default("Lotería Nacional de México")
+  videoUrl      String   @default("")
+  bannerUrl     String   @default("")
+  qrUrl         String   @default("")
+  updatedAt     DateTime @updatedAt
+}
