@@ -131,34 +131,35 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
       <div className="mb-8">
         <p className="text-xs text-gray-500 uppercase font-bold tracking-widest text-center mb-3">Máquina de la Suerte (Azar)</p>
         <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-          <button onClick={() => selectRandom(1)} className="bg-black/50 hover:bg-accent hover:text-black border border-white/20 px-3 sm:px-4 py-2 rounded-lg font-black transition-all">+1 Boleto</button>
-          <button onClick={() => selectRandom(3)} className="bg-black/50 hover:bg-accent hover:text-black border border-white/20 px-3 sm:px-4 py-2 rounded-lg font-black transition-all">+3 Boletos</button>
-          <button onClick={() => selectRandom(5)} className="bg-black/50 hover:bg-accent hover:text-black border border-white/20 px-3 sm:px-4 py-2 rounded-lg font-black transition-all">+5 Boletos</button>
-          <button onClick={() => selectRandom(10)} className="bg-accent text-black hover:bg-yellow-400 shadow-[0_0_15px_rgba(255,215,0,0.4)] border border-accent px-3 sm:px-4 py-2 rounded-lg font-black transition-all">+10 Boletos</button>
+          <button onClick={() => selectRandom(1)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)' }} className="bg-black/50 hover:bg-accent hover:text-black transition-all">+1 Boleto</button>
+          <button onClick={() => selectRandom(3)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)' }} className="bg-black/50 hover:bg-accent hover:text-black transition-all">+3 Boletos</button>
+          <button onClick={() => selectRandom(5)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)' }} className="bg-black/50 hover:bg-accent hover:text-black transition-all">+5 Boletos</button>
+          <button onClick={() => selectRandom(10)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid #FFD700', backgroundColor: '#FFD700', color: 'black' }} className="hover:bg-yellow-400 shadow-[0_0_15px_rgba(255,215,0,0.4)] transition-all">+10 Boletos</button>
         </div>
       </div>
 
       {/* Search Bar */}
-      <div className="relative max-w-md mx-auto mb-8">
+      <div className="relative mx-auto mb-8" style={{ maxWidth: '400px' }}>
         <input 
           type="text" 
           placeholder="Ej. 05432" 
           value={searchTerm}
           onChange={handleSearch}
           maxLength={5}
-          className="w-full bg-white/5 border-2 border-white/20 rounded-xl px-6 py-4 text-2xl font-black text-center text-white placeholder-gray-600 focus:outline-none focus:border-accent transition-colors"
+          style={{ width: '100%', padding: '16px 24px', fontSize: '1.5rem', fontWeight: '900', textAlign: 'center', backgroundColor: 'rgba(255,255,255,0.05)', border: '2px solid rgba(255,255,255,0.2)', borderRadius: '12px', color: 'white' }}
+          className="focus:outline-none focus:border-accent transition-colors"
         />
         <div className="absolute top-0 right-4 h-full flex items-center pointer-events-none">
-          <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          <svg width="24" height="24" style={{ color: '#888' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
         </div>
       </div>
 
       {/* Grid Virtual */}
-      <div className="bg-white/5 rounded-xl p-4 md:p-6 border border-white/10 max-h-[400px] overflow-y-auto custom-scrollbar">
+      <div className="bg-white/5 rounded-xl p-4 md:p-6 border border-white/10 custom-scrollbar" style={{ maxHeight: '400px', overflowY: 'auto' }}>
         {visibleNumbers.length === 0 ? (
           <div className="text-center py-10 text-gray-500 font-bold">No se encontraron números disponibles con esa búsqueda.</div>
         ) : (
-          <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2 md:gap-3">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(70px, 1fr))', gap: '8px' }}>
             {visibleNumbers.map(num => {
               const isSelected = selectedNumbers.includes(num);
               return (
