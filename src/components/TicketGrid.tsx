@@ -194,29 +194,30 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
 
       {/* Checkout Bar Flotante */}
       {selectedNumbers.length > 0 && (
-        <div style={{ position: 'fixed', bottom: '0', left: '0', width: '100%', backgroundColor: 'rgba(0,0,0,0.95)', borderTop: '4px solid #FFD700', padding: '24px', zIndex: 100, boxShadow: '0 -10px 40px rgba(0,0,0,0.8)', backdropFilter: 'blur(10px)' }}>
-          <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
-            <div style={{ textAlign: 'center' }}>
-              <p style={{ color: '#ccc', fontSize: '1rem', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 'bold', margin: '0 0 8px 0' }}>Has seleccionado</p>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', marginBottom: '8px' }}>
-                <span style={{ fontSize: '2.5rem', fontWeight: '900', color: 'white' }}>{selectedNumbers.length} Boletos</span>
-                <span style={{ backgroundColor: '#FFD700', color: 'black', padding: '8px 16px', borderRadius: '8px', fontWeight: '900', fontSize: '2rem' }}>${matchedBundle?.price} MXN</span>
+        <div style={{ position: 'fixed', bottom: '0', left: '0', width: '100%', backgroundColor: 'rgba(0,0,0,0.95)', borderTop: '4px solid #FFD700', padding: '12px 16px', zIndex: 100, boxShadow: '0 -10px 40px rgba(0,0,0,0.8)', backdropFilter: 'blur(10px)' }}>
+          <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '12px' }}>
+            
+            <div style={{ textAlign: 'center', flex: '1 1 auto' }}>
+              <p style={{ color: '#ccc', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold', margin: '0 0 4px 0' }}>Has seleccionado</p>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '4px' }}>
+                <span style={{ fontSize: '1.5rem', fontWeight: '900', color: 'white' }}>{selectedNumbers.length} Boletos</span>
+                <span style={{ backgroundColor: '#FFD700', color: 'black', padding: '4px 12px', borderRadius: '8px', fontWeight: '900', fontSize: '1.2rem' }}>${matchedBundle?.price} MXN</span>
               </div>
-              <div style={{ fontSize: '1rem', color: '#FFD700', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '600px', margin: '0 auto' }}>
-                Boletos: {selectedNumbers.slice(0, 8).join(', ')}{selectedNumbers.length > 8 ? '...' : ''}
+              <div style={{ fontSize: '0.8rem', color: '#FFD700', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '300px', margin: '0 auto' }}>
+                Boletos: {selectedNumbers.slice(0, 5).join(', ')}{selectedNumbers.length > 5 ? '...' : ''}
               </div>
             </div>
             
-            <div style={{ display: 'flex', gap: '16px', width: '100%', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', flex: '0 1 auto' }}>
               <button 
                 onClick={clearSelection}
-                style={{ padding: '16px 24px', borderRadius: '12px', border: '2px solid rgba(255,255,255,0.2)', color: 'white', fontWeight: 'bold', fontSize: '1.5rem', cursor: 'pointer', backgroundColor: 'transparent' }}
+                style={{ padding: '8px 16px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', color: 'white', fontWeight: 'bold', fontSize: '1rem', cursor: 'pointer', backgroundColor: 'transparent' }}
               >
-                🗑️ Borrar
+                🗑️
               </button>
               <button 
                 onClick={handleCheckout}
-                style={{ backgroundColor: '#FFD700', color: 'black', padding: '16px 48px', borderRadius: '12px', fontWeight: '900', fontSize: '1.8rem', textTransform: 'uppercase', letterSpacing: '2px', boxShadow: '0 0 20px rgba(255,215,0,0.6)', cursor: 'pointer', border: 'none' }}
+                style={{ backgroundColor: '#FFD700', color: 'black', padding: '8px 32px', borderRadius: '8px', fontWeight: '900', fontSize: '1.2rem', textTransform: 'uppercase', letterSpacing: '1px', boxShadow: '0 0 20px rgba(255,215,0,0.6)', cursor: 'pointer', border: 'none', whiteSpace: 'nowrap' }}
               >
                 Pagar Ahora
               </button>
