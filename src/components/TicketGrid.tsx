@@ -103,10 +103,10 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
   const matchedBundle = getMatchedBundle();
 
   return (
-    <div className="w-full max-w-5xl mx-auto mt-12 bg-[#0a0a0a] border border-white/10 rounded-2xl p-4 md:p-8 shadow-2xl">
-      <div className="text-center mb-8">
-        <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-2">
-          Busca tu <span className="text-accent">Boleto</span>
+    <div style={{ width: '100%', maxWidth: '1024px', margin: '48px auto 0 auto', backgroundColor: '#0a0a0a', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', padding: '16px', boxSizing: 'border-box', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)', overflow: 'hidden' }}>
+      <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+        <h3 style={{ fontSize: '2rem', fontWeight: '900', color: 'white', textTransform: 'uppercase', letterSpacing: '-0.05em', margin: '0 0 8px 0' }}>
+          Busca tu <span style={{ color: '#FFD700' }}>Boleto</span>
         </h3>
         <p className="text-gray-400">Selecciona tus números de la suerte. Participan 60,000 números con la Lotería Nacional.</p>
       </div>
@@ -160,11 +160,11 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
       </div>
 
       {/* Grid Virtual */}
-      <div className="bg-white/5 rounded-xl p-4 md:p-6 border border-white/10 custom-scrollbar" style={{ maxHeight: '400px', overflowY: 'auto' }}>
+      <div className="custom-scrollbar" style={{ backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: '12px', padding: '16px', border: '1px solid rgba(255,255,255,0.1)', maxHeight: '400px', overflowY: 'auto', boxSizing: 'border-box', width: '100%' }}>
         {visibleNumbers.length === 0 ? (
-          <div className="text-center py-10 text-gray-500 font-bold">No se encontraron números disponibles con esa búsqueda.</div>
+          <div style={{ textAlign: 'center', padding: '40px 0', color: '#6b7280', fontWeight: 'bold' }}>No se encontraron números disponibles con esa búsqueda.</div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(70px, 1fr))', gap: '8px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(70px, 1fr))', gap: '8px', boxSizing: 'border-box', width: '100%' }}>
             {visibleNumbers.map(num => {
               const isSelected = selectedNumbers.includes(num);
               return (
