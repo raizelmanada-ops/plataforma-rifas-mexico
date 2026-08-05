@@ -250,30 +250,29 @@ export default function Home() {
       </section>
 
       {step === "grid" && (
-        <section className="w-full max-w-6xl mx-auto px-4 text-center mt-4">
-          <div className="glass-panel p-4 md:p-8 mb-12 border-accent/20 relative overflow-hidden">
+        <section style={{ width: '100%', maxWidth: '1152px', margin: '16px auto 0 auto', padding: '0 16px', textAlign: 'center', boxSizing: 'border-box', overflowX: 'hidden' }}>
+          <div style={{ padding: '16px', marginBottom: '48px', position: 'relative', overflow: 'hidden', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: '16px', border: '1px solid rgba(255,215,0,0.2)' }}>
             {/* Fondo decorativo premium */}
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#FFD700]/10 via-transparent to-transparent pointer-events-none"></div>
             
             {/* 1. EL VIDEO ARRIBA DE TODO */}
-            <div className="w-full max-w-4xl mx-auto mb-8 relative z-10">
-              <div className="aspect-video w-full rounded-2xl overflow-hidden border-2 border-[#FFD700] shadow-[0_0_40px_rgba(255,215,0,0.3)] bg-black flex items-center justify-center group relative">
+            <div style={{ width: '100%', maxWidth: '896px', margin: '0 auto 32px auto', position: 'relative', zIndex: 10, boxSizing: 'border-box' }}>
+              <div style={{ aspectRatio: '16/9', width: '100%', borderRadius: '16px', overflow: 'hidden', border: '2px solid #FFD700', boxShadow: '0 0 40px rgba(255,215,0,0.3)', backgroundColor: 'black', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', boxSizing: 'border-box' }}>
                 {videoUrl ? (
                   videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be") || videoUrl.includes("vimeo.com") ? (
                     <iframe 
                       src={videoUrl} 
-                      className="w-full h-full" 
+                      style={{ width: '100%', height: '100%', border: 'none' }}
                       title="Video del Premio"
-                      frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                       allowFullScreen
                     ></iframe>
                   ) : (
-                    <div className="relative w-full h-full">
+                    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
                       <video 
                         id="main-promo-video"
                         src={videoUrl} 
-                        className="w-full h-full object-cover" 
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                         controls 
                         autoPlay 
                         muted={isMuted} 
@@ -284,7 +283,7 @@ export default function Home() {
                       </video>
                       
                       {isMuted && (
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/40 z-20 pointer-events-none">
+                        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.4)', zIndex: 20, pointerEvents: 'none' }}>
                           <button 
                             type="button"
                             onClick={() => {
@@ -292,9 +291,9 @@ export default function Home() {
                               const vid = document.getElementById('main-promo-video') as HTMLVideoElement;
                               if (vid) vid.muted = false;
                             }}
-                            className="pointer-events-auto bg-[#FFD700] hover:bg-yellow-400 text-black font-black text-sm md:text-lg px-6 py-3 rounded-full flex items-center gap-3 shadow-[0_0_30px_rgba(255,215,0,0.8)] animate-bounce border-2 border-white"
+                            style={{ pointerEvents: 'auto', backgroundColor: '#FFD700', color: 'black', fontWeight: '900', fontSize: '0.875rem', padding: '12px 24px', borderRadius: '50px', display: 'flex', alignItems: 'center', gap: '12px', boxShadow: '0 0 30px rgba(255,215,0,0.8)', border: '2px solid white', cursor: 'pointer' }}
                           >
-                            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clipRule="evenodd" />
                             </svg>
                             ¡TOCA AQUÍ PARA ESCUCHAR!
@@ -304,45 +303,31 @@ export default function Home() {
                     </div>
                   )
                 ) : (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center opacity-80 group-hover:opacity-100 transition-opacity cursor-pointer bg-black/40">
-                    <div className="w-20 h-20 bg-gradient-to-tr from-[#FFD700] to-[#FDB931] rounded-full flex items-center justify-center mb-4 shadow-[0_0_30px_rgba(255,215,0,0.6)] transform group-hover:scale-110 transition-transform">
-                      <svg className="w-10 h-10 text-black ml-2" fill="currentColor" viewBox="0 0 20 20">
+                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.4)', opacity: 0.8 }}>
+                    <div style={{ width: '80px', height: '80px', background: 'linear-gradient(to top right, #FFD700, #FDB931)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', boxShadow: '0 0 30px rgba(255,215,0,0.6)' }}>
+                      <svg width="40" height="40" style={{ color: 'black', marginLeft: '8px' }} fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
                       </svg>
                     </div>
-                    <p className="text-[#FFD700] font-black uppercase tracking-widest text-lg drop-shadow-md">VIDEO PUBLICITARIO AQUÍ</p>
+                    <p style={{ color: '#FFD700', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '1.125rem', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>VIDEO PUBLICITARIO AQUÍ</p>
                   </div>
                 )}
               </div>
             </div>
 
             {/* 2. TEXTO DEL PREMIO (Se cambiará en el Dashboard) */}
-            <h2 className="text-xl md:text-3xl font-bold mb-6 text-white z-10 relative">
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '24px', color: 'white', zIndex: 10, position: 'relative', wordWrap: 'break-word', overflowWrap: 'break-word', padding: '0 8px' }}>
               El premio mayor actual es: <br/>
-              <span className="text-accent text-3xl md:text-5xl font-black mt-3 block drop-shadow-lg">{prizes}</span>
+              <span style={{ color: '#FFD700', fontSize: '1.5rem', display: 'block', marginTop: '8px' }}>GMC Sierra + $20,000 MXN</span>
             </h2>
-            
-            <div className="bg-black/60 border border-[#FFD700]/30 rounded-xl p-4 mb-6 inline-block shadow-[0_0_20px_rgba(255,215,0,0.15)] z-10 relative backdrop-blur-md">
-              <p className="text-xs text-gray-400 uppercase tracking-widest mb-1 font-bold">FECHA DEL GRAN SORTEO OFICIAL</p>
-              <p className="text-3xl font-black text-white capitalize text-shadow">📅 {formattedDate}</p>
-              <p className="text-sm text-[#FDB931] font-bold mt-1 uppercase">Con la {lotteryName}</p>
-            </div>
-            
-            <div className="flex flex-col items-center justify-center gap-2 mt-2 mb-6 z-10 relative">
-              <p className="text-danger font-black text-xl animate-pulse">¡ATENCIÓN: CUPOS AGOTÁNDOSE RÁPIDO!</p>
-              <div className="w-full max-w-md h-4 bg-gray-900 rounded-full overflow-hidden border border-white/10 shadow-inner">
-                <div className="h-full bg-gradient-to-r from-danger to-[#ff0000] rounded-full w-[88%] shadow-[0_0_10px_red]"></div>
+
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '16px', marginTop: '24px', zIndex: 10, position: 'relative' }}>
+              <div style={{ backgroundColor: 'rgba(0,0,0,0.8)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', minWidth: '80px', boxSizing: 'border-box' }}>
+                <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'white' }}>{timeLeft.days}</div>
+                <div style={{ fontSize: '0.625rem', color: '#6b7280', textTransform: 'uppercase' }}>Días</div>
               </div>
-              <p className="text-xs text-gray-400">Las boletas se están vendiendo en tiempo real.</p>
-            </div>
-            
-            <div className="flex justify-center gap-4 mt-6 z-10 relative">
-              <div className="bg-black/80 p-3 rounded-lg border border-white/5 min-w-[80px]">
-                <div className="text-2xl font-bold text-white">{timeLeft.days}</div>
-                <div className="text-[10px] text-gray-500 uppercase">Días</div>
-              </div>
-              <div className="bg-black/80 p-3 rounded-lg border border-white/5 min-w-[80px]">
-                <div className="text-2xl font-bold text-white">{timeLeft.hours}</div>
+              <div style={{ backgroundColor: 'rgba(0,0,0,0.8)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', minWidth: '80px', boxSizing: 'border-box' }}>
+                <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'white' }}>{timeLeft.hours}</div>
                 <div className="text-[10px] text-gray-500 uppercase">Horas</div>
               </div>
               <div className="bg-black/80 p-3 rounded-lg border border-white/5 min-w-[80px]">

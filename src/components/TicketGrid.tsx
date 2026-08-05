@@ -112,47 +112,47 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
       </div>
 
       {/* Stats Bar */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '16px', marginBottom: '32px', fontSize: '0.875rem', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <div style={{ width: '16px', height: '16px', borderRadius: '50%', backgroundColor: 'white', border: '1px solid #999' }}></div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px', marginBottom: '32px', fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.05em', width: '100%', boxSizing: 'border-box' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: 'white', border: '1px solid #999' }}></div>
           <span style={{ color: 'white' }}>Disponibles</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <div style={{ width: '16px', height: '16px', borderRadius: '50%', backgroundColor: '#FFD700' }}></div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#FFD700' }}></div>
           <span style={{ color: '#d1d5db' }}>Apartados</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <div style={{ width: '16px', height: '16px', borderRadius: '50%', backgroundColor: '#dc2626' }}></div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#dc2626' }}></div>
           <span style={{ color: '#d1d5db' }}>Vendidos</span>
         </div>
       </div>
 
       {/* Máquina rápida */}
-      <div style={{ marginBottom: '32px' }}>
-        <p style={{ fontSize: '0.75rem', color: '#6b7280', textTransform: 'uppercase', fontWeight: 'bold', letterSpacing: '0.1em', textAlign: 'center', marginBottom: '4px' }}>Máquina de la Suerte (Combos Rápidos)</p>
-        <p style={{ color: '#00ff66', fontSize: '0.875rem', fontWeight: '900', textAlign: 'center', marginBottom: '16px', textTransform: 'uppercase', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+      <div style={{ marginBottom: '32px', width: '100%', boxSizing: 'border-box' }}>
+        <p style={{ fontSize: '0.7rem', color: '#6b7280', textTransform: 'uppercase', fontWeight: 'bold', letterSpacing: '0.1em', textAlign: 'center', marginBottom: '4px', wordWrap: 'break-word' }}>Máquina de la Suerte (Combos Rápidos)</p>
+        <p style={{ color: '#00ff66', fontSize: '0.8rem', fontWeight: '900', textAlign: 'center', marginBottom: '16px', textTransform: 'uppercase', textShadow: '0 2px 4px rgba(0,0,0,0.5)', wordWrap: 'break-word' }}>
           🎁 ¡Bono: Llévate $20,000 MXN extra comprando 25+ boletos!
         </p>
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px', padding: '0 8px' }}>
-          <button onClick={() => selectRandom(1)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white' }}>+1 Boleto</button>
-          <button onClick={() => selectRandom(3)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white' }}>+3</button>
-          <button onClick={() => selectRandom(5)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white' }}>+5</button>
-          <button onClick={() => selectRandom(10)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white' }}>+10</button>
-          <button onClick={() => selectRandom(25)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid #10B981', backgroundColor: '#10B981', color: 'white', boxShadow: '0 0 15px rgba(16,185,129,0.3)' }}>+25 + BONO</button>
-          <button onClick={() => selectRandom(50)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid #10B981', backgroundColor: '#10B981', color: 'white', boxShadow: '0 0 15px rgba(16,185,129,0.3)' }}>+50 + BONO</button>
-          <button onClick={() => selectRandom(100)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '2px solid #FFD700', backgroundColor: '#FFD700', color: 'black', boxShadow: '0 0 20px rgba(255,215,0,0.5)' }}>+100 VIP</button>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px', width: '100%', boxSizing: 'border-box' }}>
+          <button onClick={() => selectRandom(1)} style={{ padding: '8px 12px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', fontSize: '0.8rem', flex: '1 1 auto' }}>+1</button>
+          <button onClick={() => selectRandom(3)} style={{ padding: '8px 12px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', fontSize: '0.8rem', flex: '1 1 auto' }}>+3</button>
+          <button onClick={() => selectRandom(5)} style={{ padding: '8px 12px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', fontSize: '0.8rem', flex: '1 1 auto' }}>+5</button>
+          <button onClick={() => selectRandom(10)} style={{ padding: '8px 12px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', fontSize: '0.8rem', flex: '1 1 auto' }}>+10</button>
+          <button onClick={() => selectRandom(25)} style={{ padding: '8px 12px', fontWeight: '900', borderRadius: '8px', border: '1px solid #10B981', backgroundColor: '#10B981', color: 'white', boxShadow: '0 0 15px rgba(16,185,129,0.3)', fontSize: '0.8rem', flex: '1 1 auto' }}>+25</button>
+          <button onClick={() => selectRandom(50)} style={{ padding: '8px 12px', fontWeight: '900', borderRadius: '8px', border: '1px solid #10B981', backgroundColor: '#10B981', color: 'white', boxShadow: '0 0 15px rgba(16,185,129,0.3)', fontSize: '0.8rem', flex: '1 1 auto' }}>+50</button>
+          <button onClick={() => selectRandom(100)} style={{ padding: '8px 12px', fontWeight: '900', borderRadius: '8px', border: '2px solid #FFD700', backgroundColor: '#FFD700', color: 'black', boxShadow: '0 0 20px rgba(255,215,0,0.5)', fontSize: '0.8rem', flex: '1 1 auto' }}>+100</button>
         </div>
       </div>
 
       {/* Search Bar */}
-      <div style={{ maxWidth: '400px', position: 'relative', margin: '0 auto 32px auto' }}>
+      <div style={{ width: '100%', maxWidth: '400px', position: 'relative', margin: '0 auto 32px auto', boxSizing: 'border-box' }}>
         <input 
           type="text" 
           placeholder="Ej. 05432" 
           value={searchTerm}
           onChange={handleSearch}
           maxLength={5}
-          style={{ width: '100%', padding: '16px 24px', fontSize: '1.5rem', fontWeight: '900', textAlign: 'center', backgroundColor: 'rgba(255,255,255,0.05)', border: '2px solid rgba(255,255,255,0.2)', borderRadius: '12px', color: 'white' }}
+          style={{ width: '100%', padding: '16px 40px 16px 16px', fontSize: '1.2rem', fontWeight: '900', textAlign: 'center', backgroundColor: 'rgba(255,255,255,0.05)', border: '2px solid rgba(255,255,255,0.2)', borderRadius: '12px', color: 'white', boxSizing: 'border-box' }}
         />
         <div style={{ position: 'absolute', top: 0, right: '16px', height: '100%', display: 'flex', alignItems: 'center', pointerEvents: 'none' }}>
           <svg width="24" height="24" style={{ color: '#888' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
