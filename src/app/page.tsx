@@ -501,18 +501,18 @@ export default function Home() {
           <p className="text-gray-400 text-sm mt-2">Haz clic para resolver tus dudas</p>
         </div>
         
-        <div className="space-y-2">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           {faqs.map((faq, index) => (
-            <div key={index} className="border border-white/10 rounded-lg bg-black/40 overflow-hidden">
+            <div key={index} style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', backgroundColor: 'rgba(0,0,0,0.4)', overflow: 'hidden' }}>
               <button 
                 onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                className="w-full text-left p-4 flex justify-between items-center hover:bg-white/5 transition-colors"
+                style={{ width: '100%', textAlign: 'left', padding: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'transparent', border: 'none', cursor: 'pointer' }}
               >
-                <span className="font-bold text-white">{faq.q}</span>
-                <span className="text-accent text-2xl leading-none">{openFaq === index ? "−" : "+"}</span>
+                <span style={{ fontWeight: 'bold', color: 'white', fontSize: '1.1rem' }}>{faq.q}</span>
+                <span style={{ color: '#FFD700', fontSize: '1.5rem', lineHeight: '1' }}>{openFaq === index ? "−" : "+"}</span>
               </button>
               {openFaq === index && (
-                <div className="p-4 pt-0 text-sm text-gray-400 border-t border-white/5 bg-black/60">
+                <div style={{ padding: '16px', paddingTop: '0', fontSize: '0.9rem', color: '#ccc', borderTop: '1px solid rgba(255,255,255,0.05)', backgroundColor: 'rgba(0,0,0,0.6)' }}>
                   {faq.a}
                 </div>
               )}

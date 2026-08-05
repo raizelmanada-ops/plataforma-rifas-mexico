@@ -169,13 +169,18 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
                 <button
                   key={num}
                   onClick={() => toggleNumber(num)}
-                  className={`
-                    py-2 rounded text-sm md:text-base font-black border transition-all
-                    ${isSelected 
-                      ? 'bg-accent text-black border-accent shadow-[0_0_10px_rgba(255,215,0,0.5)] transform scale-105' 
-                      : 'bg-white text-black border-gray-300 hover:bg-gray-200'
-                    }
-                  `}
+                  style={{
+                    padding: '12px 4px',
+                    borderRadius: '8px',
+                    fontSize: '1.2rem',
+                    fontWeight: '900',
+                    border: '2px solid',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                    ...(isSelected 
+                      ? { backgroundColor: '#FFD700', color: 'black', borderColor: '#FFD700', boxShadow: '0 0 10px rgba(255,215,0,0.5)', transform: 'scale(1.05)' }
+                      : { backgroundColor: '#ffffff', color: 'black', borderColor: '#ccc' })
+                  }}
                 >
                   {num}
                 </button>
@@ -187,29 +192,29 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
 
       {/* Checkout Bar Flotante */}
       {selectedNumbers.length > 0 && (
-        <div className="fixed bottom-0 left-0 w-full bg-black/95 border-t-2 border-accent p-4 z-50 animate-slide-up shadow-[0_-10px_40px_rgba(0,0,0,0.8)] backdrop-blur-md">
-          <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex-1 text-center md:text-left">
-              <p className="text-gray-300 text-sm uppercase tracking-widest font-bold">Has seleccionado</p>
-              <div className="flex items-center gap-3 justify-center md:justify-start mt-1">
-                <span className="text-3xl font-black text-white">{selectedNumbers.length} Boletos</span>
-                <span className="bg-accent text-black px-3 py-1 rounded font-black text-xl">${matchedBundle?.price} MXN</span>
+        <div style={{ position: 'fixed', bottom: '0', left: '0', width: '100%', backgroundColor: 'rgba(0,0,0,0.95)', borderTop: '4px solid #FFD700', padding: '24px', zIndex: 100, boxShadow: '0 -10px 40px rgba(0,0,0,0.8)', backdropFilter: 'blur(10px)' }}>
+          <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
+            <div style={{ textAlign: 'center' }}>
+              <p style={{ color: '#ccc', fontSize: '1rem', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 'bold', margin: '0 0 8px 0' }}>Has seleccionado</p>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', marginBottom: '8px' }}>
+                <span style={{ fontSize: '2.5rem', fontWeight: '900', color: 'white' }}>{selectedNumbers.length} Boletos</span>
+                <span style={{ backgroundColor: '#FFD700', color: 'black', padding: '8px 16px', borderRadius: '8px', fontWeight: '900', fontSize: '2rem' }}>${matchedBundle?.price} MXN</span>
               </div>
-              <div className="text-xs text-accent mt-1 truncate max-w-md">
+              <div style={{ fontSize: '1rem', color: '#FFD700', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '600px', margin: '0 auto' }}>
                 Boletos: {selectedNumbers.slice(0, 8).join(', ')}{selectedNumbers.length > 8 ? '...' : ''}
               </div>
             </div>
             
-            <div className="flex gap-2 w-full md:w-auto">
+            <div style={{ display: 'flex', gap: '16px', width: '100%', justifyContent: 'center' }}>
               <button 
                 onClick={clearSelection}
-                className="px-4 py-3 rounded-xl border border-white/20 text-white font-bold uppercase hover:bg-white/10"
+                style={{ padding: '16px 24px', borderRadius: '12px', border: '2px solid rgba(255,255,255,0.2)', color: 'white', fontWeight: 'bold', fontSize: '1.5rem', cursor: 'pointer', backgroundColor: 'transparent' }}
               >
-                🗑️
+                🗑️ Borrar
               </button>
               <button 
                 onClick={handleCheckout}
-                className="flex-1 md:flex-none bg-accent hover:bg-yellow-400 text-black px-8 py-3 rounded-xl font-black uppercase tracking-widest shadow-[0_0_20px_rgba(255,215,0,0.4)] transition-all"
+                style={{ backgroundColor: '#FFD700', color: 'black', padding: '16px 48px', borderRadius: '12px', fontWeight: '900', fontSize: '1.8rem', textTransform: 'uppercase', letterSpacing: '2px', boxShadow: '0 0 20px rgba(255,215,0,0.6)', cursor: 'pointer', border: 'none' }}
               >
                 Pagar Ahora
               </button>
