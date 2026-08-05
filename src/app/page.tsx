@@ -138,9 +138,11 @@ export default function Home() {
 
   const faqs = [
     { q: "¿Es legal y autorizado este sorteo?", a: "Totalmente legal. Nuestro sorteo se basa en los resultados oficiales de la Lotería Nacional para la Asistencia Pública, garantizando total transparencia." },
+    { q: "¿Cómo se elige a los ganadores?", a: "La combinación ganadora se toma directamente de los números oficiales del Premio Mayor de la Lotería Nacional en la fecha establecida." },
+    { q: "¿Qué sucede si el número ganador es un boleto NO vendido?", a: "Para garantizar que el premio se entregue, si el número ganador no fue vendido, el sorteo se repite en la siguiente fecha oficial de la Lotería Nacional hasta que haya un ganador." },
+    { q: "¿Dónde se publica a los ganadores?", a: "Las entregas y ganadores se publican en nuestra página web, y realizamos transmisiones en vivo en nuestras redes sociales oficiales (Facebook e Instagram)." },
     { q: "¿Dónde y cómo se entregan los premios?", a: "¡Nosotros te lo llevamos a la puerta de tu casa! Nuestro equipo logístico viajará hasta tu ubicación en cualquier parte de la República. Firmaremos el cambio de propietario en tu ciudad." },
-    { q: "¿Debo pagar impuestos si gano?", a: "¡Absolutamente NO! Asumimos el 100% de los impuestos, gastos de placas, tenencia y seguro. El vehículo se entrega a tu nombre sin costo extra." },
-    { q: "¿Cómo sé que mi boleto es válido?", a: "Al finalizar tu pago verificado (OXXO, SPEI, Tarjeta), se genera un Boleto Digital. Tu compra es automática y transparente." }
+    { q: "¿Debo pagar impuestos si gano?", a: "¡Absolutamente NO! Asumimos el 100% de los impuestos, gastos de placas, tenencia y seguro. El vehículo se entrega a tu nombre sin costo extra." }
   ];
 
   return (
@@ -592,7 +594,8 @@ export default function Home() {
           </div>
           <div className="text-left">
             <h4 className="text-[#FFD700] font-black text-lg md:text-xl uppercase">Sorteo Autorizado y Transparente</h4>
-            <p className="text-gray-300 text-sm">Nuestro sorteo se basa en los últimos 5 dígitos del Premio Mayor de la <strong>Lotería Nacional</strong> para la Asistencia Pública. Garantizamos total legalidad.</p>
+            <p className="text-gray-300 text-sm mb-2">Nuestro sorteo se basa en los últimos 5 dígitos del Premio Mayor de la <strong>Lotería Nacional</strong> para la Asistencia Pública. Garantizamos total legalidad.</p>
+            <p className="text-[10px] text-gray-500 uppercase font-bold">NOTA: Todos nuestros sorteos requieren al menos un 80% de venta de boletos para realizarse, en caso contrario se dará aviso en nuestras páginas y se asignará una nueva fecha.</p>
           </div>
         </div>
       </div>
@@ -624,19 +627,44 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* ULTRA FINE PRINT (T&C) HIDDEN */}
-      <div className="w-full max-w-5xl mx-auto px-4 text-center mt-12 mb-4">
-        <details className="group">
-          <summary className="text-[10px] text-gray-700 cursor-pointer hover:text-gray-500 list-none select-none">
-            Políticas de Privacidad y Condiciones Legales
-          </summary>
-          <div className="mt-4 opacity-20 text-[8px] text-gray-600 leading-tight text-justify">
-            <p>
-              * TÉRMINOS Y CONDICIONES: Sorteos Millonarios S.A.S. (NIT 901.452.873-4) actúa como intermediario de gestión. Al participar, el cliente acepta que en caso de resultar ganador absoluto del premio mayor, deberá cancelar el valor correspondiente a la "Póliza de Adjudicación Logística y Contractual" (equivalente al 1.5% del valor comercial del vehículo) directamente con la aseguradora aliada ANTES de la liberación y envío del automotor. Este valor no es descontable del premio por normativas vigentes. La plataforma asume gastos de matrícula e impuestos, pero la póliza de envío es responsabilidad única del ganador. Si el ganador se niega a cubrir dicha póliza en un plazo de 48 horas, el premio se declarará desierto. Las imágenes mostradas son con fines ilustrativos. 
-            </p>
+      {/* FOOTER & TRUST SEALS */}
+      <footer className="w-full bg-black border-t border-white/10 py-8 mt-12 text-center pb-24">
+        <div className="max-w-4xl mx-auto px-4 flex flex-col items-center gap-6">
+          
+          {/* Sello de Página Verificada */}
+          <div className="bg-[#10B981]/10 border border-[#10B981] px-6 py-3 rounded-lg inline-flex flex-col items-center gap-1 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+            <div className="flex items-center gap-2">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="#10B981">
+                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+              </svg>
+              <span className="text-[#10B981] font-black text-sm tracking-widest uppercase">Página Verificada</span>
+            </div>
+            <span className="text-gray-400 text-xs font-bold uppercase tracking-widest">Estos sorteos son 100% seguros</span>
           </div>
-        </details>
-      </div>
+          
+          {/* Legal Links */}
+          <div className="flex flex-wrap justify-center gap-4 text-xs text-gray-500 underline">
+            <a href="#" className="hover:text-white transition-colors">Aviso de Privacidad</a>
+            <a href="#" className="hover:text-white transition-colors">Términos y Condiciones</a>
+            <a href="#" className="hover:text-white transition-colors">Soporte</a>
+          </div>
+          
+          <details className="group max-w-2xl mt-4">
+            <summary className="text-[10px] text-gray-700 cursor-pointer hover:text-gray-500 list-none select-none border border-gray-800 rounded p-2 inline-block">
+              Ver Condiciones de Operación
+            </summary>
+            <div className="mt-4 opacity-40 text-[9px] text-gray-500 leading-tight text-justify bg-gray-900 p-4 rounded">
+              <p>
+                * TÉRMINOS Y CONDICIONES: Sorteos Millonarios S.A.S. (NIT 901.452.873-4) actúa como intermediario de gestión. Al participar, el cliente acepta que en caso de resultar ganador absoluto del premio mayor, deberá cancelar el valor correspondiente a la "Póliza de Adjudicación Logística y Contractual" (equivalente al 1.5% del valor comercial del vehículo) directamente con la aseguradora aliada ANTES de la liberación y envío del automotor. Este valor no es descontable del premio por normativas vigentes. La plataforma asume gastos de matrícula e impuestos, pero la póliza de envío es responsabilidad única del ganador. Si el ganador se niega a cubrir dicha póliza en un plazo de 48 horas, el premio se declarará desierto. Las imágenes mostradas son con fines ilustrativos. 
+              </p>
+            </div>
+          </details>
+
+          <p className="text-[10px] text-gray-700 mt-4 uppercase tracking-widest font-bold">
+            Sistema Desarrollado por Sorteos Millonarios &copy; 2026
+          </p>
+        </div>
+      </footer>
 
       <a 
         href={`https://wa.me/${whatsappAdmin}?text=Hola,%20tengo%20una%20duda%20sobre%20el%20sorteo.`} 
