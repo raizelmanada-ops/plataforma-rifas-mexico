@@ -14,14 +14,14 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   
   // Configuración del sorteo conectada a la BD
-  const [drawDate, setDrawDate] = useState("2026-08-08");
-  const [lotteryName, setLotteryName] = useState("Lotería de Boyacá");
-  const [prizes, setPrizes] = useState("Sorteo Millonario");
+  const [drawDate, setDrawDate] = useState("2026-09-15");
+  const [lotteryName, setLotteryName] = useState("Lotería Nacional");
+  const [prizes, setPrizes] = useState("GMC SIERRA ACCESORIZADA + $20,000 MXN");
   const [videoUrl, setVideoUrl] = useState("/video_rifa.mp4");
   const [bannerUrl, setBannerUrl] = useState("");
-  const [whatsappAdmin, setWhatsappAdmin] = useState("573213349045");
-  const [nequiNumber, setNequiNumber] = useState("3228743384");
-  const [nequiName, setNequiName] = useState("Jose Surez");
+  const [whatsappAdmin, setWhatsappAdmin] = useState("5215500000000"); // Número de México provisional
+  const [nequiNumber, setNequiNumber] = useState("");
+  const [nequiName, setNequiName] = useState("");
   const [qrUrl, setQrUrl] = useState("");
   const [isMuted, setIsMuted] = useState(true);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -503,24 +503,24 @@ export default function Home() {
           <div className="bg-black/40 border border-white/5 rounded-xl overflow-hidden hover:border-accent/40 transition-colors shadow-lg">
             <img src="/images/winner1.jpg" alt="Ganador carro" className="w-full h-48 object-cover object-center" />
             <div className="p-4 text-center">
-              <p className="text-lg font-bold text-white mb-1 uppercase">Camilo T. - Carro 0KM</p>
-              <p className="text-[10px] text-accent font-bold uppercase tracking-wider">Entregado en Casa - Octubre 2024</p>
+              <p className="text-lg font-bold text-white mb-1 uppercase">Carlos M. - Auto 0KM</p>
+              <p className="text-[10px] text-accent font-bold uppercase tracking-wider">Entregado en Monterrey - Mayo 2024</p>
             </div>
           </div>
           
           <div className="bg-black/40 border border-white/5 rounded-xl overflow-hidden hover:border-accent/40 transition-colors shadow-lg">
             <img src="/images/winner2.jpg" alt="Ganadora moto" className="w-full h-48 object-cover object-center" />
             <div className="p-4 text-center">
-              <p className="text-lg font-bold text-white mb-1 uppercase">María G. - Moto 0KM</p>
-              <p className="text-[10px] text-accent font-bold uppercase tracking-wider">Entregado en Calle - Septiembre 2024</p>
+              <p className="text-lg font-bold text-white mb-1 uppercase">Ana G. - Moto 0KM</p>
+              <p className="text-[10px] text-accent font-bold uppercase tracking-wider">Entregado en CDMX - Junio 2024</p>
             </div>
           </div>
 
           <div className="bg-black/40 border border-white/5 rounded-xl overflow-hidden hover:border-accent/40 transition-colors shadow-lg">
             <img src="/images/winner3.jpg" alt="Familia ganadora" className="w-full h-48 object-cover object-center" />
             <div className="p-4 text-center">
-              <p className="text-lg font-bold text-white mb-1 uppercase">Familia López - Camioneta 4x4</p>
-              <p className="text-[10px] text-accent font-bold uppercase tracking-wider">Entregado en Finca - Agosto 2024</p>
+              <p className="text-lg font-bold text-white mb-1 uppercase">Familia Hernández - Camioneta 4x4</p>
+              <p className="text-[10px] text-accent font-bold uppercase tracking-wider">Entregado en Guadalajara - Julio 2024</p>
             </div>
           </div>
         </div>
