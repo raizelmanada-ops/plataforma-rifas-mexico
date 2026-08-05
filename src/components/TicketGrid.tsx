@@ -108,7 +108,7 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
         <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-2">
           Busca tu <span className="text-accent">Boleto</span>
         </h3>
-        <p className="text-gray-400">Selecciona tus números de la suerte. Participan {TOTAL_NUMBERS.toLocaleString()} números con la Lotería Nacional.</p>
+        <p className="text-gray-400">Selecciona tus números de la suerte. Participan 60,000 números con la Lotería Nacional.</p>
       </div>
 
       {/* Stats Bar */}
