@@ -115,7 +115,7 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
       <div className="flex justify-center gap-4 md:gap-8 mb-8 text-sm md:text-base font-bold uppercase tracking-widest">
         <div className="flex items-center gap-2">
           <div style={{ width: '16px', height: '16px', borderRadius: '50%', backgroundColor: 'white', border: '1px solid #999' }}></div>
-          <span className="text-white hidden sm:inline">Disponibles</span><span className="text-white sm:hidden">Libres</span>
+          <span style={{ color: 'white' }}>Disponibles</span>
         </div>
         <div className="flex items-center gap-2">
           <div style={{ width: '16px', height: '16px', borderRadius: '50%', backgroundColor: '#FFD700' }}></div>
