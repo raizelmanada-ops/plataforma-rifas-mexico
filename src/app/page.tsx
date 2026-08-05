@@ -557,7 +557,7 @@ export default function Home() {
             href="https://www.facebook.com/profile.php?id=61592664040163&locale=es_LA" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="flex items-center gap-4 bg-[#1877F2] hover:bg-[#166fe5] text-white px-8 py-4 rounded-2xl font-black text-lg md:text-xl transition-all shadow-[0_0_20px_rgba(24,119,242,0.4)] hover:scale-105"
+            style={{ backgroundColor: '#1877F2', padding: '16px 32px', borderRadius: '16px', display: 'flex', alignItems: 'center', gap: '16px', boxShadow: '0 0 20px rgba(24,119,242,0.4)', color: 'white', fontWeight: '900', fontSize: '1.1rem', textDecoration: 'none' }}
           >
             <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
               <path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/>
@@ -571,7 +571,7 @@ export default function Home() {
       <div className="w-full bg-[#111] border-y border-[#FFD700]/30 py-6 mt-12 shadow-inner text-center px-4" style={{ display: 'flex', justifyContent: 'center' }}>
         <div style={{ maxWidth: '800px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
           <div style={{ width: '80px', height: '80px', backgroundColor: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '8px', boxShadow: '0 0 15px rgba(255,255,255,0.2)' }}>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Loteria_Nacional_logo.svg/1024px-Loteria_Nacional_logo.svg.png" alt="Lotería Nacional" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+            <span style={{ fontSize: '40px' }}>🇲🇽</span>
           </div>
           <div style={{ textAlign: 'center', padding: '0 10px' }}>
             <h4 style={{ color: '#FFD700', fontWeight: '900', fontSize: '1.2rem', textTransform: 'uppercase', marginBottom: '8px' }}>Sorteo Autorizado y Transparente</h4>
@@ -617,14 +617,14 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 flex flex-col items-center gap-6">
           
           {/* Sello de Página Verificada */}
-          <div className="bg-[#10B981]/10 border border-[#10B981] px-6 py-3 rounded-lg inline-flex flex-col items-center gap-1 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+          <div style={{ backgroundColor: 'rgba(16,185,129,0.1)', border: '1px solid #10B981', padding: '12px 24px', borderRadius: '8px', display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: '4px', boxShadow: '0 0 15px rgba(16,185,129,0.2)' }}>
             <div className="flex items-center gap-2">
               <svg viewBox="0 0 24 24" width="20" height="20" fill="#10B981">
                 <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
               </svg>
-              <span className="text-[#10B981] font-black text-sm tracking-widest uppercase">Página Verificada</span>
+              <span style={{ color: '#10B981', fontWeight: '900', fontSize: '14px', letterSpacing: '2px', textTransform: 'uppercase' }}>Página Verificada</span>
             </div>
-            <span className="text-gray-400 text-xs font-bold uppercase tracking-widest">Estos sorteos son 100% seguros</span>
+            <span style={{ color: '#9ca3af', fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px' }}>Estos sorteos son 100% seguros</span>
           </div>
           
           {/* Legal Links */}
