@@ -229,20 +229,20 @@ export default function Home() {
           ))}
           
           {/* Indicadores del Carrusel */}
-          <div className="absolute bottom-24 left-0 w-full flex justify-center gap-2 z-20">
+          <div style={{ position: 'absolute', bottom: '16px', left: 0, width: '100%', display: 'flex', justifyContent: 'center', gap: '8px', zIndex: 20 }}>
             {heroImages.map((_, index) => (
               <div 
                 key={index} 
                 onClick={() => setHeroImageIndex(index)}
-                className={`h-2 rounded-full cursor-pointer transition-all duration-300 ${index === heroImageIndex ? 'w-8 bg-[#FFD700]' : 'w-2 bg-white/50'}`}
+                style={{ height: '8px', borderRadius: '4px', cursor: 'pointer', transition: 'all 0.3s', width: index === heroImageIndex ? '32px' : '8px', backgroundColor: index === heroImageIndex ? '#FFD700' : 'rgba(255,255,255,0.5)', boxShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
               ></div>
             ))}
           </div>
-          <div className="absolute bottom-6 left-0 w-full text-center z-20 px-4">
-            <div className="inline-block bg-[#FFD700] text-black px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest shadow-lg mb-2">
+          <div style={{ position: 'absolute', bottom: '40px', left: 0, width: '100%', textAlign: 'center', zIndex: 20, padding: '0 16px', pointerEvents: 'none' }}>
+            <div style={{ display: 'inline-block', backgroundColor: '#FFD700', color: 'black', padding: '4px 16px', borderRadius: '50px', fontSize: '0.75rem', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '0.1em', boxShadow: '0 4px 6px rgba(0,0,0,0.5)', marginBottom: '8px' }}>
               Sorteo Especial
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-white uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+            <h2 style={{ fontSize: '1.8rem', fontWeight: '900', color: 'white', textTransform: 'uppercase', textShadow: '0 2px 10px rgba(0,0,0,1), 0 0 20px rgba(0,0,0,0.8)', margin: 0, lineHeight: 1.2 }}>
               GMC Sierra + $20,000 MXN
             </h2>
           </div>
