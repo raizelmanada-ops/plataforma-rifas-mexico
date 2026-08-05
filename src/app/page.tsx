@@ -210,7 +210,18 @@ export default function Home() {
               key={index}
               src={src} 
               alt={`GMC Sierra Foto ${index + 1}`} 
-              className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ${index === heroImageIndex ? 'opacity-90' : 'opacity-0'}`}
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                opacity: index === heroImageIndex ? 0.9 : 0,
+                transition: 'opacity 1s ease-in-out',
+                zIndex: index === heroImageIndex ? 5 : 1
+              }}
               onError={(e) => {
                 (e.target as HTMLImageElement).src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 800 400" preserveAspectRatio="none"><rect width="800" height="400" fill="%23222"/><text x="400" y="200" fill="%23FFD700" font-size="24" font-family="sans-serif" text-anchor="middle" dominant-baseline="middle">FOTO SIERRA ' + (index + 1) + ' AQUÍ</text></svg>';
               }}
