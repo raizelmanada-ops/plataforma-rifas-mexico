@@ -142,7 +142,7 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
       </div>
 
       {/* Search Bar */}
-      <div className="relative mx-auto mb-8" style={{ maxWidth: '400px' }}>
+      <div style={{ maxWidth: '400px', position: 'relative', margin: '0 auto 32px auto' }}>
         <input 
           type="text" 
           placeholder="Ej. 05432" 
@@ -150,9 +150,8 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
           onChange={handleSearch}
           maxLength={5}
           style={{ width: '100%', padding: '16px 24px', fontSize: '1.5rem', fontWeight: '900', textAlign: 'center', backgroundColor: 'rgba(255,255,255,0.05)', border: '2px solid rgba(255,255,255,0.2)', borderRadius: '12px', color: 'white' }}
-          className="focus:outline-none focus:border-accent transition-colors"
         />
-        <div className="absolute top-0 right-4 h-full flex items-center pointer-events-none">
+        <div style={{ position: 'absolute', top: 0, right: '16px', height: '100%', display: 'flex', alignItems: 'center', pointerEvents: 'none' }}>
           <svg width="24" height="24" style={{ color: '#888' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
         </div>
       </div>
