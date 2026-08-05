@@ -571,7 +571,9 @@ export default function Home() {
       <div className="w-full bg-[#111] border-y border-[#FFD700]/30 py-6 mt-12 shadow-inner text-center px-4" style={{ display: 'flex', justifyContent: 'center' }}>
         <div style={{ maxWidth: '800px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
           <div style={{ width: '80px', height: '80px', backgroundColor: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '8px', boxShadow: '0 0 15px rgba(255,255,255,0.2)' }}>
-            <span style={{ fontSize: '40px' }}>🇲🇽</span>
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="#FFD700">
+              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+            </svg>
           </div>
           <div style={{ textAlign: 'center', padding: '0 10px' }}>
             <h4 style={{ color: '#FFD700', fontWeight: '900', fontSize: '1.2rem', textTransform: 'uppercase', marginBottom: '8px' }}>Sorteo Autorizado y Transparente</h4>
