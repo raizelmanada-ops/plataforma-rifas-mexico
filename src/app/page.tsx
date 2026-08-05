@@ -200,8 +200,8 @@ export default function Home() {
       </header>
 
       {/* HERO SECTION - GMC SIERRA (FIRST VISUAL IMPACT) */}
-      <section className="w-full relative bg-black border-b border-[#FFD700]/30 shadow-[0_10px_30px_rgba(0,0,0,0.8)] z-10 mb-6">
-        <div className="w-full max-w-6xl mx-auto h-[40vh] md:h-[60vh] relative overflow-hidden">
+      <section style={{ width: '100%', position: 'relative', backgroundColor: 'black', borderBottom: '1px solid rgba(255,215,0,0.3)', zIndex: 10, marginBottom: '24px' }}>
+        <div style={{ width: '100%', maxWidth: '1152px', margin: '0 auto', height: '45vh', minHeight: '350px', position: 'relative', overflow: 'hidden' }}>
           {/* Placeholder for the GMC Sierra Image. Best if replaced with a high-res image of the actual prize */}
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10"></div>
           {/* Carousel Images */}

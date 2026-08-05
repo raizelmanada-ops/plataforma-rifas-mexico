@@ -112,35 +112,35 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
       </div>
 
       {/* Stats Bar */}
-      <div className="flex justify-center gap-4 md:gap-8 mb-8 text-sm md:text-base font-bold uppercase tracking-widest">
-        <div className="flex items-center gap-2">
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '16px', marginBottom: '32px', fontSize: '0.875rem', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <div style={{ width: '16px', height: '16px', borderRadius: '50%', backgroundColor: 'white', border: '1px solid #999' }}></div>
           <span style={{ color: 'white' }}>Disponibles</span>
         </div>
-        <div className="flex items-center gap-2">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <div style={{ width: '16px', height: '16px', borderRadius: '50%', backgroundColor: '#FFD700' }}></div>
-          <span className="text-gray-300">Apartados</span>
+          <span style={{ color: '#d1d5db' }}>Apartados</span>
         </div>
-        <div className="flex items-center gap-2">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <div style={{ width: '16px', height: '16px', borderRadius: '50%', backgroundColor: '#dc2626' }}></div>
-          <span className="text-gray-300">Vendidos</span>
+          <span style={{ color: '#d1d5db' }}>Vendidos</span>
         </div>
       </div>
 
       {/* Máquina rápida */}
-      <div className="mb-8">
-        <p className="text-xs text-gray-500 uppercase font-bold tracking-widest text-center mb-1">Máquina de la Suerte (Combos Rápidos)</p>
-        <p className="text-[#00ff66] text-sm md:text-base font-black text-center mb-4 uppercase drop-shadow-md">
+      <div style={{ marginBottom: '32px' }}>
+        <p style={{ fontSize: '0.75rem', color: '#6b7280', textTransform: 'uppercase', fontWeight: 'bold', letterSpacing: '0.1em', textAlign: 'center', marginBottom: '4px' }}>Máquina de la Suerte (Combos Rápidos)</p>
+        <p style={{ color: '#00ff66', fontSize: '0.875rem', fontWeight: '900', textAlign: 'center', marginBottom: '16px', textTransform: 'uppercase', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
           🎁 ¡Bono: Llévate $20,000 MXN extra comprando 25+ boletos!
         </p>
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-          <button onClick={() => selectRandom(1)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)' }} className="bg-black/50 hover:bg-accent hover:text-black transition-all">+1 Boleto</button>
-          <button onClick={() => selectRandom(3)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)' }} className="bg-black/50 hover:bg-accent hover:text-black transition-all">+3</button>
-          <button onClick={() => selectRandom(5)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)' }} className="bg-black/50 hover:bg-accent hover:text-black transition-all">+5</button>
-          <button onClick={() => selectRandom(10)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)' }} className="bg-black/50 hover:bg-accent hover:text-black transition-all">+10</button>
-          <button onClick={() => selectRandom(25)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid #10B981', backgroundColor: '#10B981', color: 'white' }} className="hover:bg-[#059669] shadow-[0_0_15px_rgba(16,185,129,0.3)] transition-all">+25 + BONO</button>
-          <button onClick={() => selectRandom(50)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid #10B981', backgroundColor: '#10B981', color: 'white' }} className="hover:bg-[#059669] shadow-[0_0_15px_rgba(16,185,129,0.3)] transition-all">+50 + BONO</button>
-          <button onClick={() => selectRandom(100)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '2px solid #FFD700', backgroundColor: '#FFD700', color: 'black' }} className="hover:bg-yellow-400 shadow-[0_0_20px_rgba(255,215,0,0.5)] transition-all">+100 VIP</button>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px', padding: '0 8px' }}>
+          <button onClick={() => selectRandom(1)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white' }}>+1 Boleto</button>
+          <button onClick={() => selectRandom(3)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white' }}>+3</button>
+          <button onClick={() => selectRandom(5)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white' }}>+5</button>
+          <button onClick={() => selectRandom(10)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white' }}>+10</button>
+          <button onClick={() => selectRandom(25)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid #10B981', backgroundColor: '#10B981', color: 'white', boxShadow: '0 0 15px rgba(16,185,129,0.3)' }}>+25 + BONO</button>
+          <button onClick={() => selectRandom(50)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '1px solid #10B981', backgroundColor: '#10B981', color: 'white', boxShadow: '0 0 15px rgba(16,185,129,0.3)' }}>+50 + BONO</button>
+          <button onClick={() => selectRandom(100)} style={{ padding: '8px 16px', fontWeight: '900', borderRadius: '8px', border: '2px solid #FFD700', backgroundColor: '#FFD700', color: 'black', boxShadow: '0 0 20px rgba(255,215,0,0.5)' }}>+100 VIP</button>
         </div>
       </div>
 
