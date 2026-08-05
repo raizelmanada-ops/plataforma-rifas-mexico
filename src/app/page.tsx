@@ -9,6 +9,7 @@ export default function Home() {
   const [timeLeft, setTimeLeft] = useState({ days: 3, hours: 14, minutes: 22, seconds: 59 });
   const [step, setStep] = useState<"grid" | "checkout" | "ticket">("grid");
   const [selectedTicket, setSelectedTicket] = useState<string | null>(null);
+  const [selectedCode, setSelectedCode] = useState<string | null>(null);
   const [userData, setUserData] = useState<any>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   
@@ -90,8 +91,9 @@ export default function Home() {
     return () => clearInterval(timer);
   }, [drawDate]);
 
-  const handleTicketSelect = (ticket: string) => {
+  const handleTicketSelect = (ticket: string, code: string) => {
     setSelectedTicket(ticket);
+    setSelectedCode(code);
     setStep("checkout");
   };
 
@@ -469,7 +471,7 @@ export default function Home() {
           </div>
           
           <a 
-            href={`/checkout-ebook?ticket=${selectedTicket}&id=${userData?.idNumber}&name=${encodeURIComponent(userData?.name || '')}`}
+            href={`/checkout-ebook?ticket=${encodeURIComponent(selectedTicket || '')}&id=${userData?.idNumber}&name=${encodeURIComponent(userData?.name || '')}&code=${selectedCode || ''}`}
             target="_self"
             rel="noreferrer"
             onClick={() => {

@@ -2,14 +2,17 @@
 
 import { useState } from "react";
 
-export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket: string) => void }) {
+export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket: string, code: string) => void }) {
   const [loading, setLoading] = useState(false);
 
   const bundles = [
-    { id: 1, name: "Bronce", count: 10, price: "$15 MXN", bonus: "", color: "from-[#cd7f32] to-[#8c5622]" },
-    { id: 2, name: "Plata", count: 50, price: "$75 MXN", bonus: "", color: "from-[#e5e4e2] to-[#a9a9a9]", text: "text-black" },
-    { id: 3, name: "Oro", count: 100, price: "$150 MXN", bonus: "Bono: $15,000 MXN", color: "from-[#FFD700] to-[#b38728]", popular: true, text: "text-black" },
-    { id: 4, name: "VIP", count: 200, price: "$300 MXN", bonus: "Bono: $30,000 MXN + IPHONE 15", color: "from-[#ff00a5] to-[#800052]" },
+    { id: 1, name: "Base", count: 1, price: "$11 MXN", bonus: "", color: "from-[#4A4A4A] to-[#2B2B2B]", hotmartCode: "base" },
+    { id: 2, name: "Cobre", count: 3, price: "$33 MXN", bonus: "", color: "from-[#b87333] to-[#8a5626]", hotmartCode: "05kjlvl8" },
+    { id: 3, name: "Plata", count: 5, price: "$55 MXN", bonus: "", color: "from-[#e5e4e2] to-[#a9a9a9]", text: "text-black", hotmartCode: "cscfs4vt" },
+    { id: 4, name: "Oro", count: 10, price: "$110 MXN", bonus: "Envío Gratis", color: "from-[#FFD700] to-[#b38728]", text: "text-black", popular: true, hotmartCode: "insxmui" },
+    { id: 5, name: "Platino", count: 25, price: "$275 MXN", bonus: "Bono: $15,000 MXN", color: "from-[#E5E4E2] to-[#7393B3]", text: "text-black", hotmartCode: "zro69vqo" },
+    { id: 6, name: "Esmeralda", count: 50, price: "$550 MXN", bonus: "Bono: $30,000 MXN", color: "from-[#50C878] to-[#006400]", hotmartCode: "s5kah3j1" },
+    { id: 7, name: "Diamante VIP", count: 100, price: "$1,100 MXN", bonus: "Bono: $50,000 + IPHONE", color: "from-[#00FFFF] to-[#00008B]", hotmartCode: "mjcyaq0t" },
   ];
 
   const handleSelectBundle = (bundle: any) => {
@@ -18,7 +21,7 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
     // Simulate generating numbers with a slot machine effect delay
     setTimeout(() => {
       setLoading(false);
-      onSelectTicket(`${bundle.count} Boletos (Asignados al Azar)`);
+      onSelectTicket(`${bundle.count} Boletos (Azar)`, bundle.hotmartCode);
     }, 1500);
   };
 

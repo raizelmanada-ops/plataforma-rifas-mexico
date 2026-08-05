@@ -7,28 +7,31 @@ function CheckoutContent() {
   const searchParams = useSearchParams();
   const ticket = searchParams.get('ticket') || '';
   const idNumber = searchParams.get('id') || '';
+  const code = searchParams.get('code') || '';
   
-  // Enlace real de Hotmart
-  const hotmartLink = `https://pay.hotmart.com/R107022375T?src=bol_${ticket}_doc_${idNumber}`;
+  // Enlace real de Hotmart con el código de oferta
+  const hotmartLink = code === 'base' || !code 
+    ? `https://pay.hotmart.com/L107030408T?src=bol_${encodeURIComponent(ticket)}_doc_${idNumber}`
+    : `https://pay.hotmart.com/L107030408T?off=${code}&src=bol_${encodeURIComponent(ticket)}_doc_${idNumber}`;
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white p-4 flex items-center justify-center">
       <div className="max-w-md w-full bg-black/60 p-6 border border-[#FFD700]/30 rounded-2xl text-center shadow-[0_0_30px_rgba(255,215,0,0.15)] backdrop-blur-md">
         <h1 className="text-2xl md:text-3xl font-black text-[#FFD700] mb-2 uppercase tracking-tighter">¡Estás a un paso!</h1>
         <p className="text-gray-300 mb-6 text-sm">
-          Adquiere nuestra <strong>Guía de Mentalidad Millonaria</strong> y llévate de <span className="text-[#00ff66] font-bold">BONO GRATIS</span> tu participación oficial en el Sorteo con tu paquete de <span className="font-black text-[#FFD700] text-xl px-2">{ticket}</span>.
+          Adquiere tu acceso a la <strong>Comunidad VIP de Motores</strong> (incluye Guía de Mantenimiento) y llévate de <span className="text-[#00ff66] font-bold">BONO GRATIS</span> tu participación oficial en el Sorteo con tu paquete de <span className="font-black text-[#FFD700] text-xl px-2">{ticket}</span>.
         </p>
         
         <div className="w-full flex justify-center mb-6">
-           <img src="/portada_ebook.jpg" alt="Guía de Mentalidad Millonaria" className="max-w-[180px] rounded-lg shadow-[0_0_20px_rgba(255,215,0,0.4)] border border-white/10" />
+           <img src="/club_motores.jpg" alt="Comunidad VIP Amantes de los Motores" className="max-w-[220px] rounded-lg shadow-[0_0_20px_rgba(255,215,0,0.4)] border border-white/10" />
         </div>
         
         <div className="bg-black/50 p-4 rounded-lg mb-6 text-left border border-white/5 shadow-inner">
           <p className="text-[10px] text-gray-500 uppercase font-bold mb-2 tracking-widest">Tu compra incluye:</p>
           <ul className="text-sm space-y-3">
             <li className="flex items-start gap-2">
-              <span className="text-[#FFD700]">📚</span> 
-              <span><strong>eBook Digital:</strong> Guía de Mentalidad Millonaria (Descarga Inmediata)</span>
+              <span className="text-[#FFD700]">🏆</span> 
+              <span><strong>Acceso VIP:</strong> Comunidad Amantes de los Motores y Guía de Mantenimiento.</span>
             </li>
             <li className="flex items-start gap-2 bg-[#00ff66]/10 p-2 rounded border border-[#00ff66]/20">
               <span className="text-[#00ff66]">🎟️</span> 
