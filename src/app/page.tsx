@@ -13,6 +13,7 @@ export default function Home() {
   const [userData, setUserData] = useState<any>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
   const [searchPhone, setSearchPhone] = useState("");
   const [searchResults, setSearchResults] = useState<any[] | null>(null);
   const [isSearching, setIsSearching] = useState(false);
@@ -301,11 +302,21 @@ export default function Home() {
             </div>
 
             {/* 2. TEXTO DEL PREMIO */}
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '24px', color: 'white', zIndex: 10, position: 'relative', wordWrap: 'break-word', overflowWrap: 'break-word', padding: '0 8px' }}>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '16px', color: 'white', zIndex: 10, position: 'relative', wordWrap: 'break-word', overflowWrap: 'break-word', padding: '0 8px' }}>
               <span style={{ color: '#00ff66', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', marginBottom: '8px' }}>★ Sorteo Especial ★</span>
               Gran Premio Mayor: <br/>
               <span style={{ color: '#FFD700', fontSize: '1.6rem', display: 'block', marginTop: '8px', fontWeight: '900', textTransform: 'uppercase', textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>GMC Sierra 2024 <br/>+ Bono de $20,000 MXN</span>
             </h2>
+
+            {/* BOTÓN DE FICHA TÉCNICA */}
+            <div style={{ display: 'flex', justifyContent: 'center', zIndex: 10, position: 'relative', marginTop: '-4px', marginBottom: '24px' }}>
+              <button 
+                onClick={() => setIsLegalModalOpen(true)}
+                style={{ backgroundColor: 'rgba(255,255,255,0.05)', color: '#d4d4d8', border: '1px solid rgba(255,255,255,0.2)', padding: '6px 14px', borderRadius: '50px', fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', transition: 'all 0.3s ease' }}
+              >
+                📄 Ver Ficha Técnica y Estatus Legal
+              </button>
+            </div>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '16px', marginTop: '24px', zIndex: 10, position: 'relative' }}>
               <div style={{ backgroundColor: 'rgba(0,0,0,0.8)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', minWidth: '80px', boxSizing: 'border-box' }}>
@@ -715,6 +726,51 @@ export default function Home() {
                 )}
               </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* LEGAL MODAL */}
+      {isLegalModalOpen && (
+        <div style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.9)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
+          <div style={{ backgroundColor: '#111', border: '1px solid #FFD700', borderRadius: '16px', padding: '24px', width: '100%', maxWidth: '500px', maxHeight: '90vh', overflowY: 'auto', position: 'relative' }}>
+            <button 
+              onClick={() => setIsLegalModalOpen(false)}
+              style={{ position: 'absolute', top: '16px', right: '16px', color: '#fff', fontSize: '24px', fontWeight: 'bold', background: 'transparent', border: 'none', cursor: 'pointer' }}
+            >
+              ×
+            </button>
+            <h3 style={{ color: '#FFD700', fontSize: '1.5rem', fontWeight: '900', marginBottom: '16px', textAlign: 'center', textTransform: 'uppercase' }}>Ficha Técnica y Estatus Legal</h3>
+            
+            <div style={{ color: '#e4e4e7', fontSize: '14px', lineHeight: '1.6', textAlign: 'left' }}>
+              <p style={{ fontWeight: 'bold', color: '#00ff66', marginBottom: '12px' }}>Folio de Sorteo: SM-GMC-2026</p>
+              
+              <h4 style={{ color: '#FFD700', fontWeight: 'bold', borderBottom: '1px solid rgba(255,215,0,0.3)', paddingBottom: '4px', marginBottom: '8px', marginTop: '16px' }}>ESPECIFICACIONES DEL VEHÍCULO</h4>
+              <ul style={{ listStyleType: 'disc', paddingLeft: '20px', marginBottom: '16px' }}>
+                <li><strong>Vehículo:</strong> GMC Sierra 2024</li>
+                <li><strong>Versión:</strong> Denali Ultimate 4x4 (Doble Cabina)</li>
+                <li><strong>Motor:</strong> V8 Ecotec3 de 6.2 Litros</li>
+                <li><strong>Color Exterior:</strong> Rojo Volcánico (Volcanic Red Tintcoat)</li>
+                <li><strong>Interior:</strong> Piel negra Premium con costuras contrastantes</li>
+              </ul>
+
+              <h4 style={{ color: '#FFD700', fontWeight: 'bold', borderBottom: '1px solid rgba(255,215,0,0.3)', paddingBottom: '4px', marginBottom: '8px' }}>ESTATUS LEGAL Y DE ENTREGA</h4>
+              <p style={{ marginBottom: '12px' }}>Para garantizar la total transparencia y seguridad patrimonial del futuro ganador, Club VIP certifica el siguiente estatus de la unidad a sortear:</p>
+              
+              <ul style={{ listStyleType: 'decimal', paddingLeft: '20px', marginBottom: '16px' }}>
+                <li style={{ marginBottom: '8px' }}><strong>Factura Original:</strong> La unidad cuenta con Factura Original de Agencia. El día de la entrega, dicha factura será endosada físicamente a nombre del portador del boleto ganador validado con su identificación oficial.</li>
+                <li style={{ marginBottom: '8px' }}><strong>Estatus de Emplacamiento:</strong> El vehículo se entrega SIN EMPLACAR (Cero Kilómetros). El ganador será el primer propietario legal registrado y podrá tramitar sus placas en su Entidad Federativa.</li>
+                <li style={{ marginBottom: '8px' }}><strong>Libre de Gravamen:</strong> Se certifica que la unidad se encuentra pagada en su totalidad, libre de prenda, sin reportes en REPUVE y sin adeudos.</li>
+                <li style={{ marginBottom: '8px' }}><strong>Trámite Notariado:</strong> La entrega se realizará ante Notario Público firmando un Contrato de Cesión de Derechos. El bono en efectivo de $20,000 MXN se entregará en el mismo acto.</li>
+              </ul>
+            </div>
+            
+            <button 
+              onClick={() => setIsLegalModalOpen(false)}
+              style={{ width: '100%', marginTop: '16px', padding: '12px', backgroundColor: '#FFD700', color: 'black', fontWeight: 'bold', borderRadius: '8px', border: 'none', cursor: 'pointer', fontSize: '16px', textTransform: 'uppercase' }}
+            >
+              Cerrar y Regresar
+            </button>
           </div>
         </div>
       )}
