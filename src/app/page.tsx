@@ -296,10 +296,11 @@ export default function Home() {
               </div>
             </div>
 
-            {/* 2. TEXTO DEL PREMIO (Se cambiará en el Dashboard) */}
+            {/* 2. TEXTO DEL PREMIO */}
             <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '24px', color: 'white', zIndex: 10, position: 'relative', wordWrap: 'break-word', overflowWrap: 'break-word', padding: '0 8px' }}>
-              El premio mayor actual es: <br/>
-              <span style={{ color: '#FFD700', fontSize: '1.5rem', display: 'block', marginTop: '8px' }}>GMC Sierra + $20,000 MXN</span>
+              <span style={{ color: '#00ff66', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', marginBottom: '8px' }}>★ Sorteo Especial ★</span>
+              Gran Premio Mayor: <br/>
+              <span style={{ color: '#FFD700', fontSize: '1.6rem', display: 'block', marginTop: '8px', fontWeight: '900', textTransform: 'uppercase', textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>GMC Sierra 2024 <br/>+ Bono de $20,000 MXN</span>
             </h2>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '16px', marginTop: '24px', zIndex: 10, position: 'relative' }}>
