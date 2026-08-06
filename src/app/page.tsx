@@ -643,7 +643,7 @@ export default function Home() {
           </details>
 
           <p className="text-[10px] text-gray-700 mt-4 uppercase tracking-widest font-bold">
-            Sistema Desarrollado por Sorteos Millonarios &copy; 2026
+            Sistema Desarrollado por Club VIP &copy; 2026
           </p>
         </div>
       </footer>
