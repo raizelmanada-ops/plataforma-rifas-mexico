@@ -34,11 +34,11 @@ export default function CheckoutForm({ selectedTicket, onBack, onSuccess }: Chec
   if (!selectedTicket) return null;
 
   return (
-    <div className="glass-panel max-w-lg mx-auto w-full animate-fade-in">
+    <div className="max-w-lg mx-auto w-full animate-fade-in border-2 border-[#FFD700] shadow-[0_0_30px_rgba(255,215,0,0.3)] bg-black/95 p-6 rounded-xl" style={{ boxSizing: 'border-box' }}>
       <div className="text-center mb-6">
-        <h2 className="text-2xl text-accent mb-2">Completar Reserva</h2>
-        <p className="text-gray-300">
-          Has seleccionado: <span className="font-bold text-accent text-xl bg-black/50 px-3 py-1 rounded block mt-2">{selectedTicket}</span>
+        <h2 className="text-2xl text-accent mb-2 font-black uppercase tracking-wider">¡Completa tu Reserva!</h2>
+        <p className="text-gray-300 text-sm">
+          Has seleccionado: <span className="font-bold text-black bg-[#FFD700] px-4 py-2 rounded-lg block mt-3 text-2xl shadow-[0_0_15px_rgba(255,215,0,0.5)]">{selectedTicket}</span>
         </p>
       </div>
       

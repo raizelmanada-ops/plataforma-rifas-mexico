@@ -127,6 +127,10 @@ export default function Home() {
     return () => clearInterval(timer);
   }, [drawDate]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [step]);
+
   const handleTicketSelect = (ticket: string, code: string) => {
     setSelectedTicket(ticket);
     setSelectedCode(code);
