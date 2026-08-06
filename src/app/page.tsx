@@ -171,10 +171,10 @@ export default function Home() {
         ) : (
           <div style={{ textAlign: 'center', flex: '1 1 100%', minWidth: '250px' }} className="md:flex-1 md:text-left">
             <h1 style={{ fontSize: '1.5rem', fontWeight: '900', color: 'transparent', backgroundImage: 'linear-gradient(to bottom, #FFD700, #b38728)', WebkitBackgroundClip: 'text', textTransform: 'uppercase', fontFamily: 'serif', margin: 0 }}>
-              Sorteos Millonarios
+              CLUB VIP
             </h1>
             <p style={{ color: '#00ff66', fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', margin: '4px 0 0 0' }}>
-              El Sorteo Entre Amigos de mayor confianza en México
+              Comunidad de amantes de los motores en México
             </p>
           </div>
         )}
