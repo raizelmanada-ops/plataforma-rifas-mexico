@@ -7,13 +7,15 @@ async function main() {
     update: {
       prizes: 'GMC SIERRA ACCESORIZADA + $20,000 MXN',
       drawDate: '2026-09-15',
-      lotteryName: 'Lotería Nacional'
+      lotteryName: 'Lotería Nacional',
+      whatsappAdmin: '525540920884'
     },
     create: {
       id: 'default',
       prizes: 'GMC SIERRA ACCESORIZADA + $20,000 MXN',
       drawDate: '2026-08-14',
-      lotteryName: 'Lotería Nacional'
+      lotteryName: 'Lotería Nacional',
+      whatsappAdmin: '525540920884'
     }
   });
   console.log("Config updated successfully.");

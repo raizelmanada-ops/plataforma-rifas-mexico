@@ -38,7 +38,7 @@ export default function Home() {
   const [prizes, setPrizes] = useState("GMC SIERRA ACCESORIZADA + $20,000 MXN");
   const [videoUrl, setVideoUrl] = useState("/video_rifa.mp4");
   const [bannerUrl, setBannerUrl] = useState("");
-  const [whatsappAdmin, setWhatsappAdmin] = useState("5215500000000"); // Número de México provisional
+  const [whatsappAdmin, setWhatsappAdmin] = useState("525540920884");
   const [nequiNumber, setNequiNumber] = useState("");
   const [nequiName, setNequiName] = useState("");
   const [qrUrl, setQrUrl] = useState("");
