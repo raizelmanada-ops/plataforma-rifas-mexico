@@ -175,8 +175,11 @@ export default function Home() {
           <img src={bannerUrl} alt="Sorteos Millonarios Banner" style={{ maxHeight: '80px', maxWidth: '100%', objectFit: 'contain', margin: '0 auto' }} />
         ) : (
           <div style={{ textAlign: 'center', flex: '1 1 100%', minWidth: '250px' }} className="md:flex-1 md:text-left">
-            <h1 style={{ fontSize: '1.5rem', fontWeight: '900', color: 'transparent', backgroundImage: 'linear-gradient(to bottom, #FFD700, #b38728)', WebkitBackgroundClip: 'text', textTransform: 'uppercase', fontFamily: 'serif', margin: 0 }}>
+            <h1 style={{ fontSize: '1.5rem', fontWeight: '900', color: 'transparent', backgroundImage: 'linear-gradient(to bottom, #FFD700, #b38728)', WebkitBackgroundClip: 'text', textTransform: 'uppercase', fontFamily: 'serif', margin: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
               CLUB VIP
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="#1877F2" style={{ backgroundColor: 'white', borderRadius: '50%', boxShadow: '0 0 5px rgba(24,119,242,0.5)' }}>
+                <path d="M22.5 12.5l-1.58 1.58.22 2.22-2.22.47-1.07 1.95-2.05-.88-1.7 1.34-1.7-1.34-2.05.88-1.07-1.95-2.22-.47.22-2.22L3.5 12.5l1.58-1.58-.22-2.22 2.22-.47 1.07-1.95 2.05.88 1.7-1.34 1.7 1.34 2.05-.88 1.07 1.95 2.22.47-.22 2.22 1.58 1.58zm-11 4.5l6-6-1.5-1.5-4.5 4.5-2-2-1.5 1.5 3.5 3.5z" />
+              </svg>
             </h1>
             <p style={{ color: '#00ff66', fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', margin: '4px 0 0 0' }}>
               Comunidad de amantes de los motores en México
@@ -250,6 +253,15 @@ export default function Home() {
             <h2 style={{ fontSize: '1.8rem', fontWeight: '900', color: 'white', textTransform: 'uppercase', textShadow: '0 2px 10px rgba(0,0,0,1), 0 0 20px rgba(0,0,0,0.8)', margin: 0, lineHeight: 1.2 }}>
               GMC Sierra + $20,000 MXN
             </h2>
+            <br/>
+            <button 
+              onClick={() => {
+                document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              style={{ marginTop: '16px', backgroundColor: '#FFD700', color: 'black', padding: '12px 32px', borderRadius: '50px', fontSize: '1.1rem', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '0.05em', boxShadow: '0 0 20px rgba(255,215,0,0.6)', cursor: 'pointer', border: 'none', pointerEvents: 'auto', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+            >
+              VER BOLETOS 👇
+            </button>
           </div>
         </div>
       </section>
@@ -425,6 +437,62 @@ export default function Home() {
               </div>
             </div>
           </div>
+          {/* PAQUETES Y BONOS - NEW SECTION BASED ON COMPETITOR */}
+          <div className="w-full max-w-4xl mx-auto mb-10 z-10 relative">
+            <div className="glass-panel border-[#FFD700]/50 p-6 shadow-[0_0_20px_rgba(255,215,0,0.15)] bg-gradient-to-b from-[#1a1a1a] to-black rounded-xl text-center border-2 border-accent">
+              <h2 className="text-2xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-hover uppercase mb-2">
+                ▼ Precios Accesibles ▼
+              </h2>
+              <div className="bg-red-600 text-white font-bold inline-block px-4 py-1 rounded-full text-xs uppercase tracking-widest mb-6 shadow-[0_0_15px_rgba(220,38,38,0.8)]" style={{ animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}>
+                ¡Bonos válidos por 6 horas!
+              </div>
+
+              <div className="flex flex-col gap-3 mb-6">
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
+                  <div className="font-bold text-lg text-white">1 🎫 BOLETO</div>
+                  <div className="font-black text-accent text-xl">POR $25 MXN</div>
+                </div>
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
+                  <div className="font-bold text-lg text-white">2 🎫 BOLETOS</div>
+                  <div className="font-black text-accent text-xl">POR $50 MXN</div>
+                </div>
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
+                  <div className="font-bold text-lg text-white">5 🎫 BOLETOS</div>
+                  <div className="font-black text-accent text-xl">POR $125 MXN</div>
+                </div>
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
+                  <div className="font-bold text-lg text-white">10 🎫 BOLETOS</div>
+                  <div className="font-black text-accent text-xl">POR $250 MXN</div>
+                </div>
+                <div className="bg-accent/20 border-2 border-accent p-3 rounded-lg flex justify-between items-center shadow-[0_0_15px_rgba(255,215,0,0.3)] transform hover:scale-105 transition-transform cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
+                  <div className="font-bold text-xl text-white">50 🎫 BOLETOS</div>
+                  <div className="font-black text-accent text-2xl">POR $1,250 MXN</div>
+                </div>
+              </div>
+
+              <h3 className="text-xl font-black text-[#ff3333] uppercase mb-4 tracking-widest drop-shadow-[0_0_10px_rgba(255,51,51,0.5)]">
+                ▼ BONOS ACTIVOS ▼
+              </h3>
+              
+              <ul className="text-left space-y-4 text-sm md:text-base font-bold mb-6 text-white bg-black/40 p-4 rounded-xl border border-white/5">
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1 text-lg">🎁</span>
+                  <span>En la compra de <strong className="text-accent">1 boleto</strong> llévate $10,000 pesos o envío.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1 text-lg">🎁</span>
+                  <span>En la compra de <strong className="text-accent">2 boletos</strong> llévate envío más $10,000 pesos.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1 text-lg">🎁</span>
+                  <span>En la compra de <strong className="text-accent">3 boletos</strong> llévate $15,000 más envío 🚚.</span>
+                </li>
+              </ul>
+              <p className="text-xs text-gray-400 font-bold uppercase tracking-widest border-t border-white/10 pt-4 mt-4 leading-relaxed">
+                👀 <strong className="text-white">OJO IMPORTANTE:</strong> COMPARTIR ESTE ÁLBUM DE ARRANQUE DURANTE LAS 6 HORAS DE APARTADO PARA APLICAR POR LOS BONOS ACTIVOS.
+              </p>
+            </div>
+          </div>
           
           <div id="grid-section" className="scroll-mt-10">
             <TicketGrid onSelectTicket={handleTicketSelect} />
@@ -556,8 +624,55 @@ export default function Home() {
 
 
 
+      {/* PRUEBA SOCIAL / EVENTOS EXPRESS */}
+      <section className="w-full max-w-6xl mx-auto px-4 mt-16 mb-8 text-center">
+        <h3 className="text-2xl md:text-4xl font-black text-white uppercase mb-2">
+          Evidencia de <span className="text-accent">Ganadores</span>
+        </h3>
+        <p className="text-gray-400 text-sm md:text-base mb-8 uppercase tracking-widest font-bold">Últimos Eventos Express (Sorteos 100% Confiables ✅)</p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          <div className="bg-[#111] rounded-xl overflow-hidden border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.8)] hover:border-accent/50 transition-colors">
+            <div className="h-48 bg-gray-800 flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1594732832278-abd644401426?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')] bg-cover bg-center">
+              {/* Imagen de un ganador simulada */}
+              <div className="bg-black/50 w-full h-full flex flex-col items-center justify-center p-4">
+                <span className="bg-success text-black font-black uppercase px-3 py-1 rounded-full text-xs mb-2 shadow-[0_0_10px_rgba(0,255,0,0.5)]">¡Entregado!</span>
+              </div>
+            </div>
+            <div className="p-4 text-left">
+              <h4 className="font-bold text-white text-lg leading-tight mb-1">Evento Express: $10,000 Pesos</h4>
+              <p className="text-xs text-gray-400">Entregado a José Ali de Chihuahua.</p>
+            </div>
+          </div>
+          
+          <div className="bg-[#111] rounded-xl overflow-hidden border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.8)] hover:border-accent/50 transition-colors">
+            <div className="h-48 bg-gray-800 flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1628005370420-4e4b52b27072?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')] bg-cover bg-center">
+              <div className="bg-black/50 w-full h-full flex flex-col items-center justify-center p-4">
+                <span className="bg-success text-black font-black uppercase px-3 py-1 rounded-full text-xs mb-2 shadow-[0_0_10px_rgba(0,255,0,0.5)]">¡Entregado!</span>
+              </div>
+            </div>
+            <div className="p-4 text-left">
+              <h4 className="font-bold text-white text-lg leading-tight mb-1">Evento Express: Set de Llantas</h4>
+              <p className="text-xs text-gray-400">Entregado a María Gómez, Sinaloa.</p>
+            </div>
+          </div>
+
+          <div className="bg-[#111] rounded-xl overflow-hidden border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.8)] hover:border-accent/50 transition-colors">
+            <div className="h-48 bg-gray-800 flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1594732832278-abd644401426?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')] bg-cover bg-center">
+              <div className="bg-black/50 w-full h-full flex flex-col items-center justify-center p-4">
+                <span className="bg-warning text-black font-black uppercase px-3 py-1 rounded-full text-xs mb-2 shadow-[0_0_10px_rgba(255,215,0,0.5)]">Sorteo Activo</span>
+              </div>
+            </div>
+            <div className="p-4 text-left">
+              <h4 className="font-bold text-white text-lg leading-tight mb-1">GMC Sierra + $20,000 MXN</h4>
+              <p className="text-xs text-accent font-bold">¡Tú puedes ser el próximo!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* PREVIOUS WINNERS SECTION (FACEBOOK LINK) */}
-      <section className="w-full max-w-6xl mx-auto px-4 mt-12 mb-8">
+      <section className="w-full max-w-6xl mx-auto px-4 mt-8 mb-12">
         <div className="text-center mb-8">
           <h3 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-hover uppercase">Transparencia y Entregas</h3>
           <p className="text-gray-400 text-sm mt-2">Visita nuestra página oficial de Facebook para ver todas nuestras entregas en vivo.</p>

@@ -4,13 +4,11 @@ import { useState, useEffect } from "react";
 
 // Hotmart bundles para enlazar los pagos
 const bundles = [
-  { id: 1, name: "Base", count: 1, price: 11, hotmartCode: "base" },
-  { id: 2, name: "Cobre", count: 3, price: 33, hotmartCode: "05kjlvl8" },
-  { id: 3, name: "Plata", count: 5, price: 55, hotmartCode: "cscfs4vt" },
-  { id: 4, name: "Oro", count: 10, price: 110, hotmartCode: "insxmui" },
-  { id: 5, name: "Platino", count: 25, price: 275, hotmartCode: "zro69vqo" },
-  { id: 6, name: "Esmeralda", count: 50, price: 550, hotmartCode: "s5kah3j1" },
-  { id: 7, name: "Diamante", count: 100, price: 1100, hotmartCode: "mjcyaq0t" },
+  { id: 1, name: "Base", count: 1, price: 25, hotmartCode: "base" },
+  { id: 2, name: "Par", count: 2, price: 50, hotmartCode: "05kjlvl8" }, // Usando códigos anteriores de placeholder
+  { id: 3, name: "Plata", count: 5, price: 125, hotmartCode: "cscfs4vt" },
+  { id: 4, name: "Oro", count: 10, price: 250, hotmartCode: "insxmui" },
+  { id: 5, name: "Diamante", count: 50, price: 1250, hotmartCode: "s5kah3j1" },
 ];
 
 export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket: string, code: string) => void }) {
@@ -20,11 +18,6 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
   
   const TOTAL_NUMBERS = 60000; // Estándar Lotería Nacional
   
-  // Inicializar algunos números visibles aleatorios al cargar
-  useEffect(() => {
-    generateRandomVisible();
-  }, []);
-
   const generateRandomVisible = () => {
     const nums: string[] = [];
     for (let i = 0; i < 100; i++) {
@@ -33,6 +26,11 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
     }
     setVisibleNumbers(nums.sort());
   };
+
+  // Inicializar algunos números visibles aleatorios al cargar
+  useEffect(() => {
+    generateRandomVisible();
+  }, []);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value.replace(/\D/g, '').slice(0, 5);
@@ -80,11 +78,11 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
     const exactBundle = bundles.find(b => b.count === count);
     if (exactBundle) return exactBundle;
     
-    // Si no es exacto, cobrar por boleto individual ($11 c/u)
+    // Si no es exacto, cobrar por boleto individual ($25 c/u)
     return {
       name: "Personalizado",
       count: count,
-      price: count * 11,
+      price: count * 25,
       hotmartCode: "base" // Se usa el base y multiplicaremos en el checkout
     };
   };
@@ -135,12 +133,10 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
         </p>
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px', width: '100%', boxSizing: 'border-box' }}>
           <button onClick={() => selectRandom(1)} style={{ padding: '12px 8px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', fontSize: '1.2rem', flex: '1 1 auto', touchAction: 'manipulation' }}>+1</button>
-          <button onClick={() => selectRandom(3)} style={{ padding: '12px 8px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', fontSize: '1.2rem', flex: '1 1 auto', touchAction: 'manipulation' }}>+3</button>
+          <button onClick={() => selectRandom(2)} style={{ padding: '12px 8px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', fontSize: '1.2rem', flex: '1 1 auto', touchAction: 'manipulation' }}>+2</button>
           <button onClick={() => selectRandom(5)} style={{ padding: '12px 8px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', fontSize: '1.2rem', flex: '1 1 auto', touchAction: 'manipulation' }}>+5</button>
           <button onClick={() => selectRandom(10)} style={{ padding: '12px 8px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', fontSize: '1.2rem', flex: '1 1 auto', touchAction: 'manipulation' }}>+10</button>
-          <button onClick={() => selectRandom(25)} style={{ padding: '12px 8px', fontWeight: '900', borderRadius: '8px', border: '1px solid #10B981', backgroundColor: '#10B981', color: 'white', boxShadow: '0 0 15px rgba(16,185,129,0.3)', fontSize: '1.2rem', flex: '1 1 auto', touchAction: 'manipulation' }}>+25</button>
-          <button onClick={() => selectRandom(50)} style={{ padding: '12px 8px', fontWeight: '900', borderRadius: '8px', border: '1px solid #10B981', backgroundColor: '#10B981', color: 'white', boxShadow: '0 0 15px rgba(16,185,129,0.3)', fontSize: '1.2rem', flex: '1 1 auto', touchAction: 'manipulation' }}>+50</button>
-          <button onClick={() => selectRandom(100)} style={{ padding: '12px 8px', fontWeight: '900', borderRadius: '8px', border: '2px solid #FFD700', backgroundColor: '#FFD700', color: 'black', boxShadow: '0 0 20px rgba(255,215,0,0.5)', fontSize: '1.2rem', flex: '1 1 auto', touchAction: 'manipulation' }}>+100</button>
+          <button onClick={() => selectRandom(50)} style={{ padding: '12px 8px', fontWeight: '900', borderRadius: '8px', border: '2px solid #FFD700', backgroundColor: '#FFD700', color: 'black', boxShadow: '0 0 20px rgba(255,215,0,0.5)', fontSize: '1.2rem', flex: '1 1 auto', touchAction: 'manipulation' }}>+50</button>
         </div>
       </div>
 
