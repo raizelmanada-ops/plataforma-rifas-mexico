@@ -19,7 +19,7 @@ function CheckoutContent() {
       <div className="max-w-md w-full bg-black/60 p-6 border border-[#FFD700]/30 rounded-2xl text-center shadow-[0_0_30px_rgba(255,215,0,0.15)] backdrop-blur-md">
         <h1 className="text-2xl md:text-3xl font-black text-[#FFD700] mb-2 uppercase tracking-tighter">¡Estás a un paso!</h1>
         <p className="text-gray-300 mb-6 text-sm">
-          Al adquirir tu acceso a nuestra <strong>Comunidad VIP</strong>, recibes material educativo digital exclusivo sobre camionetas y tu folio de participación directa para el <strong className="text-white">Evento Digital GMC Sierra</strong> con tu paquete de <span className="font-black text-[#FFD700] text-xl px-2">{ticket}</span>.
+          Al adquirir tu acceso a nuestra <strong>Comunidad VIP</strong>, recibes material educativo digital exclusivo sobre camionetas y tu <strong>código de membresía</strong> para beneficios de lealtad con tu paquete <span className="font-black text-[#FFD700] text-xl px-2">{ticket}</span>.
         </p>
         
         <div className="w-full flex justify-center mb-6">
@@ -34,8 +34,8 @@ function CheckoutContent() {
               <span><strong>Acceso VIP:</strong> Comunidad Amantes de los Motores y Material Educativo Digital.</span>
             </li>
             <li className="flex items-start gap-2 bg-[#00ff66]/10 p-2 rounded border border-[#00ff66]/20">
-              <span className="text-[#00ff66]">🎟️</span> 
-              <span><strong>Participación Directa:</strong> {ticket} para la dinámica de la GMC Sierra.</span>
+              <span className="text-[#00ff66]">🎁</span> 
+              <span><strong>Beneficio Adicional:</strong> {ticket} códigos asignados para premios de lealtad en la comunidad.</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-[#00d2ff]">🔒</span> 
@@ -52,7 +52,7 @@ function CheckoutContent() {
         </a>
         
         <p className="text-[10px] text-gray-500 mt-5 leading-tight opacity-80">
-          Al hacer clic serás redirigido a la plataforma segura de Hotmart. Podrás pagar en efectivo vía OXXO, transferencia SPEI o con tu tarjeta. El acceso al eBook y tu boleto digital llegarán a tu correo electrónico al instante.
+          Al hacer clic serás redirigido a la plataforma segura de Hotmart. Podrás pagar en efectivo vía OXXO, transferencia SPEI o con tu tarjeta. El acceso al material digital (PDF) llegará a tu correo electrónico al instante. <strong className="text-white">Posteriormente, uno de nuestros asesores te contactará a tu WhatsApp registrado para entregarte personalmente tus códigos de bonificación.</strong>
         </p>
       </div>
     </main>

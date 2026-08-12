@@ -604,11 +604,6 @@ export default function Home() {
             href={`/checkout-ebook?ticket=${encodeURIComponent(selectedTicket || '')}&id=${userData?.idNumber}&name=${encodeURIComponent(userData?.name || '')}&code=${selectedCode || ''}`}
             target="_self"
             rel="noreferrer"
-            onClick={() => {
-              if (typeof window !== 'undefined' && (window as any).fbq) {
-                (window as any).fbq('track', 'Purchase');
-              }
-            }}
             className="w-full btn btn-primary flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-sm md:text-lg py-3 md:h-16 shadow-[0_0_20px_rgba(255,215,0,0.3)] text-center leading-tight px-2"
           >
             <div className="flex items-center gap-2">
