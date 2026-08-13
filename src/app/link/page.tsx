@@ -16,8 +16,8 @@ export default function BridgePage() {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#000000',
-      color: '#ffffff',
+      backgroundColor: '#ffffff',
+      color: '#000000',
       fontFamily: 'system-ui, -apple-system, sans-serif',
       padding: '20px'
     }}>
@@ -25,71 +25,51 @@ export default function BridgePage() {
         maxWidth: '400px',
         width: '100%',
         textAlign: 'center',
-        backgroundColor: '#111111',
         padding: '40px 20px',
-        borderRadius: '24px',
-        border: '1px solid #333',
-        boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
       }}>
         
         {/* Placeholder Logo / Shield */}
         <div style={{
-          width: '120px',
-          height: '120px',
-          backgroundColor: '#222',
+          width: '180px',
+          height: '180px',
+          backgroundColor: '#000',
           borderRadius: '50%',
-          margin: '0 auto 24px auto',
+          margin: '0 auto 40px auto',
           display: 'flex',
+          flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          border: '3px solid #FFD700',
-          boxShadow: '0 0 20px rgba(255,215,0,0.2)'
+          border: '4px solid #FFD700',
+          boxShadow: '0 10px 25px rgba(0,0,0,0.2)'
         }}>
-          <span style={{ fontSize: '3rem' }}>⭐</span>
+          <span style={{ fontSize: '1.2rem', color: '#FFD700', fontWeight: '900', letterSpacing: '1px' }}>SORTEOS</span>
+          <span style={{ fontSize: '4rem', color: '#FFF', fontWeight: '900', lineHeight: '1' }}>VIP</span>
+          <span style={{ fontSize: '1.2rem', color: '#FFD700', fontWeight: '900', letterSpacing: '1px' }}>MÉXICO</span>
         </div>
-
-        <h1 style={{
-          fontSize: '1.8rem',
-          fontWeight: 'bold',
-          marginBottom: '10px',
-          letterSpacing: '-0.5px'
-        }}>
-          COMUNIDAD VIP
-        </h1>
-        
-        <p style={{
-          color: '#888',
-          fontSize: '1rem',
-          marginBottom: '40px',
-          lineHeight: '1.5'
-        }}>
-          Estás a un paso de ingresar a nuestra plataforma oficial.
-        </p>
 
         <Link href="/" passHref>
           <button style={{
             width: '100%',
-            padding: '16px 24px',
-            backgroundColor: '#FFD700',
-            color: '#000',
+            padding: '18px 24px',
+            backgroundColor: '#1a1a1a',
+            color: '#ffffff',
             border: 'none',
-            borderRadius: '12px',
-            fontSize: '1.2rem',
-            fontWeight: 'bold',
+            borderRadius: '16px',
+            fontSize: '1.3rem',
+            fontWeight: '600',
             cursor: 'pointer',
             transition: 'all 0.2s ease',
-            textTransform: 'uppercase',
-            letterSpacing: '1px',
-            boxShadow: '0 4px 15px rgba(255,215,0,0.3)'
+            boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '12px'
           }}>
-            Ingresar Aquí
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            Lista disponible aquí
           </button>
         </Link>
         
-      </div>
-      
-      <div style={{ marginTop: '30px', color: '#444', fontSize: '0.8rem' }}>
-        © {new Date().getFullYear()} Comunidad VIP. Todos los derechos reservados.
       </div>
     </div>
   );
