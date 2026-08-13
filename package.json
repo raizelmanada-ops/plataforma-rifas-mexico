@@ -11,8 +11,10 @@
     "bot": "node whatsapp-bot.js"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@prisma/client": "^5.22.0",
     "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "next": "16.2.12",
     "pdfkit": "^0.19.1",

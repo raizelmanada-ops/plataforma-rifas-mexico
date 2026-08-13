@@ -36,7 +36,7 @@ export async function POST(request: Request) {
 
     // Intentar enviar mensaje de WhatsApp a través del bot local (API en puerto 3001)
     try {
-      const waMessage = `¡Hola ${name}! 👋\n\nAcabas de separar el boleto 🎫 *${ticketNumber}* en el Club VIP.\n\n⚠️ Tienes *15 MINUTOS* para realizar tu pago 100% seguro a través de nuestra pasarela autorizada (OXXO, SPEI o Tarjeta) y asegurar tu boleto para la GMC Sierra + $20,000 MXN.\n\nSi no realizas el pago en este tiempo, el sistema liberará tu número automáticamente para otros participantes.\n\nSi tienes dudas sobre tu pago o quieres validar tus boletos, puedes escribirme por aquí. ¡Mucha suerte! 🍀`;
+      const waMessage = `¡Hola, ${name}! 👋 Qué gusto saludarte.\n\nSoy tu asesor del Club VIP. Acabo de ver que separaste el folio 📝 *${ticketNumber}*.\n\n⚠️ Recuerda que tienes *15 MINUTOS* para realizar tu pago 100% seguro a través de nuestra pasarela autorizada (OXXO, SPEI o Tarjeta) y asegurar tu lugar por la GMC Sierra + $20,000 MXN.\n\nSi no realizas el pago en este tiempo, el sistema liberará tu folio automáticamente.\n\nSi tienes alguna duda o ya hiciste tu pago, dímelo por aquí. ¡Mucha suerte! 🍀`;
       
       await fetch("http://localhost:3001/api/send-ticket", {
         method: "POST",
