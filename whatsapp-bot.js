@@ -21,24 +21,26 @@ Eres el asesor virtual oficial de ventas del "Club VIP Motores" en México.
 Tu único objetivo es VENDER participaciones de forma RÁPIDA y DIRECTA guiando a la gente a: https://plataforma-rifas-mexico.vercel.app/
 
 REGLAS ESTRICTAS DE VENTAS (IMPORTANTE):
-1. NUNCA uses la palabra "Rifa", "Sorteo", "Boletos", o "Lotería". Usa "Dinámica", "Participación", "Folios", "Evento".
+1. NUNCA uses la palabra "Rifa" o "Lotería". Usa "Dinámica", "Sorteo" o "Evento". SÍ ESTÁ PERMITIDO usar la palabra "Boletos".
 2. Nuestro premio actual es una GMC Sierra 2024 + un bono de $20,000 MXN en efectivo.
-3. ERES UN VENDEDOR DIRECTO: No des rodeos. Responde la duda del cliente en UNA SOLA FRASE CORTA e INMEDIATAMENTE envíale la información de los bonos y el enlace. 
+3. ERES UN VENDEDOR DIRECTO: No des rodeos. Responde la duda del cliente en UNA SOLA FRASE CORTA e INMEDIATAMENTE envíale la información de los paquetes y el enlace. 
 4. Tu estructura OBLIGATORIA para responder siempre debe ser parecida a esta:
-   "(Tu respuesta corta de 1 frase). Aprovecha que hoy tenemos estos paquetes con bonos:
-   🔥 2 Folios por $50 MXN
-   🔥 5 Folios por $125 MXN
-   🔥 10 Folios por $250 MXN
+   "(Tu respuesta corta de 1 frase). Aprovecha que hoy tenemos estos paquetes de boletos:
+   🔥 1 Boleto por $25 MXN
+   🔥 2 Boletos por $50 MXN
+   🔥 5 Boletos por $125 MXN
+   🔥 10 Boletos por $250 MXN
+   🔥 50 Boletos por $1250 MXN
    Entra a esta página, elige tus números y ahí encontrarás todo para pagar seguro: https://plataforma-rifas-mexico.vercel.app/ 🛻💨"
 5. Si preguntan si es real/estafa, diles en 1 frase que somos 100% legales y avalados, e inmediatamente mándales los paquetes y el link.
 6. Si preguntan cómo pagar, diles que se paga en la web con OXXO, SPEI o Tarjeta e inmediatamente mándales el link.
 7. Si el cliente pide hablar con un humano o que le llamen, dile: "Claro, déjame tu duda detallada y te llamamos. Mientras tanto, puedes ir viendo los paquetes aquí: [link]".
-8. Si el cliente quiere consultar los números que ya compró, dile que escriba exactamente la frase "MIS FOLIOS".
+8. Si el cliente quiere consultar los números que ya compró, dile que escriba exactamente la frase "MIS BOLETOS".
 9. Eres parte del equipo de José Alí.
 `;
 
 const aiModel = genAI.getGenerativeModel({ 
-    model: "gemini-1.5-flash-002",
+    model: "gemini-3.5-flash",
     systemInstruction: SYSTEM_PROMPT
 });
 
@@ -77,6 +79,12 @@ client.on('message_create', async (msg) => {
     const texto = msg.body.toLowerCase();
     const remitente = msg.from.replace('@c.us', '');
 
+    // Si el usuario envía una imagen (como el comprobante de pago)
+    if (msg.hasMedia) {
+        await msg.reply('¡Recibimos tu imagen/comprobante! 📸\n\nUn asesor humano de nuestro equipo la revisará enseguida para validar tu pago o atender tu caso. En unos minutos te confirmaremos. ✅');
+        return; // Salimos para no enviarle la imagen a la IA
+    }
+
     // Si es la primera vez que nos escriben (desde que se prendió el bot), les mandamos la foto para antojar
     if (!contactedUsers.has(remitente)) {
         contactedUsers.add(remitente);
@@ -89,8 +97,8 @@ client.on('message_create', async (msg) => {
         }
     }
 
-    // CAPA 1: Base de Datos (Si piden ver sus folios)
-    if (texto.includes('mis folios') || texto.includes('mis numeros') || texto.includes('mis números')) {
+    // CAPA 1: Base de Datos (Si piden ver sus boletos)
+    if (texto.includes('mis folios') || texto.includes('mis numeros') || texto.includes('mis números') || texto.includes('mis boletos') || texto.includes('mi boleto')) {
         try {
             const phoneStr = remitente.length > 10 ? remitente.slice(-10) : remitente; 
             const customer = await prisma.customer.findFirst({
@@ -100,18 +108,18 @@ client.on('message_create', async (msg) => {
             });
 
             if (customer && customer.tickets.length > 0) {
-                let respuesta = `Hola *${customer.name}*, claro que sí, aquí te paso los folios que separaste:\n\n`;
+                let respuesta = `Hola *${customer.name}*, claro que sí, aquí te paso los boletos que separaste:\n\n`;
                 customer.tickets.forEach(ticket => {
                     const statusEmoji = ticket.status === 'PAID' ? '✅ PAGADO' : '⚠️ PENDIENTE';
-                    respuesta += `📝 Folio: *${ticket.number}* - Estado: ${statusEmoji}\n`;
+                    respuesta += `📝 Boleto: *${ticket.number}* - Estado: ${statusEmoji}\n`;
                 });
-                respuesta += `\nOjo: si tienes folios pendientes, recuerda que el sistema los libera en automático si pasa el tiempo límite. ¡No te quedes por fuera! 🍀`;
+                respuesta += `\nOjo: si tienes boletos pendientes, recuerda que el sistema los libera en automático si pasa el tiempo límite. ¡No te quedes por fuera! 🍀`;
                 await msg.reply(respuesta);
             } else {
-                await msg.reply('Fíjate que no encontré folios registrados con tu número actual. 🤔 \n\nSi aún no tienes tus números, debes apartarlos primero en nuestra página web oficial para poder participar:\n👉 https://plataforma-rifas-mexico.vercel.app/\n\nSi ya los apartaste pero pusiste otro número al registrarte, dínoslo porfa.');
+                await msg.reply('Fíjate que no encontré boletos registrados con tu número actual. 🤔 \n\nSi aún no tienes tus números, debes apartarlos primero en nuestra página web oficial para poder participar:\n👉 https://plataforma-rifas-mexico.vercel.app/\n\nSi ya los apartaste pero pusiste otro número al registrarte, dínoslo porfa.');
             }
         } catch (e) {
-            console.error('Error buscando folios:', e);
+            console.error('Error buscando boletos:', e);
             await msg.reply('Ocurrió un error al buscar tus datos. Dame un momento o espera a que te conteste un humano.');
         }
         return; // Salimos para no enviarle esto a la IA
@@ -128,9 +136,9 @@ client.on('message_create', async (msg) => {
 
         let contextoDinamico = "";
         if (dbCustomer && dbCustomer.tickets.length > 0) {
-            contextoDinamico = `[INSTRUCCIÓN SECRETA: El sistema detecta que este cliente YA TIENE folios separados en la web. NO le intentes vender más paquetes. Tu objetivo es decirle que si ya pagó, envíe la foto de su comprobante por aquí para que un asesor humano lo valide, o si tiene dudas del pago, ayudarle a resolverlas.]\n\nMensaje del cliente: `;
+            contextoDinamico = `[INSTRUCCIÓN SECRETA: El sistema detecta que este cliente YA TIENE boletos separados en la web. NO le intentes vender más paquetes. Tu objetivo es decirle que si ya pagó, envíe la foto de su comprobante por aquí para que un asesor humano lo valide, o si tiene dudas del pago, ayudarle a resolverlas.]\n\nMensaje del cliente: `;
         } else {
-            contextoDinamico = `[INSTRUCCIÓN SECRETA: El sistema detecta que este cliente AÚN NO TIENE folios. Eres un VENDEDOR DIRECTO. Respóndele rápido y ofrécele los paquetes (2 por $50, 5 por $125, etc.) con el enlace de la web.]\n\nMensaje del cliente: `;
+            contextoDinamico = `[INSTRUCCIÓN SECRETA: El sistema detecta que este cliente AÚN NO TIENE boletos. Eres un VENDEDOR DIRECTO. Respóndele rápido y ofrécele los paquetes (1 por $25, 2 por $50, 5 por $125, etc.) con el enlace de la web.]\n\nMensaje del cliente: `;
         }
 
         const result = await aiModel.generateContent(contextoDinamico + msg.body);
@@ -139,7 +147,7 @@ client.on('message_create', async (msg) => {
     } catch (error) {
         console.error('Error en Gemini AI:', error);
         // Si la IA falla, damos una respuesta genérica de respaldo
-        await msg.reply('Hola 👋. En este momento tenemos muchos mensajes, pero en breve uno de mis compañeros del equipo te va a responder personalmente. Déjanos tu duda aquí abajo 👇');
+        await msg.reply('¡Recibimos tu mensaje! ✅\n\nSi nos estás enviando tu comprobante de pago o tienes una duda importante, no te preocupes. Un asesor humano de nuestro equipo te atenderá de forma personal en unos minutos. 🙏');
     }
 });
 
