@@ -15,6 +15,9 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedNumbers, setSelectedNumbers] = useState<string[]>([]);
   const [visibleNumbers, setVisibleNumbers] = useState<string[]>([]);
+  const [isMaquinitaOpen, setIsMaquinitaOpen] = useState(false);
+  const [maquinitaCount, setMaquinitaCount] = useState(bundles[0].count);
+  const [isGenerating, setIsGenerating] = useState(false);
   
   const TOTAL_NUMBERS = 60000; // Estándar Lotería Nacional
   
@@ -54,16 +57,21 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
   };
 
   const selectRandom = (count: number) => {
-    const newSelection = [...selectedNumbers];
-    let added = 0;
-    while (added < count) {
-      const randomNum = Math.floor(Math.random() * TOTAL_NUMBERS).toString().padStart(5, '0');
-      if (!newSelection.includes(randomNum)) {
-        newSelection.push(randomNum);
-        added++;
+    setIsGenerating(true);
+    setTimeout(() => {
+      const newSelection = [...selectedNumbers];
+      let added = 0;
+      while (added < count) {
+        const randomNum = Math.floor(Math.random() * TOTAL_NUMBERS).toString().padStart(5, '0');
+        if (!newSelection.includes(randomNum)) {
+          newSelection.push(randomNum);
+          added++;
+        }
       }
-    }
-    setSelectedNumbers(newSelection);
+      setSelectedNumbers(newSelection);
+      setIsGenerating(false);
+      setIsMaquinitaOpen(false);
+    }, 1500);
   };
 
   const clearSelection = () => {
@@ -127,17 +135,14 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
 
       {/* Máquina rápida */}
       <div style={{ marginBottom: '32px', width: '100%', boxSizing: 'border-box' }}>
-        <p style={{ fontSize: '0.7rem', color: '#6b7280', textTransform: 'uppercase', fontWeight: 'bold', letterSpacing: '0.1em', textAlign: 'center', marginBottom: '4px', wordWrap: 'break-word' }}>Máquina de la Suerte (Combos Rápidos)</p>
-        <p style={{ color: '#00ff66', fontSize: '0.8rem', fontWeight: '900', textAlign: 'center', marginBottom: '16px', textTransform: 'uppercase', textShadow: '0 2px 4px rgba(0,0,0,0.5)', wordWrap: 'break-word' }}>
-          🎁 ¡Bono: Llévate $20,000 MXN extra comprando 25+ boletos!
-        </p>
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px', width: '100%', boxSizing: 'border-box' }}>
-          <button onClick={() => selectRandom(1)} style={{ padding: '12px 8px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', fontSize: '1.2rem', flex: '1 1 auto', touchAction: 'manipulation' }}>+1</button>
-          <button onClick={() => selectRandom(2)} style={{ padding: '12px 8px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', fontSize: '1.2rem', flex: '1 1 auto', touchAction: 'manipulation' }}>+2</button>
-          <button onClick={() => selectRandom(5)} style={{ padding: '12px 8px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', fontSize: '1.2rem', flex: '1 1 auto', touchAction: 'manipulation' }}>+5</button>
-          <button onClick={() => selectRandom(10)} style={{ padding: '12px 8px', fontWeight: '900', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', fontSize: '1.2rem', flex: '1 1 auto', touchAction: 'manipulation' }}>+10</button>
-          <button onClick={() => selectRandom(50)} style={{ padding: '12px 8px', fontWeight: '900', borderRadius: '8px', border: '2px solid #FFD700', backgroundColor: '#FFD700', color: 'black', boxShadow: '0 0 20px rgba(255,215,0,0.5)', fontSize: '1.2rem', flex: '1 1 auto', touchAction: 'manipulation' }}>+50</button>
-        </div>
+        <button 
+          onClick={() => setIsMaquinitaOpen(true)}
+          style={{ width: '100%', padding: '16px', backgroundColor: '#222', border: '2px solid #555', borderRadius: '12px', color: 'white', fontWeight: '900', fontSize: '1.2rem', cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '1px', boxShadow: '0 4px 15px rgba(0,0,0,0.3)', transition: 'transform 0.2s' }}
+          onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+          onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+        >
+          🎰 MAQUINITA DE LA SUERTE
+        </button>
       </div>
 
       {/* Search Bar */}
@@ -222,6 +227,51 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
               >
                 Pagar Ahora
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* Modal Maquinita */}
+      {isMaquinitaOpen && (
+        <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', backgroundColor: 'rgba(0,0,0,0.8)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000, padding: '20px' }}>
+          <div style={{ backgroundColor: 'white', color: 'black', width: '100%', maxWidth: '600px', borderRadius: '16px', border: '4px solid #cc0000', overflow: 'hidden', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }}>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', backgroundColor: '#cc0000', padding: '8px 16px' }}>
+              <button onClick={() => setIsMaquinitaOpen(false)} style={{ color: 'white', background: 'transparent', border: 'none', fontWeight: 'bold', fontSize: '1.5rem', cursor: 'pointer' }}>X</button>
+            </div>
+            <div style={{ padding: '32px 24px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '16px', marginBottom: '32px', border: '2px solid #cc0000', borderRadius: '12px', padding: '16px' }}>
+                <label style={{ fontWeight: 'bold', fontSize: '1.1rem', minWidth: '120px' }}>BOLETOS A GENERAR:</label>
+                <select 
+                  value={maquinitaCount} 
+                  onChange={(e) => setMaquinitaCount(Number(e.target.value))}
+                  style={{ flex: 1, padding: '12px', fontSize: '1.1rem', fontWeight: 'bold', border: '1px solid #ccc', borderRadius: '8px', backgroundColor: 'white', color: 'black' }}
+                >
+                  {bundles.map(b => (
+                    <option key={b.id} value={b.count}>{b.count} Boletos por ${b.price}</option>
+                  ))}
+                  <option value={20}>20 Boletos por $500</option>
+                  <option value={100}>100 Boletos por $2500</option>
+                </select>
+              </div>
+
+              {isGenerating ? (
+                <div style={{ textAlign: 'center', padding: '40px 0' }}>
+                  <div style={{ fontSize: '6rem', animation: 'spin 1s infinite linear', display: 'inline-block' }}>🎰</div>
+                  <p style={{ fontWeight: '900', marginTop: '24px', fontSize: '1.5rem', color: '#cc0000', textTransform: 'uppercase' }}>¡Generando Suerte!</p>
+                  <style dangerouslySetInnerHTML={{__html: `@keyframes spin { 100% { transform: rotate(360deg); } }`}} />
+                </div>
+              ) : (
+                <div 
+                  onClick={() => selectRandom(maquinitaCount)}
+                  style={{ border: '3px solid #cc0000', borderRadius: '16px', padding: '40px 20px', textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s', backgroundColor: '#fff' }}
+                  onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#fff0f0'}
+                  onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#fff'}
+                >
+                  <p style={{ fontWeight: '900', fontSize: '1.3rem', color: '#000', margin: 0 }}>
+                    HAZ CLICK AQUÍ PARA GENERAR {maquinitaCount} BOLETOS AL AZAR!
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
