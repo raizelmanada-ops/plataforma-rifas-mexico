@@ -87,7 +87,7 @@ export default function Home() {
       .then(data => {
         if (data && !data.error) {
           setDrawDate(data.drawDate || "2024-11-21");
-          setLotteryName(data.lotteryName || "Lotería de Boyacá");
+          setLotteryName(data.lotteryName || "Lotería Nacional de México");
           setPrizes(data.prizes || "Ford Ranger XLT Bi-Turbo (2024)");
           setVideoUrl(data.videoUrl || "");
           if (data.bannerUrl) setBannerUrl(data.bannerUrl);
@@ -675,7 +675,7 @@ export default function Home() {
         
         <div className="flex justify-center" style={{ padding: '0 10px' }}>
           <a 
-            href="https://www.facebook.com/profile.php?id=61592664040163&locale=es_LA" 
+            href="https://www.facebook.com/profile.php?id=61592447626424" 
             target="_blank" 
             rel="noopener noreferrer" 
             style={{ backgroundColor: '#1877F2', padding: '12px 16px', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', boxShadow: '0 0 20px rgba(24,119,242,0.4)', color: 'white', fontWeight: '900', fontSize: '0.9rem', textDecoration: 'none', maxWidth: '100%', flexWrap: 'wrap', textAlign: 'center' }}

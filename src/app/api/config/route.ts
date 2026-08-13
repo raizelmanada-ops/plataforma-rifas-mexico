@@ -9,7 +9,7 @@ export async function GET() {
         data: {
           id: "default",
           drawDate: "2024-11-21",
-          lotteryName: "Lotería de Boyacá",
+          lotteryName: "Lotería Nacional de México",
           videoUrl: "",
           bannerUrl: "",
           qrUrl: "",
@@ -61,7 +61,7 @@ export async function POST(req: Request) {
         data: {
           id: "default",
           drawDate: data.drawDate || "2024-11-21",
-          lotteryName: data.lotteryName || "Lotería de Boyacá",
+          lotteryName: data.lotteryName || "Lotería Nacional de México",
           videoUrl: data.videoUrl || "",
           bannerUrl: data.bannerUrl || "",
           qrUrl: data.qrUrl || "",
