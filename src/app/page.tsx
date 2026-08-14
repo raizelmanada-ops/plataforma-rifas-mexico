@@ -34,7 +34,7 @@ export default function Home() {
   
   // Configuración del sorteo conectada a la BD
   const [drawDate, setDrawDate] = useState("2026-09-15");
-  const [lotteryName, setLotteryName] = useState("Lotería Nacional");
+  const [lotteryName, setLotteryName] = useState("La Nacional");
   const [prizes, setPrizes] = useState("GMC SIERRA ACCESORIZADA + $20,000 MXN");
   const [videoUrl, setVideoUrl] = useState("/video_rifa.mp4");
   const [bannerUrl, setBannerUrl] = useState("");
@@ -87,7 +87,7 @@ export default function Home() {
       .then(data => {
         if (data && !data.error) {
           setDrawDate(data.drawDate || "2024-11-21");
-          setLotteryName(data.lotteryName || "Lotería Nacional de México");
+          setLotteryName(data.lotteryName || "Pronósticos Oficiales de México");
           setPrizes(data.prizes || "Ford Ranger XLT Bi-Turbo (2024)");
           setVideoUrl(data.videoUrl || "");
           if (data.bannerUrl) setBannerUrl(data.bannerUrl);
@@ -160,9 +160,9 @@ export default function Home() {
   };
 
   const faqs = [
-    { q: "¿Es legal y autorizado este evento?", a: "Totalmente legal. Nuestro evento se basa en los resultados oficiales de la Lotería Nacional para la Asistencia Pública, garantizando total transparencia." },
-    { q: "¿Cómo se elige a los ganadores?", a: "La combinación ganadora se toma directamente de los números oficiales del Premio Mayor de la Lotería Nacional en la fecha establecida." },
-    { q: "¿Qué sucede si el número ganador es un boleto NO vendido?", a: "Para garantizar que el premio se entregue, si el número ganador no fue vendido, el evento se repite en la siguiente fecha oficial de la Lotería Nacional hasta que haya un ganador." },
+    { q: "¿Es legal y autorizado este evento?", a: "Totalmente legal. Nuestro evento se basa en los resultados oficiales de la La Nacional para la Asistencia Pública, garantizando total transparencia." },
+    { q: "¿Cómo se elige a los ganadores?", a: "La combinación ganadora se toma directamente de los números oficiales del Premio Mayor de la La Nacional en la fecha establecida." },
+    { q: "¿Qué sucede si el número ganador es un boleto NO vendido?", a: "Para garantizar que el premio se entregue, si el número ganador no fue vendido, el evento se repite en la siguiente fecha oficial de la La Nacional hasta que haya un ganador." },
     { q: "¿Dónde se publica a los ganadores?", a: "Las entregas y ganadores se publican en nuestra página web, y realizamos transmisiones en vivo en nuestras redes sociales oficiales (Facebook e Instagram)." },
     { q: "¿Dónde y cómo se entregan los premios?", a: "¡Nosotros te lo llevamos a la puerta de tu casa! Nuestro equipo logístico viajará hasta tu ubicación en cualquier parte de la República. Firmaremos el cambio de propietario en tu ciudad." },
     { q: "¿Debo pagar impuestos si gano?", a: "¡Absolutamente NO! Asumimos el 100% de los impuestos, gastos de placas, tenencia y seguro. El vehículo se entrega a tu nombre sin costo extra." }
@@ -379,7 +379,7 @@ export default function Home() {
                   </svg>
                 </div>
                 <h4 className="text-white font-bold text-sm uppercase mb-1">Dinámica Transparente</h4>
-                <p className="text-xs text-gray-400">Ganador elegido mediante el premio mayor de la lotería oficial.</p>
+                <p className="text-xs text-gray-400">Ganador elegido mediante el premio mayor de la entidad oficial.</p>
               </div>
             </div>
           </div>
@@ -601,7 +601,7 @@ export default function Home() {
               
               <div className="mt-4 border-t border-white/5 pt-3">
                 <p className="text-[6px] text-gray-600 leading-tight text-justify opacity-40">
-                  * TÉRMINOS Y CONDICIONES: Comunidad VIP actúa como intermediario. La compra te da acceso a nuestro Ebook y como bono gratis obtienes los tickets. La Lotería Nacional no patrocina ni está vinculada con esta plataforma.
+                  * TÉRMINOS Y CONDICIONES: Comunidad VIP actúa como intermediario. La compra te da acceso a nuestro Ebook y como bono gratis obtienes los tickets. La La Nacional no patrocina ni está vinculada con esta plataforma.
                 </p>
               </div>
             </div>
@@ -715,7 +715,7 @@ export default function Home() {
           <div style={{ textAlign: 'center', padding: '0 10px' }}>
             <h4 style={{ color: '#FFD700', fontWeight: '900', fontSize: '1.2rem', textTransform: 'uppercase', marginBottom: '8px' }}>Evento Autorizado y Transparente</h4>
             <p style={{ color: '#ccc', fontSize: '14px', lineHeight: '1.5', marginBottom: '12px' }}>
-              Nuestro evento se basa en los últimos 5 dígitos del Premio Mayor de la <strong>Lotería Nacional</strong> para la Asistencia Pública. Garantizamos total legalidad.
+              Nuestro evento se basa en los últimos 5 dígitos del Premio Mayor de la <strong>La Nacional</strong> para la Asistencia Pública. Garantizamos total legalidad.
             </p>
             <p style={{ color: '#888', fontSize: '10px', textTransform: 'uppercase', fontWeight: 'bold', lineHeight: '1.4' }}>
               NOTA: Todos nuestros eventos requieren al menos un 80% de venta de boletos para realizarse, en caso contrario se dará aviso en nuestras páginas y se asignará una nueva fecha.
