@@ -5,10 +5,11 @@ import { useState, useEffect } from "react";
 // Hotmart bundles para enlazar los pagos
 const bundles = [
   { id: 1, name: "Base", count: 1, price: 11, hotmartCode: "base" },
-  { id: 2, name: "Par", count: 2, price: 22, hotmartCode: "05kjlvl8" }, // Usando códigos anteriores de placeholder
-  { id: 3, name: "Plata", count: 5, price: 55, hotmartCode: "cscfs4vt" },
-  { id: 4, name: "Oro", count: 10, price: 110, hotmartCode: "insxmui" },
-  { id: 5, name: "Diamante", count: 50, price: 550, hotmartCode: "s5kah3j1" },
+  { id: 2, name: "Bronce", count: 5, price: 55, hotmartCode: "codigo_5" },
+  { id: 3, name: "Plata", count: 10, price: 110, hotmartCode: "codigo_10" },
+  { id: 4, name: "Oro", count: 20, price: 220, hotmartCode: "codigo_20" },
+  { id: 5, name: "Diamante", count: 50, price: 550, hotmartCode: "codigo_50" },
+  { id: 6, name: "VIP", count: 100, price: 1100, hotmartCode: "codigo_100" },
 ];
 
 export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket: string, code: string) => void }) {
@@ -290,8 +291,6 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
                       {bundles.map(b => (
                         <option key={b.id} value={b.count}>{b.count} Boletos por ${b.price}</option>
                       ))}
-                      <option value={20}>20 Boletos por $220</option>
-                      <option value={100}>100 Boletos por $1100</option>
                     </select>
                   </div>
 
