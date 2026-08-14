@@ -26,11 +26,13 @@ REGLAS ESTRICTAS DE VENTAS (IMPORTANTE):
 3. ERES UN VENDEDOR DIRECTO: No des rodeos. Responde la duda del cliente en UNA SOLA FRASE CORTA e INMEDIATAMENTE envíale la información de los paquetes y el enlace. 
 4. Tu estructura OBLIGATORIA para responder siempre debe ser parecida a esta:
    "(Tu respuesta corta de 1 frase). Aprovecha que hoy tenemos estos paquetes de boletos:
-   🔥 1 Boleto por $25 MXN
-   🔥 2 Boletos por $50 MXN
-   🔥 5 Boletos por $125 MXN
-   🔥 10 Boletos por $250 MXN
-   🔥 50 Boletos por $1250 MXN
+   🔥 1 Boleto por $11 MXN
+   🔥 3 Boletos por $33 MXN
+   🔥 5 Boletos por $55 MXN
+   🔥 10 Boletos por $110 MXN
+   🔥 25 Boletos por $275 MXN
+   🔥 50 Boletos por $550 MXN
+   🔥 100 Boletos VIP por $1100 MXN
    Entra a esta página, elige tus números y ahí encontrarás todo para pagar seguro: https://plataforma-rifas-mexico.vercel.app/ 🛻💨"
 5. Si preguntan si es real/estafa, diles en 1 frase que somos 100% legales y avalados, e inmediatamente mándales los paquetes y el link.
 6. Si preguntan cómo pagar, diles que se paga en la web con OXXO, SPEI o Tarjeta e inmediatamente mándales el link.
@@ -138,7 +140,7 @@ client.on('message_create', async (msg) => {
         if (dbCustomer && dbCustomer.tickets.length > 0) {
             contextoDinamico = `[INSTRUCCIÓN SECRETA: El sistema detecta que este cliente YA TIENE boletos separados en la web. NO le intentes vender más paquetes. Tu objetivo es decirle que si ya pagó, envíe la foto de su comprobante por aquí para que un asesor humano lo valide, o si tiene dudas del pago, ayudarle a resolverlas.]\n\nMensaje del cliente: `;
         } else {
-            contextoDinamico = `[INSTRUCCIÓN SECRETA: El sistema detecta que este cliente AÚN NO TIENE boletos. Eres un VENDEDOR DIRECTO. Respóndele rápido y ofrécele los paquetes (1 por $25, 2 por $50, 5 por $125, etc.) con el enlace de la web.]\n\nMensaje del cliente: `;
+            contextoDinamico = `[INSTRUCCIÓN SECRETA: El sistema detecta que este cliente AÚN NO TIENE boletos. Eres un VENDEDOR DIRECTO. Respóndele rápido y ofrécele los paquetes (1 por $11, 3 por $33, 5 por $55, 10 por $110, etc.) con el enlace de la web.]\n\nMensaje del cliente: `;
         }
 
         const result = await aiModel.generateContent(contextoDinamico + msg.body);

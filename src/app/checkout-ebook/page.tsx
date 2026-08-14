@@ -10,8 +10,8 @@ function CheckoutContent() {
   const code = searchParams.get('code') || '';
   
   // Enlace real de Hotmart con el código de oferta
-  const hotmartLink = code === 'base' || !code 
-    ? `https://pay.hotmart.com/L107030408T?src=bol_${encodeURIComponent(ticket)}_doc_${idNumber}`
+  const hotmartLink = code === '2mnsl1sj' || !code 
+    ? `https://pay.hotmart.com/L107030408T?off=2mnsl1sj&src=bol_${encodeURIComponent(ticket)}_doc_${idNumber}`
     : `https://pay.hotmart.com/L107030408T?off=${code}&src=bol_${encodeURIComponent(ticket)}_doc_${idNumber}`;
 
   return (

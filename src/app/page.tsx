@@ -450,23 +450,31 @@ export default function Home() {
               <div className="flex flex-col gap-3 mb-6">
                 <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
                   <div className="font-bold text-lg text-white">1 🎫 BOLETO</div>
-                  <div className="font-black text-accent text-xl">POR $25 MXN</div>
+                  <div className="font-black text-accent text-xl">POR $11 MXN</div>
                 </div>
                 <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
-                  <div className="font-bold text-lg text-white">2 🎫 BOLETOS</div>
-                  <div className="font-black text-accent text-xl">POR $50 MXN</div>
+                  <div className="font-bold text-lg text-white">3 🎫 BOLETOS</div>
+                  <div className="font-black text-accent text-xl">POR $33 MXN</div>
                 </div>
                 <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
                   <div className="font-bold text-lg text-white">5 🎫 BOLETOS</div>
-                  <div className="font-black text-accent text-xl">POR $125 MXN</div>
+                  <div className="font-black text-accent text-xl">POR $55 MXN</div>
                 </div>
                 <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
                   <div className="font-bold text-lg text-white">10 🎫 BOLETOS</div>
-                  <div className="font-black text-accent text-xl">POR $250 MXN</div>
+                  <div className="font-black text-accent text-xl">POR $110 MXN</div>
+                </div>
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
+                  <div className="font-bold text-lg text-white">25 🎫 BOLETOS</div>
+                  <div className="font-black text-accent text-xl">POR $275 MXN</div>
+                </div>
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
+                  <div className="font-bold text-xl text-white">50 🎫 BOLETOS</div>
+                  <div className="font-black text-accent text-2xl">POR $550 MXN</div>
                 </div>
                 <div className="bg-accent/20 border-2 border-accent p-3 rounded-lg flex justify-between items-center shadow-[0_0_15px_rgba(255,215,0,0.3)] transform hover:scale-105 transition-transform cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
-                  <div className="font-bold text-xl text-white">50 🎫 BOLETOS</div>
-                  <div className="font-black text-accent text-2xl">POR $1,250 MXN</div>
+                  <div className="font-bold text-xl text-white">100 🎫 BOLETOS VIP</div>
+                  <div className="font-black text-accent text-2xl">POR $1,100 MXN</div>
                 </div>
               </div>
 
