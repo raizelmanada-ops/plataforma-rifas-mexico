@@ -52,7 +52,7 @@ function CheckoutContent() {
         </a>
         
         <p className="text-[10px] text-gray-500 mt-5 leading-tight opacity-80">
-          Al hacer clic serás redirigido a la plataforma segura de Hotmart. Podrás pagar en efectivo vía OXXO, transferencia SPEI o con tu tarjeta. El acceso al material digital (PDF) llegará a tu correo electrónico al instante. <strong className="text-white">Posteriormente, uno de nuestros asesores te contactará a tu WhatsApp registrado para entregarte personalmente tus códigos de bonificación.</strong>
+          Al hacer clic serás redirigido a nuestra plataforma de pagos segura. Podrás pagar en efectivo vía OXXO, transferencia SPEI o con tu tarjeta. El acceso al material digital (PDF) llegará a tu correo electrónico al instante. <strong className="text-white">Posteriormente, uno de nuestros asesores te contactará a tu WhatsApp registrado para entregarte personalmente tus códigos de bonificación.</strong>
         </p>
       </div>
     </main>

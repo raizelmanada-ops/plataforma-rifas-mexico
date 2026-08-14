@@ -84,7 +84,7 @@ export default function CheckoutForm({ selectedTicket, onBack, onSuccess }: Chec
         
         <div className="bg-success/10 border border-success/30 rounded-lg p-4 mt-2">
           <p className="text-sm text-success font-bold text-center">🔐 Tus datos están seguros.</p>
-          <p className="text-xs text-gray-300 mt-1 text-center">Al hacer clic en continuar, serás redirigido a Hotmart para realizar tu pago 100% seguro. Puedes pagar con tarjeta, OXXO o transferencia SPEI.</p>
+          <p className="text-xs text-gray-300 mt-1 text-center">Al hacer clic en continuar, serás redirigido a nuestra pasarela de pagos para realizar tu transacción 100% segura. Puedes pagar con tarjeta, OXXO o transferencia SPEI.</p>
         </div>
         
         <div className="flex gap-4 mt-4">
