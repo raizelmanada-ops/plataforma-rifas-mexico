@@ -489,11 +489,11 @@ export default function Home() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-accent mt-1 text-lg">🎁</span>
-                  <span>En la compra de <strong className="text-accent">2 boletos</strong> llévate envío más $10,000 pesos.</span>
+                  <span>En la compra de <strong className="text-accent">3 boletos</strong> llévate envío más $10,000 pesos.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-accent mt-1 text-lg">🎁</span>
-                  <span>En la compra de <strong className="text-accent">3 boletos</strong> llévate $15,000 más envío 🚚.</span>
+                  <span>En la compra de <strong className="text-accent">5 boletos</strong> llévate $15,000 más envío 🚚.</span>
                 </li>
               </ul>
               <p className="text-xs text-gray-400 font-bold uppercase tracking-widest border-t border-white/10 pt-4 mt-4 leading-relaxed">
