@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 
 // Hotmart bundles para enlazar los pagos
 const bundles = [
-  { id: 1, name: "Base", count: 1, price: 25, hotmartCode: "base" },
-  { id: 2, name: "Par", count: 2, price: 50, hotmartCode: "05kjlvl8" }, // Usando códigos anteriores de placeholder
-  { id: 3, name: "Plata", count: 5, price: 125, hotmartCode: "cscfs4vt" },
-  { id: 4, name: "Oro", count: 10, price: 250, hotmartCode: "insxmui" },
-  { id: 5, name: "Diamante", count: 50, price: 1250, hotmartCode: "s5kah3j1" },
+  { id: 1, name: "Base", count: 1, price: 11, hotmartCode: "base" },
+  { id: 2, name: "Par", count: 2, price: 22, hotmartCode: "05kjlvl8" }, // Usando códigos anteriores de placeholder
+  { id: 3, name: "Plata", count: 5, price: 55, hotmartCode: "cscfs4vt" },
+  { id: 4, name: "Oro", count: 10, price: 110, hotmartCode: "insxmui" },
+  { id: 5, name: "Diamante", count: 50, price: 550, hotmartCode: "s5kah3j1" },
 ];
 
 export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket: string, code: string) => void }) {
@@ -87,11 +87,11 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
     const exactBundle = bundles.find(b => b.count === count);
     if (exactBundle) return exactBundle;
     
-    // Si no es exacto, cobrar por boleto individual ($25 c/u)
+    // Si no es exacto, cobrar por boleto individual ($11 c/u)
     return {
       name: "Personalizado",
       count: count,
-      price: count * 25,
+      price: count * 11,
       hotmartCode: "base" // Se usa el base y multiplicaremos en el checkout
     };
   };
@@ -290,8 +290,8 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
                       {bundles.map(b => (
                         <option key={b.id} value={b.count}>{b.count} Boletos por ${b.price}</option>
                       ))}
-                      <option value={20}>20 Boletos por $500</option>
-                      <option value={100}>100 Boletos por $2500</option>
+                      <option value={20}>20 Boletos por $220</option>
+                      <option value={100}>100 Boletos por $1100</option>
                     </select>
                   </div>
 
