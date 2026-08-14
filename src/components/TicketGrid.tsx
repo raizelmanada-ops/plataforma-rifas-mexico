@@ -118,7 +118,7 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
         <h3 style={{ fontSize: '2rem', fontWeight: '900', color: 'white', textTransform: 'uppercase', letterSpacing: '-0.05em', margin: '0 0 8px 0' }}>
           Busca tu <span style={{ color: '#FFD700' }}>Boleto</span>
         </h3>
-        <p className="text-gray-400">Selecciona tus números de la suerte. Participan 60,000 números con la Lotería Nacional.</p>
+        <p className="text-gray-400">Selecciona tus números de la suerte. Participan 60,000 números con La Nacional.</p>
       </div>
 
       {/* Stats Bar */}
