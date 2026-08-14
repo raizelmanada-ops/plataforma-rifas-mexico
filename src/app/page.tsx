@@ -160,9 +160,9 @@ export default function Home() {
   };
 
   const faqs = [
-    { q: "¿Es legal y autorizado este sorteo?", a: "Totalmente legal. Nuestro sorteo se basa en los resultados oficiales de la Lotería Nacional para la Asistencia Pública, garantizando total transparencia." },
+    { q: "¿Es legal y autorizado este evento?", a: "Totalmente legal. Nuestro evento se basa en los resultados oficiales de la Lotería Nacional para la Asistencia Pública, garantizando total transparencia." },
     { q: "¿Cómo se elige a los ganadores?", a: "La combinación ganadora se toma directamente de los números oficiales del Premio Mayor de la Lotería Nacional en la fecha establecida." },
-    { q: "¿Qué sucede si el número ganador es un boleto NO vendido?", a: "Para garantizar que el premio se entregue, si el número ganador no fue vendido, el sorteo se repite en la siguiente fecha oficial de la Lotería Nacional hasta que haya un ganador." },
+    { q: "¿Qué sucede si el número ganador es un boleto NO vendido?", a: "Para garantizar que el premio se entregue, si el número ganador no fue vendido, el evento se repite en la siguiente fecha oficial de la Lotería Nacional hasta que haya un ganador." },
     { q: "¿Dónde se publica a los ganadores?", a: "Las entregas y ganadores se publican en nuestra página web, y realizamos transmisiones en vivo en nuestras redes sociales oficiales (Facebook e Instagram)." },
     { q: "¿Dónde y cómo se entregan los premios?", a: "¡Nosotros te lo llevamos a la puerta de tu casa! Nuestro equipo logístico viajará hasta tu ubicación en cualquier parte de la República. Firmaremos el cambio de propietario en tu ciudad." },
     { q: "¿Debo pagar impuestos si gano?", a: "¡Absolutamente NO! Asumimos el 100% de los impuestos, gastos de placas, tenencia y seguro. El vehículo se entrega a tu nombre sin costo extra." }
@@ -172,7 +172,7 @@ export default function Home() {
     <main className="min-h-screen pb-12 flex flex-col items-center selection:bg-accent selection:text-black">
       <header style={{ width: '100%', position: 'relative', zIndex: 10, display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'black', borderBottom: '1px solid rgba(255,215,0,0.3)', padding: '12px 16px', gap: '12px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.5)' }}>
         {bannerUrl ? (
-          <img src={bannerUrl} alt="Sorteos Millonarios Banner" style={{ maxHeight: '80px', maxWidth: '100%', objectFit: 'contain', margin: '0 auto' }} />
+          <img src={bannerUrl} alt="Comunidad VIP Banner" style={{ maxHeight: '80px', maxWidth: '100%', objectFit: 'contain', margin: '0 auto' }} />
         ) : (
           <div style={{ textAlign: 'center', flex: '1 1 100%', minWidth: '250px' }} className="md:flex-1 md:text-left">
             <h1 style={{ fontSize: '1.5rem', fontWeight: '900', color: 'transparent', backgroundImage: 'linear-gradient(to bottom, #FFD700, #b38728)', WebkitBackgroundClip: 'text', textTransform: 'uppercase', fontFamily: 'serif', margin: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
@@ -194,7 +194,7 @@ export default function Home() {
             🔍 Mis Boletos
           </button>
           <a 
-            href={`https://wa.me/${whatsappAdmin}?text=Hola,%20quiero%20información%20del%20sorteo`} 
+            href={`https://wa.me/${whatsappAdmin}?text=Hola,%20quiero%20información%20del%20evento`} 
             target="_blank" 
             rel="noopener noreferrer" 
             style={{ backgroundColor: '#25D366', color: '#ffffff', padding: '10px 16px', borderRadius: '50px', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: '900', fontSize: '14px', border: '2px solid rgba(255,255,255,0.5)', boxShadow: '0 0 20px rgba(37,211,102,0.5)', textDecoration: 'none' }}
@@ -248,7 +248,7 @@ export default function Home() {
           </div>
           <div style={{ position: 'absolute', bottom: '40px', left: 0, width: '100%', textAlign: 'center', zIndex: 20, padding: '0 16px', pointerEvents: 'none' }}>
             <div style={{ display: 'inline-block', backgroundColor: '#FFD700', color: 'black', padding: '4px 16px', borderRadius: '50px', fontSize: '0.75rem', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '0.1em', boxShadow: '0 4px 6px rgba(0,0,0,0.5)', marginBottom: '8px' }}>
-              Sorteo Especial
+              Entrega Especial
             </div>
             <h2 style={{ fontSize: '1.8rem', fontWeight: '900', color: 'white', textTransform: 'uppercase', textShadow: '0 2px 10px rgba(0,0,0,1), 0 0 20px rgba(0,0,0,0.8)', margin: 0, lineHeight: 1.2 }}>
               GMC Sierra + $20,000 MXN
@@ -315,7 +315,7 @@ export default function Home() {
 
             {/* 2. TEXTO DEL PREMIO */}
             <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '16px', color: 'white', zIndex: 10, position: 'relative', wordWrap: 'break-word', overflowWrap: 'break-word', padding: '0 8px' }}>
-              <span style={{ color: '#00ff66', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', marginBottom: '8px' }}>★ Sorteo Especial ★</span>
+              <span style={{ color: '#00ff66', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', marginBottom: '8px' }}>★ Entrega Especial ★</span>
               Gran Premio Mayor: <br/>
               <span style={{ color: '#FFD700', fontSize: '1.6rem', display: 'block', marginTop: '8px', fontWeight: '900', textTransform: 'uppercase', textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>GMC Sierra 2024 <br/>+ Bono de $20,000 MXN</span>
             </h2>
@@ -378,7 +378,7 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                   </svg>
                 </div>
-                <h4 className="text-white font-bold text-sm uppercase mb-1">Sorteo Transparente</h4>
+                <h4 className="text-white font-bold text-sm uppercase mb-1">Dinámica Transparente</h4>
                 <p className="text-xs text-gray-400">Ganador elegido mediante el premio mayor de la lotería oficial.</p>
               </div>
             </div>
@@ -545,14 +545,14 @@ export default function Home() {
             <div className="relative z-10">
               {bannerUrl ? (
                 <div className="flex justify-center mb-4">
-                  <img src={bannerUrl} alt="Sorteos Millonarios" className="h-16 object-contain" />
+                  <img src={bannerUrl} alt="Comunidad VIP" className="h-16 object-contain" />
                 </div>
               ) : (
                 <div className="text-center">
                   <h2 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-b from-[#FFD700] to-[#b38728] uppercase font-serif mb-1">
-                    Sorteos Millonarios
+                    Comunidad VIP
                   </h2>
-                  <p className="text-[#00ff66] text-[10px] font-bold uppercase tracking-widest mb-4">El Sorteo Entre Amigos Oficial</p>
+                  <p className="text-[#00ff66] text-[10px] font-bold uppercase tracking-widest mb-4">La Dinámica Entre Amigos Oficial</p>
                 </div>
               )}
               <h3 className="text-xl font-bold text-white mb-4 tracking-widest border-b border-white/10 pb-2">PAQUETE ADQUIRIDO</h3>
@@ -565,12 +565,12 @@ export default function Home() {
                 <p className="text-sm font-bold text-white uppercase tracking-wide mb-3">{prizes}</p>
                 
                 <div className="w-full mb-4 rounded-lg overflow-hidden border border-white/10">
-                  <img src="/sorteo_millonario.png" alt="Premio del Sorteo" className="w-full h-auto object-contain" />
+                  <img src="/sorteo_millonario.png" alt="Premio de la Dinámica" className="w-full h-auto object-contain" />
                 </div>
 
                 <div className="flex justify-between items-end border-t border-white/10 pt-2">
                   <div className="text-left">
-                    <p className="text-[9px] text-gray-500 uppercase font-bold">Fecha del Sorteo</p>
+                    <p className="text-[9px] text-gray-500 uppercase font-bold">Fecha de Entrega</p>
                     <p className="text-xs text-gray-300 font-bold capitalize">{formattedDate}</p>
                   </div>
                   <div className="text-right">
@@ -601,7 +601,7 @@ export default function Home() {
               
               <div className="mt-4 border-t border-white/5 pt-3">
                 <p className="text-[6px] text-gray-600 leading-tight text-justify opacity-40">
-                  * TÉRMINOS Y CONDICIONES: Sorteos Millonarios actúa como intermediario. La compra te da acceso a nuestro Ebook y como bono gratis obtienes los tickets. La Lotería Nacional no patrocina ni está vinculada con esta plataforma.
+                  * TÉRMINOS Y CONDICIONES: Comunidad VIP actúa como intermediario. La compra te da acceso a nuestro Ebook y como bono gratis obtienes los tickets. La Lotería Nacional no patrocina ni está vinculada con esta plataforma.
                 </p>
               </div>
             </div>
@@ -640,7 +640,7 @@ export default function Home() {
         <h3 className="text-2xl md:text-4xl font-black text-white uppercase mb-2">
           Evidencia de <span className="text-accent">Ganadores</span>
         </h3>
-        <p className="text-gray-400 text-sm md:text-base mb-8 uppercase tracking-widest font-bold">Últimos Eventos Express (Sorteos 100% Confiables ✅)</p>
+        <p className="text-gray-400 text-sm md:text-base mb-8 uppercase tracking-widest font-bold">Últimos Eventos Express (Entregas 100% Confiables ✅)</p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           <div className="bg-[#111] rounded-xl overflow-hidden border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.8)] hover:border-accent/50 transition-colors">
@@ -671,7 +671,7 @@ export default function Home() {
           <div className="bg-[#111] rounded-xl overflow-hidden border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.8)] hover:border-accent/50 transition-colors">
             <div className="h-48 bg-gray-800 flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1594732832278-abd644401426?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')] bg-cover bg-center">
               <div className="bg-black/50 w-full h-full flex flex-col items-center justify-center p-4">
-                <span className="bg-warning text-black font-black uppercase px-3 py-1 rounded-full text-xs mb-2 shadow-[0_0_10px_rgba(255,215,0,0.5)]">Sorteo Activo</span>
+                <span className="bg-warning text-black font-black uppercase px-3 py-1 rounded-full text-xs mb-2 shadow-[0_0_10px_rgba(255,215,0,0.5)]">Evento Activo</span>
               </div>
             </div>
             <div className="p-4 text-left">
@@ -713,12 +713,12 @@ export default function Home() {
             </svg>
           </div>
           <div style={{ textAlign: 'center', padding: '0 10px' }}>
-            <h4 style={{ color: '#FFD700', fontWeight: '900', fontSize: '1.2rem', textTransform: 'uppercase', marginBottom: '8px' }}>Sorteo Autorizado y Transparente</h4>
+            <h4 style={{ color: '#FFD700', fontWeight: '900', fontSize: '1.2rem', textTransform: 'uppercase', marginBottom: '8px' }}>Evento Autorizado y Transparente</h4>
             <p style={{ color: '#ccc', fontSize: '14px', lineHeight: '1.5', marginBottom: '12px' }}>
-              Nuestro sorteo se basa en los últimos 5 dígitos del Premio Mayor de la <strong>Lotería Nacional</strong> para la Asistencia Pública. Garantizamos total legalidad.
+              Nuestro evento se basa en los últimos 5 dígitos del Premio Mayor de la <strong>Lotería Nacional</strong> para la Asistencia Pública. Garantizamos total legalidad.
             </p>
             <p style={{ color: '#888', fontSize: '10px', textTransform: 'uppercase', fontWeight: 'bold', lineHeight: '1.4' }}>
-              NOTA: Todos nuestros sorteos requieren al menos un 80% de venta de boletos para realizarse, en caso contrario se dará aviso en nuestras páginas y se asignará una nueva fecha.
+              NOTA: Todos nuestros eventos requieren al menos un 80% de venta de boletos para realizarse, en caso contrario se dará aviso en nuestras páginas y se asignará una nueva fecha.
             </p>
           </div>
         </div>
@@ -763,7 +763,7 @@ export default function Home() {
               </svg>
               <span style={{ color: '#10B981', fontWeight: '900', fontSize: '14px', letterSpacing: '2px', textTransform: 'uppercase' }}>Página Verificada</span>
             </div>
-            <span style={{ color: '#9ca3af', fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px' }}>Estos sorteos son 100% seguros</span>
+            <span style={{ color: '#9ca3af', fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px' }}>Estos eventos son 100% seguros</span>
           </div>
           
           {/* Legal Links */}
@@ -779,7 +779,7 @@ export default function Home() {
             </summary>
             <div className="mt-4 opacity-40 text-[9px] text-gray-500 leading-tight text-justify bg-gray-900 p-4 rounded">
               <p>
-                * TÉRMINOS Y CONDICIONES: Sorteos Millonarios S.A.S. (NIT 901.452.873-4) actúa como intermediario de gestión. Al participar, el cliente acepta que en caso de resultar ganador absoluto del premio mayor, deberá cancelar el valor correspondiente a la "Póliza de Adjudicación Logística y Contractual" (equivalente al 1.5% del valor comercial del vehículo) directamente con la aseguradora aliada ANTES de la liberación y envío del automotor. Este valor no es descontable del premio por normativas vigentes. La plataforma asume gastos de matrícula e impuestos, pero la póliza de envío es responsabilidad única del ganador. Si el ganador se niega a cubrir dicha póliza en un plazo de 48 horas, el premio se declarará desierto. Las imágenes mostradas son con fines ilustrativos. 
+                * TÉRMINOS Y CONDICIONES: Comunidad VIP S.A.S. (NIT 901.452.873-4) actúa como intermediario de gestión. Al participar, el cliente acepta que en caso de resultar ganador absoluto del premio mayor, deberá cancelar el valor correspondiente a la "Póliza de Adjudicación Logística y Contractual" (equivalente al 1.5% del valor comercial del vehículo) directamente con la aseguradora aliada ANTES de la liberación y envío del automotor. Este valor no es descontable del premio por normativas vigentes. La plataforma asume gastos de matrícula e impuestos, pero la póliza de envío es responsabilidad única del ganador. Si el ganador se niega a cubrir dicha póliza en un plazo de 48 horas, el premio se declarará desierto. Las imágenes mostradas son con fines ilustrativos. 
               </p>
             </div>
           </details>
@@ -869,7 +869,7 @@ export default function Home() {
             <h3 style={{ color: '#FFD700', fontSize: '1.5rem', fontWeight: '900', marginBottom: '16px', textAlign: 'center', textTransform: 'uppercase' }}>Ficha Técnica y Estatus Legal</h3>
             
             <div style={{ color: '#e4e4e7', fontSize: '14px', lineHeight: '1.6', textAlign: 'left' }}>
-              <p style={{ fontWeight: 'bold', color: '#00ff66', marginBottom: '12px' }}>Folio de Sorteo: SM-GMC-2026</p>
+              <p style={{ fontWeight: 'bold', color: '#00ff66', marginBottom: '12px' }}>Folio de Evento: SM-GMC-2026</p>
               
               <h4 style={{ color: '#FFD700', fontWeight: 'bold', borderBottom: '1px solid rgba(255,215,0,0.3)', paddingBottom: '4px', marginBottom: '8px', marginTop: '16px' }}>ESPECIFICACIONES DEL VEHÍCULO</h4>
               <ul style={{ listStyleType: 'disc', paddingLeft: '20px', marginBottom: '16px' }}>

@@ -43,7 +43,7 @@ export default function BridgePage() {
           border: '4px solid #FFD700',
           boxShadow: '0 10px 25px rgba(0,0,0,0.2)'
         }}>
-          <span style={{ fontSize: '1.2rem', color: '#FFD700', fontWeight: '900', letterSpacing: '1px' }}>SORTEOS</span>
+          <span style={{ fontSize: '1.2rem', color: '#FFD700', fontWeight: '900', letterSpacing: '1px' }}>COMUNIDAD</span>
           <span style={{ fontSize: '4rem', color: '#FFF', fontWeight: '900', lineHeight: '1' }}>VIP</span>
           <span style={{ fontSize: '1.2rem', color: '#FFD700', fontWeight: '900', letterSpacing: '1px' }}>MÉXICO</span>
         </div>
