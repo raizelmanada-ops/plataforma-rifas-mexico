@@ -44,12 +44,12 @@ export default function CheckoutForm({ selectedTicket, onBack, onSuccess }: Chec
       
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div className="input-group">
-          <label className="input-label" htmlFor="name">Nombre y Apellido *</label>
+          <label className="block text-[#FFD700] font-black text-lg mb-2 uppercase tracking-wide" htmlFor="name">👤 Nombre y Apellido *</label>
           <input 
             type="text" 
             id="name"
             required
-            className="input-field" 
+            className="w-full p-4 text-lg font-bold bg-[#2a2a0a] text-white border-2 border-[#FFD700] rounded-xl placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-[#FFD700]/50 shadow-[inset_0_0_15px_rgba(255,215,0,0.1)] transition-all" 
             placeholder="Ej. Carlos Vives"
             value={formData.name}
             onChange={e => setFormData({...formData, name: e.target.value})}
@@ -57,12 +57,12 @@ export default function CheckoutForm({ selectedTicket, onBack, onSuccess }: Chec
         </div>
         
         <div className="input-group">
-          <label className="input-label" htmlFor="phone">Celular (WhatsApp) *</label>
+          <label className="block text-[#FFD700] font-black text-lg mb-2 uppercase tracking-wide" htmlFor="phone">📱 Celular (WhatsApp) *</label>
           <input 
             type="tel" 
             id="phone"
             required
-            className="input-field" 
+            className="w-full p-4 text-lg font-bold bg-[#2a2a0a] text-white border-2 border-[#FFD700] rounded-xl placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-[#FFD700]/50 shadow-[inset_0_0_15px_rgba(255,215,0,0.1)] transition-all" 
             placeholder="Ej. 300 123 4567"
             value={formData.phone}
             onChange={e => setFormData({...formData, phone: e.target.value})}
@@ -70,21 +70,21 @@ export default function CheckoutForm({ selectedTicket, onBack, onSuccess }: Chec
         </div>
         
         <div className="input-group">
-          <label className="input-label" htmlFor="idNumber">CURP o INE *</label>
+          <label className="block text-[#FFD700] font-black text-lg mb-2 uppercase tracking-wide" htmlFor="idNumber">💳 CURP o INE *</label>
           <input 
             type="text" 
             id="idNumber"
             required
-            className="input-field" 
+            className="w-full p-4 text-lg font-bold bg-[#2a2a0a] text-white border-2 border-[#FFD700] rounded-xl placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-[#FFD700]/50 shadow-[inset_0_0_15px_rgba(255,215,0,0.1)] transition-all" 
             placeholder="Ej. ABCD1234567890"
             value={formData.idNumber}
             onChange={e => setFormData({...formData, idNumber: e.target.value})}
           />
         </div>
         
-        <div className="bg-warning/10 border border-warning/30 rounded-lg p-4 mt-2">
-          <p className="text-sm text-warning font-bold">¡Atención!</p>
-          <p className="text-xs text-gray-300 mt-1">Al hacer clic en continuar, tendrás 15 minutos para realizar tu pago 100% seguro a través de nuestra pasarela autorizada, de lo contrario el número se liberará automáticamente.</p>
+        <div className="bg-success/10 border border-success/30 rounded-lg p-4 mt-2">
+          <p className="text-sm text-success font-bold text-center">🔐 Tus datos están seguros.</p>
+          <p className="text-xs text-gray-300 mt-1 text-center">Al hacer clic en continuar, serás redirigido a Hotmart para realizar tu pago 100% seguro. Puedes pagar con tarjeta, OXXO o transferencia SPEI.</p>
         </div>
         
         <div className="flex gap-4 mt-4">

@@ -526,7 +526,7 @@ export default function Home() {
             <p className="text-gray-400 text-sm uppercase tracking-widest font-bold">Número Seleccionado</p>
             <p className="text-7xl font-black text-accent mt-2 drop-shadow-[0_0_15px_rgba(255,215,0,0.4)]">{selectedTicket}</p>
             <p className="text-success font-bold mt-2 animate-pulse">¡Este número está libre!</p>
-            <p className="text-sm text-gray-300 mt-1">Llénalo y tendrás 15 minutos para pagarlo antes de que se libere.</p>
+            <p className="text-sm text-gray-300 mt-1 text-center">Por favor ingresa tus datos a continuación para continuar al pago seguro.</p>
           </div>
 
           <CheckoutForm selectedTicket={selectedTicket!} onBack={() => setStep("grid")} onSuccess={handleCheckoutSubmit} />
