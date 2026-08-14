@@ -18,6 +18,7 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
   const [isMaquinitaOpen, setIsMaquinitaOpen] = useState(false);
   const [maquinitaCount, setMaquinitaCount] = useState(bundles[0].count);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [showMaquinitaResult, setShowMaquinitaResult] = useState(false);
   
   const TOTAL_NUMBERS = 60000; // Estándar Lotería Nacional
   
@@ -70,8 +71,8 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
       }
       setSelectedNumbers(newSelection);
       setIsGenerating(false);
-      setIsMaquinitaOpen(false);
-    }, 1500);
+      setShowMaquinitaResult(true);
+    }, 2000);
   };
 
   const clearSelection = () => {
@@ -239,38 +240,72 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
               <button onClick={() => setIsMaquinitaOpen(false)} style={{ color: 'white', background: 'transparent', border: 'none', fontWeight: 'bold', fontSize: '1.5rem', cursor: 'pointer' }}>X</button>
             </div>
             <div style={{ padding: '32px 24px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '16px', marginBottom: '32px', border: '2px solid #cc0000', borderRadius: '12px', padding: '16px' }}>
-                <label style={{ fontWeight: 'bold', fontSize: '1.1rem', minWidth: '120px' }}>BOLETOS A GENERAR:</label>
-                <select 
-                  value={maquinitaCount} 
-                  onChange={(e) => setMaquinitaCount(Number(e.target.value))}
-                  style={{ flex: 1, padding: '12px', fontSize: '1.1rem', fontWeight: 'bold', border: '1px solid #ccc', borderRadius: '8px', backgroundColor: 'white', color: 'black' }}
-                >
-                  {bundles.map(b => (
-                    <option key={b.id} value={b.count}>{b.count} Boletos por ${b.price}</option>
-                  ))}
-                  <option value={20}>20 Boletos por $500</option>
-                  <option value={100}>100 Boletos por $2500</option>
-                </select>
-              </div>
+              {showMaquinitaResult ? (
+                <div style={{ textAlign: 'center' }}>
+                  <h2 style={{ color: '#00ff66', fontSize: '2.5rem', fontWeight: '900', margin: '0 0 16px 0', textShadow: '0 2px 10px rgba(0,255,102,0.3)' }}>¡FELICIDADES!</h2>
+                  <p style={{ fontWeight: 'bold', fontSize: '1.2rem', marginBottom: '24px' }}>Aquí están tus {selectedNumbers.length} números de la suerte:</p>
+                  
+                  <div className="custom-scrollbar" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px', maxHeight: '300px', overflowY: 'auto', marginBottom: '32px', padding: '16px', backgroundColor: 'rgba(0,0,0,0.8)', borderRadius: '12px', border: '2px solid #333' }}>
+                    {selectedNumbers.map(num => (
+                      <span key={num} style={{ backgroundColor: '#FFD700', color: 'black', padding: '6px 10px', borderRadius: '6px', fontWeight: '900', fontSize: '1.1rem' }}>{num}</span>
+                    ))}
+                  </div>
 
-              {isGenerating ? (
+                  <button 
+                    onClick={() => {
+                      setIsMaquinitaOpen(false);
+                      setShowMaquinitaResult(false);
+                      handleCheckout();
+                    }}
+                    style={{ width: '100%', backgroundColor: '#00ff66', color: 'black', padding: '16px', borderRadius: '12px', fontWeight: '900', fontSize: '1.5rem', textTransform: 'uppercase', border: 'none', cursor: 'pointer', boxShadow: '0 10px 30px rgba(0,255,102,0.4)', transition: 'transform 0.2s' }}
+                    onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+                    onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                  >
+                    PAGAR AHORA
+                  </button>
+                </div>
+              ) : isGenerating ? (
                 <div style={{ textAlign: 'center', padding: '40px 0' }}>
-                  <div style={{ fontSize: '6rem', animation: 'spin 1s infinite linear', display: 'inline-block' }}>🎰</div>
-                  <p style={{ fontWeight: '900', marginTop: '24px', fontSize: '1.5rem', color: '#cc0000', textTransform: 'uppercase' }}>¡Generando Suerte!</p>
-                  <style dangerouslySetInnerHTML={{__html: `@keyframes spin { 100% { transform: rotate(360deg); } }`}} />
+                  <p style={{ fontWeight: '900', margin: '0 0 32px 0', fontSize: '2rem', color: '#cc0000', textTransform: 'uppercase', letterSpacing: '2px' }}>¡Generando Suerte!</p>
+                  
+                  <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', fontSize: '5rem', fontWeight: '900', height: '100px', overflow: 'hidden', backgroundColor: '#111', padding: '10px 20px', borderRadius: '16px', border: '4px solid #cc0000', color: 'white', position: 'relative', width: 'fit-content', margin: '0 auto', boxShadow: 'inset 0 10px 20px rgba(0,0,0,0.8)' }}>
+                    {[0,1,2,3,4].map(col => (
+                      <div key={col} style={{ display: 'flex', flexDirection: 'column', animation: `slotSpin 0.${6 + col}s infinite linear`, marginTop: '-10px' }}>
+                        {[0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6].map((n, i) => <span key={i} style={{ lineHeight: '100px', height: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{n}</span>)}
+                      </div>
+                    ))}
+                  </div>
+                  <style dangerouslySetInnerHTML={{__html: `@keyframes slotSpin { 100% { transform: translateY(-1000px); } }`}} />
+                  <p style={{ marginTop: '32px', color: '#666', fontWeight: 'bold' }}>Buscando los mejores números para ti...</p>
                 </div>
               ) : (
-                <div 
-                  onClick={() => selectRandom(maquinitaCount)}
-                  style={{ border: '3px solid #cc0000', borderRadius: '16px', padding: '40px 20px', textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s', backgroundColor: '#fff' }}
-                  onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#fff0f0'}
-                  onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#fff'}
-                >
-                  <p style={{ fontWeight: '900', fontSize: '1.3rem', color: '#000', margin: 0 }}>
-                    HAZ CLICK AQUÍ PARA GENERAR {maquinitaCount} BOLETOS AL AZAR!
-                  </p>
-                </div>
+                <>
+                  <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '16px', marginBottom: '32px', border: '2px solid #cc0000', borderRadius: '12px', padding: '16px' }}>
+                    <label style={{ fontWeight: 'bold', fontSize: '1.1rem', minWidth: '120px' }}>BOLETOS A GENERAR:</label>
+                    <select 
+                      value={maquinitaCount} 
+                      onChange={(e) => setMaquinitaCount(Number(e.target.value))}
+                      style={{ flex: 1, padding: '12px', fontSize: '1.1rem', fontWeight: 'bold', border: '1px solid #ccc', borderRadius: '8px', backgroundColor: 'white', color: 'black' }}
+                    >
+                      {bundles.map(b => (
+                        <option key={b.id} value={b.count}>{b.count} Boletos por ${b.price}</option>
+                      ))}
+                      <option value={20}>20 Boletos por $500</option>
+                      <option value={100}>100 Boletos por $2500</option>
+                    </select>
+                  </div>
+
+                  <div 
+                    onClick={() => selectRandom(maquinitaCount)}
+                    style={{ border: '3px solid #cc0000', borderRadius: '16px', padding: '40px 20px', textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s', backgroundColor: '#fff' }}
+                    onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#fff0f0'}
+                    onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#fff'}
+                  >
+                    <p style={{ fontWeight: '900', fontSize: '1.3rem', color: '#000', margin: 0 }}>
+                      HAZ CLICK AQUÍ PARA GENERAR {maquinitaCount} BOLETOS AL AZAR!
+                    </p>
+                  </div>
+                </>
               )}
             </div>
           </div>
