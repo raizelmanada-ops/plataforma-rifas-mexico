@@ -5,12 +5,13 @@ import { useState, useEffect } from "react";
 // Hotmart bundles para enlazar los pagos
 const bundles = [
   { id: 1, name: "Base", count: 1, price: 11, hotmartCode: "2mnsl1sj" },
-  { id: 2, name: "Cobre", count: 3, price: 33, hotmartCode: "05kjlvl8" },
-  { id: 3, name: "Plata", count: 5, price: 55, hotmartCode: "cscfs4vt" },
-  { id: 4, name: "Oro", count: 10, price: 110, hotmartCode: "insxrnui" },
-  { id: 5, name: "Platino", count: 25, price: 275, hotmartCode: "zro69vqo" },
-  { id: 6, name: "Esmeralda", count: 50, price: 550, hotmartCode: "s5kah3j1" },
-  { id: 7, name: "Diamante VIP", count: 100, price: 1100, hotmartCode: "mjcyaq0t" },
+  { id: 2, name: "Aluminio", count: 2, price: 22, hotmartCode: "g12k5ckw" },
+  { id: 3, name: "Cobre", count: 3, price: 33, hotmartCode: "05kjlvl8" },
+  { id: 4, name: "Plata", count: 5, price: 55, hotmartCode: "cscfs4vt" },
+  { id: 5, name: "Oro", count: 10, price: 110, hotmartCode: "insxrnui" },
+  { id: 6, name: "Platino", count: 25, price: 275, hotmartCode: "zro69vqo" },
+  { id: 7, name: "Esmeralda", count: 50, price: 550, hotmartCode: "s5kah3j1" },
+  { id: 8, name: "Diamante VIP", count: 100, price: 1100, hotmartCode: "mjcyaq0t" },
 ];
 
 export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket: string, code: string) => void }) {

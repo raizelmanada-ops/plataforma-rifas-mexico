@@ -453,6 +453,10 @@ export default function Home() {
                   <div className="font-black text-accent text-xl">POR $11 MXN</div>
                 </div>
                 <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
+                  <div className="font-bold text-lg text-white">2 🎫 BOLETOS</div>
+                  <div className="font-black text-accent text-xl">POR $22 MXN</div>
+                </div>
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
                   <div className="font-bold text-lg text-white">3 🎫 BOLETOS</div>
                   <div className="font-black text-accent text-xl">POR $33 MXN</div>
                 </div>
@@ -489,7 +493,11 @@ export default function Home() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-accent mt-1 text-lg">🎁</span>
-                  <span>En la compra de <strong className="text-accent">3 boletos</strong> llévate envío más $10,000 pesos.</span>
+                  <span>En la compra de <strong className="text-accent">2 boletos</strong> llévate envío más $10,000 pesos.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1 text-lg">🎁</span>
+                  <span>En la compra de <strong className="text-accent">3 boletos</strong> llévate envío más $15,000 pesos.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-accent mt-1 text-lg">🎁</span>

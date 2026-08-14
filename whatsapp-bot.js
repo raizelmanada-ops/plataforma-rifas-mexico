@@ -27,6 +27,7 @@ REGLAS ESTRICTAS DE VENTAS (IMPORTANTE):
 4. Tu estructura OBLIGATORIA para responder siempre debe ser parecida a esta:
    "(Tu respuesta corta de 1 frase). Aprovecha que hoy tenemos estos paquetes de boletos:
    🔥 1 Boleto por $11 MXN
+   🔥 2 Boletos por $22 MXN
    🔥 3 Boletos por $33 MXN
    🔥 5 Boletos por $55 MXN
    🔥 10 Boletos por $110 MXN
@@ -140,7 +141,7 @@ client.on('message_create', async (msg) => {
         if (dbCustomer && dbCustomer.tickets.length > 0) {
             contextoDinamico = `[INSTRUCCIÓN SECRETA: El sistema detecta que este cliente YA TIENE boletos separados en la web. NO le intentes vender más paquetes. Tu objetivo es decirle que si ya pagó, envíe la foto de su comprobante por aquí para que un asesor humano lo valide, o si tiene dudas del pago, ayudarle a resolverlas.]\n\nMensaje del cliente: `;
         } else {
-            contextoDinamico = `[INSTRUCCIÓN SECRETA: El sistema detecta que este cliente AÚN NO TIENE boletos. Eres un VENDEDOR DIRECTO. Respóndele rápido y ofrécele los paquetes (1 por $11, 3 por $33, 5 por $55, 10 por $110, etc.) con el enlace de la web.]\n\nMensaje del cliente: `;
+            contextoDinamico = `[INSTRUCCIÓN SECRETA: El sistema detecta que este cliente AÚN NO TIENE boletos. Eres un VENDEDOR DIRECTO. Respóndele rápido y ofrécele los paquetes (1 por $11, 2 por $22, 3 por $33, 5 por $55, 10 por $110, etc.) con el enlace de la web.]\n\nMensaje del cliente: `;
         }
 
         const result = await aiModel.generateContent(contextoDinamico + msg.body);
