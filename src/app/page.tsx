@@ -271,45 +271,70 @@ export default function Home() {
             {/* Fondo decorativo premium */}
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#FFD700]/10 via-transparent to-transparent pointer-events-none"></div>
             
-            {/* 1. EL VIDEO ARRIBA DE TODO */}
-            <div style={{ width: '100%', maxWidth: '896px', margin: '0 auto 32px auto', position: 'relative', zIndex: 10, boxSizing: 'border-box' }}>
-              <div style={{ aspectRatio: '16/9', width: '100%', borderRadius: '16px', overflow: 'hidden', border: '2px solid #FFD700', boxShadow: '0 0 40px rgba(255,215,0,0.3)', backgroundColor: 'black', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', boxSizing: 'border-box' }}>
-                {videoUrl ? (
-                  videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be") || videoUrl.includes("vimeo.com") ? (
-                    <iframe 
-                      src={videoUrl} 
-                      style={{ width: '100%', height: '100%', border: 'none' }}
-                      title="Video del Premio"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                      allowFullScreen
-                    ></iframe>
-                  ) : (
-                    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-                      <video 
-                        id="main-promo-video"
-                        src={videoUrl} 
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                        controls 
-                        autoPlay 
-                        muted
-                        loop 
-                        playsInline
-                      >
-                        Tu navegador no soporta videos.
-                      </video>
-                    </div>
-                  )
-                ) : (
-                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.4)', opacity: 0.8 }}>
-                    <div style={{ width: '80px', height: '80px', background: 'linear-gradient(to top right, #FFD700, #FDB931)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', boxShadow: '0 0 30px rgba(255,215,0,0.6)' }}>
-                      <svg width="40" height="40" style={{ color: 'black', marginLeft: '8px' }} fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <p style={{ color: '#FFD700', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '1.125rem', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>VIDEO PUBLICITARIO AQUÍ</p>
-                  </div>
-                )}
+            {/* 1. MÁQUINA DE LA SUERTE (COMPRA RÁPIDA AL FRENTE) */}
+            <div className="w-full max-w-4xl mx-auto mb-10 z-10 relative mt-6">
+              <h2 className="text-2xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-hover uppercase mb-6 drop-shadow-[0_0_10px_rgba(255,215,0,0.8)]">
+                🎰 MÁQUINA DE LA SUERTE 🎰<br/>
+                <span className="text-lg text-white font-bold">¡COMPRA RÁPIDA! TOCA TU PAQUETE 👇</span>
+              </h2>
+
+              <div className="flex flex-col gap-3 mb-6">
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => handleTicketSelect('1 Boleto (Máquina de la Suerte)', '')}>
+                  <div className="font-bold text-lg text-white">1 🎫 BOLETO</div>
+                  <div className="font-black text-accent text-xl">POR $11 MXN</div>
+                </div>
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => handleTicketSelect('2 Boletos (Máquina de la Suerte)', '')}>
+                  <div className="font-bold text-lg text-white">2 🎫 BOLETOS</div>
+                  <div className="font-black text-accent text-xl">POR $22 MXN</div>
+                </div>
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => handleTicketSelect('3 Boletos (Máquina de la Suerte)', '')}>
+                  <div className="font-bold text-lg text-white">3 🎫 BOLETOS</div>
+                  <div className="font-black text-accent text-xl">POR $33 MXN</div>
+                </div>
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => handleTicketSelect('5 Boletos (Máquina de la Suerte)', '')}>
+                  <div className="font-bold text-lg text-white">5 🎫 BOLETOS</div>
+                  <div className="font-black text-accent text-xl">POR $55 MXN</div>
+                </div>
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => handleTicketSelect('10 Boletos (Máquina de la Suerte)', '')}>
+                  <div className="font-bold text-lg text-white">10 🎫 BOLETOS</div>
+                  <div className="font-black text-accent text-xl">POR $110 MXN</div>
+                </div>
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => handleTicketSelect('25 Boletos (Máquina de la Suerte)', '')}>
+                  <div className="font-bold text-lg text-white">25 🎫 BOLETOS</div>
+                  <div className="font-black text-accent text-xl">POR $275 MXN</div>
+                </div>
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => handleTicketSelect('50 Boletos (Máquina de la Suerte)', '')}>
+                  <div className="font-bold text-xl text-white">50 🎫 BOLETOS</div>
+                  <div className="font-black text-accent text-2xl">POR $550 MXN</div>
+                </div>
+                <div className="bg-accent/20 border-2 border-accent p-3 rounded-lg flex justify-between items-center shadow-[0_0_15px_rgba(255,215,0,0.3)] transform hover:scale-105 transition-transform cursor-pointer" onClick={() => handleTicketSelect('100 Boletos VIP (Máquina de la Suerte)', '')}>
+                  <div className="font-bold text-xl text-white">100 🎫 BOLETOS VIP</div>
+                  <div className="font-black text-accent text-2xl">POR $1,100 MXN</div>
+                </div>
               </div>
+
+              <h3 className="text-xl font-black text-[#ff3333] uppercase mb-4 tracking-widest drop-shadow-[0_0_10px_rgba(255,51,51,0.5)]">
+                ▼ BONOS EXTRAS ▼
+              </h3>
+              
+              <ul className="text-left space-y-4 text-sm md:text-base font-bold text-white bg-black/40 p-4 rounded-xl border border-white/5">
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1 text-lg">🎁</span>
+                  <span>En la compra de <strong className="text-accent">1 boleto</strong> llévate $10,000 pesos o envío.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1 text-lg">🎁</span>
+                  <span>En la compra de <strong className="text-accent">2 boletos</strong> llévate envío más $10,000 pesos.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1 text-lg">🎁</span>
+                  <span>En la compra de <strong className="text-accent">3 boletos</strong> llévate envío más $15,000 pesos.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-accent mt-1 text-lg">🎁</span>
+                  <span>En la compra de <strong className="text-accent">5 boletos</strong> llévate $15,000 más envío 🚚.</span>
+                </li>
+              </ul>
             </div>
 
             {/* 2. TEXTO DEL PREMIO */}
@@ -384,78 +409,6 @@ export default function Home() {
           </div>
           
           {/* ASISTENTE VIRTUAL ELIMINADO */}
-          {/* PAQUETES Y BONOS - NEW SECTION BASED ON COMPETITOR */}
-          <div className="w-full max-w-4xl mx-auto mb-10 z-10 relative">
-            <div className="glass-panel border-[#FFD700]/50 p-6 shadow-[0_0_20px_rgba(255,215,0,0.15)] bg-gradient-to-b from-[#1a1a1a] to-black rounded-xl text-center border-2 border-accent">
-              <h2 className="text-2xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-hover uppercase mb-2">
-                ▼ Precios Accesibles ▼
-              </h2>
-              <div className="bg-red-600 text-white font-bold inline-block px-4 py-1 rounded-full text-xs uppercase tracking-widest mb-6 shadow-[0_0_15px_rgba(220,38,38,0.8)]" style={{ animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}>
-                ¡Bonos válidos por 6 horas!
-              </div>
-
-              <div className="flex flex-col gap-3 mb-6">
-                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
-                  <div className="font-bold text-lg text-white">1 🎫 BOLETO</div>
-                  <div className="font-black text-accent text-xl">POR $11 MXN</div>
-                </div>
-                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
-                  <div className="font-bold text-lg text-white">2 🎫 BOLETOS</div>
-                  <div className="font-black text-accent text-xl">POR $22 MXN</div>
-                </div>
-                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
-                  <div className="font-bold text-lg text-white">3 🎫 BOLETOS</div>
-                  <div className="font-black text-accent text-xl">POR $33 MXN</div>
-                </div>
-                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
-                  <div className="font-bold text-lg text-white">5 🎫 BOLETOS</div>
-                  <div className="font-black text-accent text-xl">POR $55 MXN</div>
-                </div>
-                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
-                  <div className="font-bold text-lg text-white">10 🎫 BOLETOS</div>
-                  <div className="font-black text-accent text-xl">POR $110 MXN</div>
-                </div>
-                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
-                  <div className="font-bold text-lg text-white">25 🎫 BOLETOS</div>
-                  <div className="font-black text-accent text-xl">POR $275 MXN</div>
-                </div>
-                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
-                  <div className="font-bold text-xl text-white">50 🎫 BOLETOS</div>
-                  <div className="font-black text-accent text-2xl">POR $550 MXN</div>
-                </div>
-                <div className="bg-accent/20 border-2 border-accent p-3 rounded-lg flex justify-between items-center shadow-[0_0_15px_rgba(255,215,0,0.3)] transform hover:scale-105 transition-transform cursor-pointer" onClick={() => document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' })}>
-                  <div className="font-bold text-xl text-white">100 🎫 BOLETOS VIP</div>
-                  <div className="font-black text-accent text-2xl">POR $1,100 MXN</div>
-                </div>
-              </div>
-
-              <h3 className="text-xl font-black text-[#ff3333] uppercase mb-4 tracking-widest drop-shadow-[0_0_10px_rgba(255,51,51,0.5)]">
-                ▼ BONOS ACTIVOS ▼
-              </h3>
-              
-              <ul className="text-left space-y-4 text-sm md:text-base font-bold mb-6 text-white bg-black/40 p-4 rounded-xl border border-white/5">
-                <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1 text-lg">🎁</span>
-                  <span>En la compra de <strong className="text-accent">1 boleto</strong> llévate $10,000 pesos o envío.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1 text-lg">🎁</span>
-                  <span>En la compra de <strong className="text-accent">2 boletos</strong> llévate envío más $10,000 pesos.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1 text-lg">🎁</span>
-                  <span>En la compra de <strong className="text-accent">3 boletos</strong> llévate envío más $15,000 pesos.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1 text-lg">🎁</span>
-                  <span>En la compra de <strong className="text-accent">5 boletos</strong> llévate $15,000 más envío 🚚.</span>
-                </li>
-              </ul>
-              <p className="text-xs text-gray-400 font-bold uppercase tracking-widest border-t border-white/10 pt-4 mt-4 leading-relaxed">
-                👀 <strong className="text-white">OJO IMPORTANTE:</strong> COMPARTIR ESTE ÁLBUM DE ARRANQUE DURANTE LAS 6 HORAS DE APARTADO PARA APLICAR POR LOS BONOS ACTIVOS.
-              </p>
-            </div>
-          </div>
           
           <div id="grid-section" className="scroll-mt-10">
             <TicketGrid onSelectTicket={handleTicketSelect} />
@@ -580,7 +533,40 @@ export default function Home() {
         </section>
       )}
 
-
+      {/* 4. EL VIDEO PASÓ A SER PRUEBA SOCIAL AL FONDO */}
+      <section className="w-full max-w-4xl mx-auto px-4 mt-8 mb-8">
+        <h3 className="text-xl md:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-hover uppercase text-center mb-4">
+          Conoce tu Premio
+        </h3>
+        <div style={{ aspectRatio: '16/9', width: '100%', borderRadius: '16px', overflow: 'hidden', border: '2px solid #FFD700', boxShadow: '0 0 40px rgba(255,215,0,0.3)', backgroundColor: 'black', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', boxSizing: 'border-box' }}>
+          {videoUrl ? (
+            videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be") || videoUrl.includes("vimeo.com") ? (
+              <iframe 
+                src={videoUrl} 
+                style={{ width: '100%', height: '100%', border: 'none' }}
+                title="Video del Premio"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+              ></iframe>
+            ) : (
+              <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+                <video 
+                  id="main-promo-video-bottom"
+                  src={videoUrl} 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  controls 
+                  autoPlay 
+                  muted
+                  loop 
+                  playsInline
+                >
+                  Tu navegador no soporta videos.
+                </video>
+              </div>
+            )
+          ) : null}
+        </div>
+      </section>
 
       {/* PRUEBA SOCIAL / EVENTOS EXPRESS */}
       <section className="w-full max-w-6xl mx-auto px-4 mt-16 mb-8 text-center">
