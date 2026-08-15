@@ -595,8 +595,10 @@ export default function Home() {
         </section>
       )}
 
-      {/* 4. EL VIDEO PASÓ A SER PRUEBA SOCIAL AL FONDO */}
-      <section className="w-full max-w-4xl mx-auto px-4 mt-8 mb-8">
+      {step === "grid" && (
+        <>
+          {/* 4. EL VIDEO PASÓ A SER PRUEBA SOCIAL AL FONDO */}
+          <section className="w-full max-w-4xl mx-auto px-4 mt-8 mb-8">
         <h3 className="text-xl md:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-hover uppercase text-center mb-4">
           Conoce tu Premio
         </h3>
@@ -718,6 +720,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+        </>
+      )}
 
       {/* FAQ ACCORDION SECTION */}
       <footer className="w-full max-w-4xl mx-auto px-4 mt-12 mb-20">

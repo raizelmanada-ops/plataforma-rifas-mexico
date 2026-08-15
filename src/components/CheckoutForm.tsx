@@ -49,7 +49,8 @@ export default function CheckoutForm({ selectedTicket, onBack, onSuccess }: Chec
             type="text" 
             id="name"
             required
-            className="w-full p-5 h-16 text-xl font-bold bg-[#2a2a0a] text-white border-2 border-[#FFD700] rounded-xl placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-[#FFD700]/50 shadow-[inset_0_0_15px_rgba(255,215,0,0.1)] transition-all" 
+            className="w-full p-5 h-16 text-xl font-bold border-2 border-[#FFD700] rounded-xl placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-[#FFD700]/50 shadow-[inset_0_0_15px_rgba(255,215,0,0.1)] transition-all" 
+            style={{ backgroundColor: '#2a2a0a', color: 'white' }}
             placeholder="Ej. Carlos Vives"
             value={formData.name}
             onChange={e => setFormData({...formData, name: e.target.value})}
@@ -62,7 +63,8 @@ export default function CheckoutForm({ selectedTicket, onBack, onSuccess }: Chec
             type="tel" 
             id="phone"
             required
-            className="w-full p-5 h-16 text-xl font-bold bg-[#2a2a0a] text-white border-2 border-[#FFD700] rounded-xl placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-[#FFD700]/50 shadow-[inset_0_0_15px_rgba(255,215,0,0.1)] transition-all" 
+            className="w-full p-5 h-16 text-xl font-bold border-2 border-[#FFD700] rounded-xl placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-[#FFD700]/50 shadow-[inset_0_0_15px_rgba(255,215,0,0.1)] transition-all" 
+            style={{ backgroundColor: '#2a2a0a', color: 'white' }}
             placeholder="Ej. 300 123 4567"
             value={formData.phone}
             onChange={e => setFormData({...formData, phone: e.target.value})}
