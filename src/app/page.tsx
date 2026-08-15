@@ -483,17 +483,16 @@ export default function Home() {
           </div>
           
           {/* ASISTENTE VIRTUAL (NUEVO) */}
-          <div className="w-full max-w-3xl mx-auto px-4 mb-12 flex items-center md:items-end gap-4 relative z-10">
-            <div className="w-24 h-24 md:w-32 md:h-32 shrink-0 rounded-full overflow-hidden border-4 border-[#FFD700] shadow-[0_0_20px_rgba(255,215,0,0.5)] relative bg-black">
+          <div className="w-full max-w-3xl mx-auto px-4 mb-12 flex flex-col md:flex-row items-center md:items-start gap-4 relative z-10">
+            <div className="w-48 md:w-56 shrink-0 rounded-xl overflow-hidden border-2 border-[#FFD700] shadow-[0_0_20px_rgba(255,215,0,0.5)] bg-black relative">
               <video 
                 src="/chica%20loteria%20nacional.mp4" 
-                className="w-full h-full object-cover" 
-                autoPlay 
-                muted 
-                loop 
+                className="w-full h-auto object-cover" 
+                controls 
                 playsInline
+                preload="none"
+                poster="/asistente.jpg"
               />
-              <div className="absolute bottom-1 right-1 w-4 h-4 bg-success rounded-full border-2 border-black"></div>
             </div>
             <div className="bg-[#111] text-white p-4 md:p-5 rounded-2xl rounded-bl-none relative shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-[#FFD700]/30 flex-1">
               <div className="absolute -left-2 bottom-4 w-4 h-4 bg-[#111] border-l border-b border-[#FFD700]/30 transform rotate-45"></div>
