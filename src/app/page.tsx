@@ -483,16 +483,23 @@ export default function Home() {
           </div>
           
           {/* ASISTENTE VIRTUAL (NUEVO) */}
-          <div className="w-full max-w-3xl mx-auto px-4 mb-12 flex flex-col md:flex-row items-center md:items-start gap-4 relative z-10">
-            <div className="w-48 md:w-56 shrink-0 rounded-xl overflow-hidden border-2 border-[#FFD700] shadow-[0_0_20px_rgba(255,215,0,0.5)] bg-black relative">
+          <div className="w-full max-w-3xl mx-auto px-4 mb-12 flex flex-row items-center md:items-end gap-3 relative z-10">
+            <div className="w-28 h-40 md:w-36 md:h-52 shrink-0 rounded-2xl overflow-hidden border-2 border-[#FFD700] shadow-[0_0_20px_rgba(255,215,0,0.5)] bg-black relative cursor-pointer group" title="Toca para encender el audio">
               <video 
                 src="/chica%20loteria%20nacional.mp4" 
-                className="w-full h-auto object-cover" 
-                controls 
+                className="w-full h-full object-cover" 
+                autoPlay 
+                muted 
+                loop 
                 playsInline
-                preload="none"
-                poster="/asistente.jpg"
+                onClick={(e) => { e.currentTarget.muted = !e.currentTarget.muted; }}
               />
+              <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors pointer-events-none">
+                <div className="bg-black/60 p-2 rounded-full backdrop-blur-sm animate-pulse">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.536 8.464a5 5 0 010 7.072M17.536 6.464a7.5 7.5 0 010 11.072M12 18V6a2 2 0 00-3.414-1.414l-3.293 3.293H4a2 2 0 00-2 2v4a2 2 0 002 2h1.293l3.293 3.293A2 2 0 0012 18z"></path></svg>
+                </div>
+              </div>
+              <div className="absolute bottom-1 right-1 w-4 h-4 bg-success rounded-full border-2 border-black"></div>
             </div>
             <div className="bg-[#111] text-white p-4 md:p-5 rounded-2xl rounded-bl-none relative shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-[#FFD700]/30 flex-1">
               <div className="absolute -left-2 bottom-4 w-4 h-4 bg-[#111] border-l border-b border-[#FFD700]/30 transform rotate-45"></div>
