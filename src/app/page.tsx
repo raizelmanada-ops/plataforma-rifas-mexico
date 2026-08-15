@@ -271,46 +271,108 @@ export default function Home() {
             {/* Fondo decorativo premium */}
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#FFD700]/10 via-transparent to-transparent pointer-events-none"></div>
             
+            {/* INSIGNIA LEGAL */}
+            <div className="absolute top-4 left-0 right-0 flex justify-center z-20 pointer-events-none">
+              <div className="bg-black/80 border border-accent/50 text-accent font-bold px-4 py-1 rounded-full text-xs md:text-sm flex items-center gap-2 shadow-[0_0_15px_rgba(255,215,0,0.3)]">
+                <span className="text-base">✅</span> Dinámica basada en Lotería Nacional
+              </div>
+            </div>
+            
             {/* 1. MÁQUINA DE LA SUERTE (COMPRA RÁPIDA AL FRENTE) */}
-            <div className="w-full max-w-4xl mx-auto mb-10 z-10 relative mt-6">
+            <div className="w-full max-w-4xl mx-auto mb-10 z-10 relative mt-12">
               <h2 className="text-2xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-hover uppercase mb-6 drop-shadow-[0_0_10px_rgba(255,215,0,0.8)]">
                 🎰 MÁQUINA DE LA SUERTE 🎰<br/>
                 <span className="text-lg text-white font-bold">¡COMPRA RÁPIDA! TOCA TU PAQUETE 👇</span>
               </h2>
 
               <div className="flex flex-col gap-3 mb-6">
-                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => handleTicketSelect('1 Boleto (Máquina de la Suerte)', '')}>
-                  <div className="font-bold text-lg text-white">1 🎫 BOLETO</div>
-                  <div className="font-black text-accent text-xl">POR $11 MXN</div>
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer group" onClick={() => handleTicketSelect('1 Boleto (Máquina de la Suerte)', '')}>
+                  <div className="text-left">
+                    <div className="font-bold text-lg text-white group-hover:text-accent transition-colors">1 🎫 BOLETO</div>
+                    <div className="font-black text-accent text-xl">POR $11 MXN</div>
+                  </div>
+                  <button className="bg-accent text-black font-black px-4 py-2 rounded shadow-[0_0_15px_rgba(255,215,0,0.4)] group-hover:bg-[#e6c200] transition-colors pointer-events-none text-sm md:text-base">
+                    COMPRAR
+                  </button>
                 </div>
-                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => handleTicketSelect('2 Boletos (Máquina de la Suerte)', '')}>
-                  <div className="font-bold text-lg text-white">2 🎫 BOLETOS</div>
-                  <div className="font-black text-accent text-xl">POR $22 MXN</div>
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer group" onClick={() => handleTicketSelect('2 Boletos (Máquina de la Suerte)', '')}>
+                  <div className="text-left">
+                    <div className="font-bold text-lg text-white group-hover:text-accent transition-colors">2 🎫 BOLETOS</div>
+                    <div className="font-black text-accent text-xl">POR $22 MXN</div>
+                  </div>
+                  <button className="bg-accent text-black font-black px-4 py-2 rounded shadow-[0_0_15px_rgba(255,215,0,0.4)] group-hover:bg-[#e6c200] transition-colors pointer-events-none text-sm md:text-base">
+                    COMPRAR
+                  </button>
                 </div>
-                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => handleTicketSelect('3 Boletos (Máquina de la Suerte)', '')}>
-                  <div className="font-bold text-lg text-white">3 🎫 BOLETOS</div>
-                  <div className="font-black text-accent text-xl">POR $33 MXN</div>
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer group" onClick={() => handleTicketSelect('3 Boletos (Máquina de la Suerte)', '')}>
+                  <div className="text-left">
+                    <div className="font-bold text-lg text-white group-hover:text-accent transition-colors">3 🎫 BOLETOS</div>
+                    <div className="font-black text-accent text-xl">POR $33 MXN</div>
+                  </div>
+                  <button className="bg-accent text-black font-black px-4 py-2 rounded shadow-[0_0_15px_rgba(255,215,0,0.4)] group-hover:bg-[#e6c200] transition-colors pointer-events-none text-sm md:text-base">
+                    COMPRAR
+                  </button>
                 </div>
-                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => handleTicketSelect('5 Boletos (Máquina de la Suerte)', '')}>
-                  <div className="font-bold text-lg text-white">5 🎫 BOLETOS</div>
-                  <div className="font-black text-accent text-xl">POR $55 MXN</div>
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer group" onClick={() => handleTicketSelect('5 Boletos (Máquina de la Suerte)', '')}>
+                  <div className="text-left">
+                    <div className="font-bold text-lg text-white group-hover:text-accent transition-colors">5 🎫 BOLETOS</div>
+                    <div className="font-black text-accent text-xl">POR $55 MXN</div>
+                  </div>
+                  <button className="bg-accent text-black font-black px-4 py-2 rounded shadow-[0_0_15px_rgba(255,215,0,0.4)] group-hover:bg-[#e6c200] transition-colors pointer-events-none text-sm md:text-base">
+                    COMPRAR
+                  </button>
                 </div>
-                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => handleTicketSelect('10 Boletos (Máquina de la Suerte)', '')}>
-                  <div className="font-bold text-lg text-white">10 🎫 BOLETOS</div>
-                  <div className="font-black text-accent text-xl">POR $110 MXN</div>
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer group" onClick={() => handleTicketSelect('10 Boletos (Máquina de la Suerte)', '')}>
+                  <div className="text-left">
+                    <div className="font-bold text-lg text-white group-hover:text-accent transition-colors">10 🎫 BOLETOS</div>
+                    <div className="font-black text-accent text-xl">POR $110 MXN</div>
+                  </div>
+                  <button className="bg-accent text-black font-black px-4 py-2 rounded shadow-[0_0_15px_rgba(255,215,0,0.4)] group-hover:bg-[#e6c200] transition-colors pointer-events-none text-sm md:text-base">
+                    COMPRAR
+                  </button>
                 </div>
-                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => handleTicketSelect('25 Boletos (Máquina de la Suerte)', '')}>
-                  <div className="font-bold text-lg text-white">25 🎫 BOLETOS</div>
-                  <div className="font-black text-accent text-xl">POR $275 MXN</div>
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer group" onClick={() => handleTicketSelect('25 Boletos (Máquina de la Suerte)', '')}>
+                  <div className="text-left">
+                    <div className="font-bold text-lg text-white group-hover:text-accent transition-colors">25 🎫 BOLETOS</div>
+                    <div className="font-black text-accent text-xl">POR $275 MXN</div>
+                  </div>
+                  <button className="bg-accent text-black font-black px-4 py-2 rounded shadow-[0_0_15px_rgba(255,215,0,0.4)] group-hover:bg-[#e6c200] transition-colors pointer-events-none text-sm md:text-base">
+                    COMPRAR
+                  </button>
                 </div>
-                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer" onClick={() => handleTicketSelect('50 Boletos (Máquina de la Suerte)', '')}>
-                  <div className="font-bold text-xl text-white">50 🎫 BOLETOS</div>
-                  <div className="font-black text-accent text-2xl">POR $550 MXN</div>
+                <div className="bg-white/5 border border-white/10 p-3 rounded-lg flex justify-between items-center hover:bg-white/10 transition-colors cursor-pointer group" onClick={() => handleTicketSelect('50 Boletos (Máquina de la Suerte)', '')}>
+                  <div className="text-left">
+                    <div className="font-bold text-xl text-white group-hover:text-accent transition-colors">50 🎫 BOLETOS</div>
+                    <div className="font-black text-accent text-2xl">POR $550 MXN</div>
+                  </div>
+                  <button className="bg-accent text-black font-black px-5 py-3 rounded shadow-[0_0_20px_rgba(255,215,0,0.5)] group-hover:bg-[#e6c200] transition-colors pointer-events-none text-base md:text-lg">
+                    COMPRAR
+                  </button>
                 </div>
-                <div className="bg-accent/20 border-2 border-accent p-3 rounded-lg flex justify-between items-center shadow-[0_0_15px_rgba(255,215,0,0.3)] transform hover:scale-105 transition-transform cursor-pointer" onClick={() => handleTicketSelect('100 Boletos VIP (Máquina de la Suerte)', '')}>
-                  <div className="font-bold text-xl text-white">100 🎫 BOLETOS VIP</div>
-                  <div className="font-black text-accent text-2xl">POR $1,100 MXN</div>
+                <div className="bg-accent/20 border-2 border-accent p-3 rounded-lg flex justify-between items-center shadow-[0_0_15px_rgba(255,215,0,0.3)] transform hover:scale-105 transition-transform cursor-pointer group" onClick={() => handleTicketSelect('100 Boletos VIP (Máquina de la Suerte)', '')}>
+                  <div className="text-left">
+                    <div className="font-bold text-xl text-white group-hover:text-accent transition-colors">100 🎫 BOLETOS VIP</div>
+                    <div className="font-black text-accent text-2xl">POR $1,100 MXN</div>
+                  </div>
+                  <button className="bg-accent text-black font-black px-5 py-3 rounded shadow-[0_0_25px_rgba(255,215,0,0.6)] group-hover:bg-[#e6c200] transition-colors pointer-events-none text-base md:text-lg">
+                    COMPRAR
+                  </button>
                 </div>
+              </div>
+
+              {/* SELLOS DE CONFIANZA INYECTADOS */}
+              <div className="mt-8 mb-8 bg-black/60 border border-success/30 rounded-xl p-4 shadow-[0_0_20px_rgba(0,255,0,0.1)]">
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <svg className="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                  <span className="text-success font-bold text-sm uppercase tracking-widest">Pagos 100% Seguros</span>
+                </div>
+                <div className="flex flex-wrap justify-center items-center gap-6 opacity-80">
+                  <span className="text-white font-black text-xl flex items-center italic">OXXO</span>
+                  <span className="text-white font-black text-xl flex items-center italic">VISA</span>
+                  <span className="text-white font-black text-xl flex items-center italic">MASTERCARD</span>
+                  <span className="text-white font-black text-xl flex items-center">SPEI</span>
+                </div>
+                <p className="text-[10px] text-gray-400 mt-4 uppercase font-bold tracking-widest">Plataforma oficial respaldada por Hotmart</p>
               </div>
 
               <h3 className="text-xl font-black text-[#ff3333] uppercase mb-4 tracking-widest drop-shadow-[0_0_10px_rgba(255,51,51,0.5)]">
