@@ -132,7 +132,19 @@ export default function Home() {
   }, [step]);
 
   const handleTicketSelect = (ticket: string, code: string) => {
-    setSelectedTicket(ticket);
+    // Generar números si es un paquete rápido ("10 Boletos (Máquina de la Suerte)")
+    const match = ticket.match(/^(\d+)\s+Boleto/i);
+    if (match && ticket.includes("Máquina de la Suerte")) {
+      const count = parseInt(match[1], 10);
+      const nums: string[] = [];
+      while(nums.length < count) {
+        const rand = Math.floor(Math.random() * 60000).toString().padStart(5, '0');
+        if (!nums.includes(rand)) nums.push(rand);
+      }
+      setSelectedTicket(`${nums.join(', ')} (${count} Boletos)`);
+    } else {
+      setSelectedTicket(ticket);
+    }
     setSelectedCode(code);
     setStep("checkout");
   };
@@ -485,8 +497,10 @@ export default function Home() {
           </button>
           
           <div className="bg-black/60 p-6 rounded-xl border border-accent/30 text-center mb-8 shadow-[0_0_30px_rgba(255,215,0,0.1)]">
-            <p className="text-gray-400 text-sm uppercase tracking-widest font-bold">Número Seleccionado</p>
-            <p className="text-7xl font-black text-accent mt-2 drop-shadow-[0_0_15px_rgba(255,215,0,0.4)]">{selectedTicket}</p>
+            <p className="text-gray-400 text-sm uppercase tracking-widest font-bold">Números de la Suerte</p>
+            <p className={`font-black text-accent mt-2 drop-shadow-[0_0_15px_rgba(255,215,0,0.4)] ${selectedTicket && selectedTicket.length > 15 ? 'text-2xl md:text-3xl break-words' : 'text-5xl md:text-7xl'}`}>
+              {selectedTicket}
+            </p>
             <p className="text-success font-bold mt-2 animate-pulse">¡Este número está libre!</p>
             <p className="text-sm text-gray-300 mt-1 text-center">Por favor ingresa tus datos a continuación para continuar al pago seguro.</p>
           </div>
@@ -724,8 +738,10 @@ export default function Home() {
         </>
       )}
 
-      {/* FAQ ACCORDION SECTION */}
-      <footer className="w-full max-w-4xl mx-auto px-4 mt-12 mb-20">
+      {step === "grid" && (
+        <>
+          {/* FAQ ACCORDION SECTION */}
+          <footer className="w-full max-w-4xl mx-auto px-4 mt-12 mb-20">
         <div className="text-center mb-8">
           <h3 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-hover uppercase">Preguntas Frecuentes</h3>
           <p className="text-gray-400 text-sm mt-2">Haz clic para resolver tus dudas</p>
@@ -789,6 +805,8 @@ export default function Home() {
           </p>
         </div>
       </footer>
+      </>
+      )}
 
       <a 
         id="whatsapp-btn"
