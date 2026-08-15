@@ -304,7 +304,6 @@ export default function Home() {
                   <span className="text-white font-black text-xl italic">MASTERCARD</span>
                   <span className="text-white font-black text-xl">SPEI</span>
                 </div>
-                <p className="text-[10px] text-gray-400 mt-4 uppercase font-bold tracking-widest">Plataforma oficial respaldada por Hotmart</p>
               </div>
 
               <h3 className="text-xl font-black text-[#ff3333] uppercase mb-4 tracking-widest drop-shadow-[0_0_10px_rgba(255,51,51,0.5)]">
