@@ -43,8 +43,10 @@ export default function Home() {
   const [nequiName, setNequiName] = useState("");
   const [qrUrl, setQrUrl] = useState("");
   const [isMuted, setIsMuted] = useState(true);
+  const [isAssistantMuted, setIsAssistantMuted] = useState(true);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+  const assistantVideoRef = useRef<HTMLVideoElement | null>(null);
 
   // Carrusel Hero
   const [heroImageIndex, setHeroImageIndex] = useState(0);
@@ -406,18 +408,36 @@ export default function Home() {
             {/* Contenedor del Video */}
             <div 
               style={{ width: '140px', height: '220px', minWidth: '140px', maxWidth: '140px', borderRadius: '16px', overflow: 'hidden', border: '2px solid #FFD700', backgroundColor: 'black', position: 'relative', cursor: 'pointer', boxShadow: '0 0 20px rgba(255,215,0,0.5)', transform: 'translateZ(0)' }}
-              title="Toca para encender el audio"
+              title={isAssistantMuted ? "Toca para encender el audio" : "Toca para silenciar"}
+              onClick={() => {
+                if (assistantVideoRef.current) {
+                  const newMutedState = !assistantVideoRef.current.muted;
+                  assistantVideoRef.current.muted = newMutedState;
+                  setIsAssistantMuted(newMutedState);
+                }
+              }}
             >
               <video 
+                ref={assistantVideoRef}
                 src="/video_asistente.mp4" 
                 style={{ width: '100%', height: '100%', objectFit: 'cover', maxWidth: '100%', display: 'block' }}
                 autoPlay 
                 muted 
                 loop 
                 playsInline
-                onClick={(e) => { e.currentTarget.muted = !e.currentTarget.muted; }}
               />
-              <div style={{ position: 'absolute', bottom: '4px', right: '4px', width: '16px', height: '16px', backgroundColor: '#00ff66', borderRadius: '50%', border: '2px solid black' }}></div>
+              
+              {/* Botón de Volumen Visual */}
+              <div style={{ position: 'absolute', bottom: '8px', left: '8px', backgroundColor: 'rgba(0,0,0,0.6)', borderRadius: '50%', padding: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(4px)', border: '1px solid rgba(255,255,255,0.2)' }}>
+                {isAssistantMuted ? (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+                ) : (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFD700" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+                )}
+              </div>
+              
+              {/* Indicador de Línea (Verde = On) */}
+              <div style={{ position: 'absolute', top: '8px', right: '8px', width: '12px', height: '12px', backgroundColor: '#00ff66', borderRadius: '50%', border: '2px solid black', boxShadow: '0 0 10px #00ff66', animation: 'pulse 2s infinite' }}></div>
             </div>
             
             {/* Globo de Chat */}
