@@ -486,7 +486,7 @@ export default function Home() {
           <div className="w-full max-w-3xl mx-auto px-4 mb-12 flex flex-row items-center md:items-end gap-3 relative z-10">
             <div className="w-28 h-40 md:w-36 md:h-52 shrink-0 rounded-2xl overflow-hidden border-2 border-[#FFD700] shadow-[0_0_20px_rgba(255,215,0,0.5)] bg-black relative cursor-pointer group" title="Toca para encender el audio">
               <video 
-                src="/chica%20loteria%20nacional.mp4" 
+                src="/video_asistente.mp4" 
                 className="w-full h-full object-cover" 
                 autoPlay 
                 muted 
