@@ -272,7 +272,46 @@ export default function Home() {
             {/* Fondo decorativo premium */}
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#FFD700]/10 via-transparent to-transparent pointer-events-none"></div>
             
-            {/* VIDEO ELIMINADO PARA EVITAR CONFLICTOS DE DERECHOS */}
+            {/* 1. EL VIDEO ARRIBA DE TODO */}
+            <div style={{ width: '100%', maxWidth: '896px', margin: '0 auto 32px auto', position: 'relative', zIndex: 10, boxSizing: 'border-box' }}>
+              <div style={{ aspectRatio: '16/9', width: '100%', borderRadius: '16px', overflow: 'hidden', border: '2px solid #FFD700', boxShadow: '0 0 40px rgba(255,215,0,0.3)', backgroundColor: 'black', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', boxSizing: 'border-box' }}>
+                {videoUrl ? (
+                  videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be") || videoUrl.includes("vimeo.com") ? (
+                    <iframe 
+                      src={videoUrl} 
+                      style={{ width: '100%', height: '100%', border: 'none' }}
+                      title="Video del Premio"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowFullScreen
+                    ></iframe>
+                  ) : (
+                    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+                      <video 
+                        id="main-promo-video"
+                        src={videoUrl} 
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        controls 
+                        autoPlay 
+                        muted
+                        loop 
+                        playsInline
+                      >
+                        Tu navegador no soporta videos.
+                      </video>
+                    </div>
+                  )
+                ) : (
+                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.4)', opacity: 0.8 }}>
+                    <div style={{ width: '80px', height: '80px', background: 'linear-gradient(to top right, #FFD700, #FDB931)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', boxShadow: '0 0 30px rgba(255,215,0,0.6)' }}>
+                      <svg width="40" height="40" style={{ color: 'black', marginLeft: '8px' }} fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <p style={{ color: '#FFD700', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '1.125rem', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>VIDEO PUBLICITARIO AQUÍ</p>
+                  </div>
+                )}
+              </div>
+            </div>
 
             {/* 2. TEXTO DEL PREMIO */}
             <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '16px', color: 'white', zIndex: 10, position: 'relative', wordWrap: 'break-word', overflowWrap: 'break-word', padding: '0 8px' }}>
