@@ -483,8 +483,12 @@ export default function Home() {
           </div>
           
           {/* ASISTENTE VIRTUAL (NUEVO) */}
-          <div className="w-full max-w-3xl mx-auto px-4 mb-12 flex flex-row items-center md:items-end gap-3 relative z-10">
-            <div className="w-28 h-40 md:w-36 md:h-52 shrink-0 rounded-2xl overflow-hidden border-2 border-[#FFD700] shadow-[0_0_20px_rgba(255,215,0,0.5)] bg-black relative cursor-pointer group" title="Toca para encender el audio">
+          <div className="w-full max-w-3xl mx-auto px-4 mb-12 flex flex-row items-center gap-4 relative z-10">
+            <div 
+              style={{ width: '140px', height: '220px', minWidth: '140px', maxWidth: '140px' }}
+              className="shrink-0 rounded-2xl overflow-hidden border-2 border-[#FFD700] shadow-[0_0_20px_rgba(255,215,0,0.5)] bg-black relative cursor-pointer group" 
+              title="Toca para encender el audio"
+            >
               <video 
                 src="/video_asistente.mp4" 
                 className="w-full h-full object-cover" 
@@ -501,13 +505,15 @@ export default function Home() {
               </div>
               <div className="absolute bottom-1 right-1 w-4 h-4 bg-success rounded-full border-2 border-black"></div>
             </div>
-            <div className="bg-[#111] text-white p-4 md:p-5 rounded-2xl rounded-bl-none relative shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-[#FFD700]/30 flex-1">
+            
+            <div style={{ flex: 1 }} className="bg-[#111] text-white p-4 rounded-2xl rounded-bl-none relative shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-[#FFD700]/30">
               <div className="absolute -left-2 bottom-4 w-4 h-4 bg-[#111] border-l border-b border-[#FFD700]/30 transform rotate-45"></div>
-              <p className="font-bold text-sm md:text-base leading-relaxed text-gray-200">
-                <span className="text-[#00ff66]">1.</span> Elige tu paquete o tus números de la suerte.<br/>
-                <span className="text-[#00ff66]">2.</span> Llena tus datos y da clic en Pagar Ahora.<br/>
-                <span className="text-[#00ff66]">3.</span> Elige tu medio (OXXO, Tarjeta, etc.). Al pagar, tus boletos oficiales llegarán directo a tu WhatsApp. <span className="text-[#FFD700]">¡Hazlo ahora! 👇</span>
-              </p>
+              <div className="font-bold text-xs md:text-sm leading-relaxed text-gray-200 space-y-1">
+                <p><span className="text-[#00ff66]">1.</span> Elige tu paquete o tus números de la suerte.</p>
+                <p><span className="text-[#00ff66]">2.</span> Llena tus datos y da clic en Pagar Ahora.</p>
+                <p><span className="text-[#00ff66]">3.</span> Elige tu medio (OXXO, Tarjeta). Al pagar, tus boletos oficiales llegarán directo a tu WhatsApp.</p>
+                <p className="text-[#FFD700] font-black mt-2">¡Hazlo ahora! 👇</p>
+              </div>
             </div>
           </div>
 
