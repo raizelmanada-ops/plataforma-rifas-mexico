@@ -483,36 +483,33 @@ export default function Home() {
           </div>
           
           {/* ASISTENTE VIRTUAL (NUEVO) */}
-          <div className="w-full max-w-3xl mx-auto px-4 mb-12 flex flex-row items-center gap-4 relative z-10">
+          <div style={{ width: '100%', maxWidth: '768px', margin: '0 auto 48px auto', padding: '0 16px', display: 'flex', alignItems: 'center', gap: '16px', position: 'relative', zIndex: 10, boxSizing: 'border-box' }}>
+            
+            {/* Contenedor del Video */}
             <div 
-              style={{ width: '140px', height: '220px', minWidth: '140px', maxWidth: '140px' }}
-              className="shrink-0 rounded-2xl overflow-hidden border-2 border-[#FFD700] shadow-[0_0_20px_rgba(255,215,0,0.5)] bg-black relative cursor-pointer group" 
+              style={{ width: '140px', height: '220px', minWidth: '140px', maxWidth: '140px', borderRadius: '16px', overflow: 'hidden', border: '2px solid #FFD700', backgroundColor: 'black', position: 'relative', cursor: 'pointer', boxShadow: '0 0 20px rgba(255,215,0,0.5)', transform: 'translateZ(0)' }}
               title="Toca para encender el audio"
             >
               <video 
                 src="/video_asistente.mp4" 
-                className="w-full h-full object-cover" 
+                style={{ width: '100%', height: '100%', objectFit: 'cover', maxWidth: '100%', display: 'block' }}
                 autoPlay 
                 muted 
                 loop 
                 playsInline
                 onClick={(e) => { e.currentTarget.muted = !e.currentTarget.muted; }}
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors pointer-events-none">
-                <div className="bg-black/60 p-2 rounded-full backdrop-blur-sm animate-pulse">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.536 8.464a5 5 0 010 7.072M17.536 6.464a7.5 7.5 0 010 11.072M12 18V6a2 2 0 00-3.414-1.414l-3.293 3.293H4a2 2 0 00-2 2v4a2 2 0 002 2h1.293l3.293 3.293A2 2 0 0012 18z"></path></svg>
-                </div>
-              </div>
-              <div className="absolute bottom-1 right-1 w-4 h-4 bg-success rounded-full border-2 border-black"></div>
+              <div style={{ position: 'absolute', bottom: '4px', right: '4px', width: '16px', height: '16px', backgroundColor: '#00ff66', borderRadius: '50%', border: '2px solid black' }}></div>
             </div>
             
-            <div style={{ flex: 1 }} className="bg-[#111] text-white p-4 rounded-2xl rounded-bl-none relative shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-[#FFD700]/30">
-              <div className="absolute -left-2 bottom-4 w-4 h-4 bg-[#111] border-l border-b border-[#FFD700]/30 transform rotate-45"></div>
-              <div className="font-bold text-xs md:text-sm leading-relaxed text-gray-200 space-y-1">
-                <p><span className="text-[#00ff66]">1.</span> Elige tu paquete o tus números de la suerte.</p>
-                <p><span className="text-[#00ff66]">2.</span> Llena tus datos y da clic en Pagar Ahora.</p>
-                <p><span className="text-[#00ff66]">3.</span> Elige tu medio (OXXO, Tarjeta). Al pagar, tus boletos oficiales llegarán directo a tu WhatsApp.</p>
-                <p className="text-[#FFD700] font-black mt-2">¡Hazlo ahora! 👇</p>
+            {/* Globo de Chat */}
+            <div style={{ flex: 1, backgroundColor: '#111111', color: 'white', padding: '16px', borderRadius: '16px', borderBottomLeftRadius: '0', border: '1px solid rgba(255,215,0,0.3)', position: 'relative', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
+              <div style={{ position: 'absolute', left: '-8px', bottom: '16px', width: '16px', height: '16px', backgroundColor: '#111111', borderLeft: '1px solid rgba(255,215,0,0.3)', borderBottom: '1px solid rgba(255,215,0,0.3)', transform: 'rotate(45deg)' }}></div>
+              <div style={{ fontWeight: 'bold', fontSize: '14px', lineHeight: '1.5', color: '#e5e7eb' }}>
+                <p style={{ marginBottom: '4px' }}><span style={{ color: '#00ff66' }}>1.</span> Elige tu paquete o tus números de la suerte.</p>
+                <p style={{ marginBottom: '4px' }}><span style={{ color: '#00ff66' }}>2.</span> Llena tus datos y da clic en Pagar Ahora.</p>
+                <p style={{ marginBottom: '4px' }}><span style={{ color: '#00ff66' }}>3.</span> Elige tu medio (OXXO, Tarjeta). Al pagar, tus boletos oficiales llegarán directo a tu WhatsApp.</p>
+                <p style={{ color: '#FFD700', fontWeight: '900', marginTop: '8px' }}>¡Hazlo ahora! 👇</p>
               </div>
             </div>
           </div>
