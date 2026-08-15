@@ -266,6 +266,9 @@ export default function Home() {
             <h2 style={{ fontSize: '1.8rem', fontWeight: '900', color: 'white', textTransform: 'uppercase', textShadow: '0 2px 10px rgba(0,0,0,1), 0 0 20px rgba(0,0,0,0.8)', margin: 0, lineHeight: 1.2 }}>
               GMC Sierra + $20,000 MXN
             </h2>
+            <p style={{ color: '#FFD700', fontSize: '1.2rem', fontWeight: 'bold', marginTop: '12px', textShadow: '0 2px 4px rgba(0,0,0,0.8)', textTransform: 'uppercase' }}>
+              Juega el: {formattedDate}
+            </p>
             <br/>
             <button 
               onClick={() => {
