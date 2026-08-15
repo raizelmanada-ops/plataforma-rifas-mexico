@@ -43,42 +43,29 @@ export default function CheckoutForm({ selectedTicket, onBack, onSuccess }: Chec
       </div>
       
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <div className="input-group">
-          <label className="block text-[#FFD700] font-black text-lg mb-2 uppercase tracking-wide" htmlFor="name">👤 Nombre y Apellido *</label>
+        <div className="input-group mb-4">
+          <label className="block text-[#FFD700] font-black text-xl mb-3 uppercase tracking-wide" htmlFor="name">👤 Nombre Completo *</label>
           <input 
             type="text" 
             id="name"
             required
-            className="w-full p-4 text-lg font-bold bg-[#2a2a0a] text-white border-2 border-[#FFD700] rounded-xl placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-[#FFD700]/50 shadow-[inset_0_0_15px_rgba(255,215,0,0.1)] transition-all" 
+            className="w-full p-5 h-16 text-xl font-bold bg-[#2a2a0a] text-white border-2 border-[#FFD700] rounded-xl placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-[#FFD700]/50 shadow-[inset_0_0_15px_rgba(255,215,0,0.1)] transition-all" 
             placeholder="Ej. Carlos Vives"
             value={formData.name}
             onChange={e => setFormData({...formData, name: e.target.value})}
           />
         </div>
         
-        <div className="input-group">
-          <label className="block text-[#FFD700] font-black text-lg mb-2 uppercase tracking-wide" htmlFor="phone">📱 Celular (WhatsApp) *</label>
+        <div className="input-group mb-6">
+          <label className="block text-[#FFD700] font-black text-xl mb-3 uppercase tracking-wide" htmlFor="phone">📱 Celular (WhatsApp) *</label>
           <input 
             type="tel" 
             id="phone"
             required
-            className="w-full p-4 text-lg font-bold bg-[#2a2a0a] text-white border-2 border-[#FFD700] rounded-xl placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-[#FFD700]/50 shadow-[inset_0_0_15px_rgba(255,215,0,0.1)] transition-all" 
+            className="w-full p-5 h-16 text-xl font-bold bg-[#2a2a0a] text-white border-2 border-[#FFD700] rounded-xl placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-[#FFD700]/50 shadow-[inset_0_0_15px_rgba(255,215,0,0.1)] transition-all" 
             placeholder="Ej. 300 123 4567"
             value={formData.phone}
             onChange={e => setFormData({...formData, phone: e.target.value})}
-          />
-        </div>
-        
-        <div className="input-group">
-          <label className="block text-[#FFD700] font-black text-lg mb-2 uppercase tracking-wide" htmlFor="idNumber">💳 CURP o INE *</label>
-          <input 
-            type="text" 
-            id="idNumber"
-            required
-            className="w-full p-4 text-lg font-bold bg-[#2a2a0a] text-white border-2 border-[#FFD700] rounded-xl placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-[#FFD700]/50 shadow-[inset_0_0_15px_rgba(255,215,0,0.1)] transition-all" 
-            placeholder="Ej. ABCD1234567890"
-            value={formData.idNumber}
-            onChange={e => setFormData({...formData, idNumber: e.target.value})}
           />
         </div>
         
