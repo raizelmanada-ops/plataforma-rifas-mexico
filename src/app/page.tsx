@@ -49,12 +49,10 @@ export default function Home() {
   // Carrusel Hero
   const [heroImageIndex, setHeroImageIndex] = useState(0);
   const heroImages = [
-    "/sierra-1.jpg",
     "/sierra-2.jpg",
     "/sierra-3.jpg",
     "/sierra-4.jpg",
-    "/sierra-5.jpg",
-    "/sierra-6.jpg"
+    "/sierra-5.jpg"
   ];
 
   useEffect(() => {
