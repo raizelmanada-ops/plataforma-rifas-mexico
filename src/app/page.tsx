@@ -482,8 +482,24 @@ export default function Home() {
             </div>
           </div>
           
-          {/* ASISTENTE VIRTUAL ELIMINADO */}
-          
+          {/* ASISTENTE VIRTUAL (NUEVO) */}
+          <div className="w-full max-w-3xl mx-auto px-4 mb-12 flex items-center md:items-end gap-4 relative z-10">
+            <div className="w-24 h-24 md:w-32 md:h-32 shrink-0 rounded-full overflow-hidden border-4 border-[#FFD700] shadow-[0_0_20px_rgba(255,215,0,0.5)] relative">
+              <img src="/asistente.jpg" alt="Asistente Josielí" className="w-full h-full object-cover" />
+              <div className="absolute bottom-1 right-1 w-4 h-4 bg-success rounded-full border-2 border-black"></div>
+            </div>
+            <div className="bg-[#111] text-white p-4 md:p-5 rounded-2xl rounded-bl-none relative shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-[#FFD700]/30 flex-1">
+              <div className="absolute -left-2 bottom-4 w-4 h-4 bg-[#111] border-l border-b border-[#FFD700]/30 transform rotate-45"></div>
+              <p className="font-bold text-sm md:text-base leading-relaxed text-gray-200">
+                <span className="text-[#FFD700] font-black text-lg">¡Hola! 👋</span> Participar es muy fácil:<br/>
+                <span className="text-[#00ff66]">1.</span> Toca tu paquete arriba o selecciona tus números abajo.<br/>
+                <span className="text-[#00ff66]">2.</span> Llena tus datos de contacto en la siguiente pantalla.<br/>
+                <span className="text-[#00ff66]">3.</span> Da clic en <strong>PAGAR AHORA</strong> y elige tu método de pago 100% seguro (OXXO, SPEI o Tarjeta).<br/>
+                <span className="text-gray-400 italic text-xs mt-2 block">Cualquier duda, toca el botón de WhatsApp abajo. 👇</span>
+              </p>
+            </div>
+          </div>
+
           <div id="grid-section" className="scroll-mt-10">
             <TicketGrid onSelectTicket={handleTicketSelect} />
           </div>
