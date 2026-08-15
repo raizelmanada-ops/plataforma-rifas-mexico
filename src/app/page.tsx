@@ -291,7 +291,7 @@ export default function Home() {
                     <div className="font-bold text-lg text-white group-hover:text-accent transition-colors">1 🎫 BOLETO</div>
                     <div className="font-black text-accent text-xl">POR $11 MXN</div>
                   </div>
-                  <button className="bg-accent text-black font-black px-4 py-2 rounded shadow-[0_0_15px_rgba(255,215,0,0.4)] group-hover:bg-[#e6c200] transition-colors pointer-events-none text-sm md:text-base">
+                  <button className="font-black px-4 py-2 rounded shadow-[0_0_15px_rgba(255,215,0,0.4)] pointer-events-none text-sm md:text-base" style={{ backgroundColor: '#FFD700', color: 'black' }}>
                     COMPRAR
                   </button>
                 </div>
@@ -300,7 +300,7 @@ export default function Home() {
                     <div className="font-bold text-lg text-white group-hover:text-accent transition-colors">2 🎫 BOLETOS</div>
                     <div className="font-black text-accent text-xl">POR $22 MXN</div>
                   </div>
-                  <button className="bg-accent text-black font-black px-4 py-2 rounded shadow-[0_0_15px_rgba(255,215,0,0.4)] group-hover:bg-[#e6c200] transition-colors pointer-events-none text-sm md:text-base">
+                  <button className="font-black px-4 py-2 rounded shadow-[0_0_15px_rgba(255,215,0,0.4)] pointer-events-none text-sm md:text-base" style={{ backgroundColor: '#FFD700', color: 'black' }}>
                     COMPRAR
                   </button>
                 </div>
@@ -309,7 +309,7 @@ export default function Home() {
                     <div className="font-bold text-lg text-white group-hover:text-accent transition-colors">3 🎫 BOLETOS</div>
                     <div className="font-black text-accent text-xl">POR $33 MXN</div>
                   </div>
-                  <button className="bg-accent text-black font-black px-4 py-2 rounded shadow-[0_0_15px_rgba(255,215,0,0.4)] group-hover:bg-[#e6c200] transition-colors pointer-events-none text-sm md:text-base">
+                  <button className="font-black px-4 py-2 rounded shadow-[0_0_15px_rgba(255,215,0,0.4)] pointer-events-none text-sm md:text-base" style={{ backgroundColor: '#FFD700', color: 'black' }}>
                     COMPRAR
                   </button>
                 </div>
@@ -318,7 +318,7 @@ export default function Home() {
                     <div className="font-bold text-lg text-white group-hover:text-accent transition-colors">5 🎫 BOLETOS</div>
                     <div className="font-black text-accent text-xl">POR $55 MXN</div>
                   </div>
-                  <button className="bg-accent text-black font-black px-4 py-2 rounded shadow-[0_0_15px_rgba(255,215,0,0.4)] group-hover:bg-[#e6c200] transition-colors pointer-events-none text-sm md:text-base">
+                  <button className="font-black px-4 py-2 rounded shadow-[0_0_15px_rgba(255,215,0,0.4)] pointer-events-none text-sm md:text-base" style={{ backgroundColor: '#FFD700', color: 'black' }}>
                     COMPRAR
                   </button>
                 </div>
@@ -327,7 +327,7 @@ export default function Home() {
                     <div className="font-bold text-lg text-white group-hover:text-accent transition-colors">10 🎫 BOLETOS</div>
                     <div className="font-black text-accent text-xl">POR $110 MXN</div>
                   </div>
-                  <button className="bg-accent text-black font-black px-4 py-2 rounded shadow-[0_0_15px_rgba(255,215,0,0.4)] group-hover:bg-[#e6c200] transition-colors pointer-events-none text-sm md:text-base">
+                  <button className="font-black px-4 py-2 rounded shadow-[0_0_15px_rgba(255,215,0,0.4)] pointer-events-none text-sm md:text-base" style={{ backgroundColor: '#FFD700', color: 'black' }}>
                     COMPRAR
                   </button>
                 </div>
@@ -336,7 +336,7 @@ export default function Home() {
                     <div className="font-bold text-lg text-white group-hover:text-accent transition-colors">25 🎫 BOLETOS</div>
                     <div className="font-black text-accent text-xl">POR $275 MXN</div>
                   </div>
-                  <button className="bg-accent text-black font-black px-4 py-2 rounded shadow-[0_0_15px_rgba(255,215,0,0.4)] group-hover:bg-[#e6c200] transition-colors pointer-events-none text-sm md:text-base">
+                  <button className="font-black px-4 py-2 rounded shadow-[0_0_15px_rgba(255,215,0,0.4)] pointer-events-none text-sm md:text-base" style={{ backgroundColor: '#FFD700', color: 'black' }}>
                     COMPRAR
                   </button>
                 </div>
@@ -345,7 +345,7 @@ export default function Home() {
                     <div className="font-bold text-xl text-white group-hover:text-accent transition-colors">50 🎫 BOLETOS</div>
                     <div className="font-black text-accent text-2xl">POR $550 MXN</div>
                   </div>
-                  <button className="bg-accent text-black font-black px-5 py-3 rounded shadow-[0_0_20px_rgba(255,215,0,0.5)] group-hover:bg-[#e6c200] transition-colors pointer-events-none text-base md:text-lg">
+                  <button className="font-black px-5 py-3 rounded shadow-[0_0_20px_rgba(255,215,0,0.5)] pointer-events-none text-base md:text-lg" style={{ backgroundColor: '#FFD700', color: 'black' }}>
                     COMPRAR
                   </button>
                 </div>
@@ -354,7 +354,7 @@ export default function Home() {
                     <div className="font-bold text-xl text-white group-hover:text-accent transition-colors">100 🎫 BOLETOS VIP</div>
                     <div className="font-black text-accent text-2xl">POR $1,100 MXN</div>
                   </div>
-                  <button className="bg-accent text-black font-black px-5 py-3 rounded shadow-[0_0_25px_rgba(255,215,0,0.6)] group-hover:bg-[#e6c200] transition-colors pointer-events-none text-base md:text-lg">
+                  <button className="font-black px-5 py-3 rounded shadow-[0_0_25px_rgba(255,215,0,0.6)] pointer-events-none text-base md:text-lg" style={{ backgroundColor: '#FFD700', color: 'black' }}>
                     COMPRAR
                   </button>
                 </div>
@@ -366,11 +366,11 @@ export default function Home() {
                   <svg width="24" height="24" className="text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{minWidth: '24px', minHeight: '24px'}}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                   <span className="text-success font-bold text-sm uppercase tracking-widest">Pagos 100% Seguros</span>
                 </div>
-                <div className="flex flex-wrap justify-center items-center gap-6 opacity-80">
-                  <span className="text-white font-black text-xl flex items-center italic">OXXO</span>
-                  <span className="text-white font-black text-xl flex items-center italic">VISA</span>
-                  <span className="text-white font-black text-xl flex items-center italic">MASTERCARD</span>
-                  <span className="text-white font-black text-xl flex items-center">SPEI</span>
+                <div className="flex flex-wrap justify-center items-center opacity-80" style={{ gap: '1.5rem' }}>
+                  <span className="text-white font-black text-xl italic">OXXO</span>
+                  <span className="text-white font-black text-xl italic">VISA</span>
+                  <span className="text-white font-black text-xl italic">MASTERCARD</span>
+                  <span className="text-white font-black text-xl">SPEI</span>
                 </div>
                 <p className="text-[10px] text-gray-400 mt-4 uppercase font-bold tracking-widest">Plataforma oficial respaldada por Hotmart</p>
               </div>
