@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import TicketGrid from "@/components/TicketGrid";
 import CheckoutForm from "@/components/CheckoutForm";
+import SocialProof from "./components/SocialProof";
 
 export default function Home() {
   const [timeLeft, setTimeLeft] = useState({ days: 3, hours: 14, minutes: 22, seconds: 59 });
@@ -269,6 +270,16 @@ export default function Home() {
             <p style={{ color: '#FFD700', fontSize: '1.2rem', fontWeight: 'bold', marginTop: '12px', textShadow: '0 2px 4px rgba(0,0,0,0.8)', textTransform: 'uppercase' }}>
               Juega el: {formattedDate}
             </p>
+            <div style={{ marginTop: '12px', marginBottom: '8px', backgroundColor: 'rgba(0,0,0,0.7)', padding: '8px 16px', borderRadius: '12px', border: '1px solid rgba(255,215,0,0.4)', display: 'inline-block', maxWidth: '320px', width: '100%', pointerEvents: 'auto' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px', fontSize: '0.85rem', fontWeight: 'bold', color: 'white' }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><span style={{ color: '#ff3333' }}>🔥</span> Boletos Vendidos</span>
+                <span style={{ color: '#FFD700' }}>87%</span>
+              </div>
+              <div style={{ width: '100%', backgroundColor: 'rgba(255,255,255,0.2)', height: '10px', borderRadius: '5px', overflow: 'hidden' }}>
+                <div style={{ width: '87%', backgroundColor: '#FFD700', height: '100%', boxShadow: '0 0 10px rgba(255,215,0,0.8)' }}></div>
+              </div>
+              <p style={{ margin: 0, marginTop: '6px', fontSize: '0.75rem', color: '#00ff66', fontWeight: 'bold' }}>¡Últimos boletos disponibles!</p>
+            </div>
             <br/>
             <button 
               onClick={() => {
@@ -889,6 +900,7 @@ export default function Home() {
           </div>
         </div>
       )}
+      <SocialProof />
     </main>
   );
 }
