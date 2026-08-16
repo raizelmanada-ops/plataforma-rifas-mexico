@@ -24,18 +24,18 @@ export default function SocialProof() {
 
       setNotification({ name: randomName, city: randomCity, tickets: randomTickets });
 
-      // Ocultar después de 5 segundos
+      // Ocultar después de 4 segundos
       hideTimeout = setTimeout(() => {
         setNotification(null);
-      }, 5000);
+      }, 4000);
 
-      // Programar la siguiente notificación entre 12 y 35 segundos
-      const nextTime = Math.floor(Math.random() * (35000 - 12000 + 1)) + 12000;
+      // Programar la siguiente notificación entre 3 y 8 segundos
+      const nextTime = Math.floor(Math.random() * (8000 - 3000 + 1)) + 3000;
       timeout = setTimeout(showRandomNotification, nextTime);
     };
 
-    // Iniciar la primera notificación después de 8 segundos de entrar a la página
-    timeout = setTimeout(showRandomNotification, 8000);
+    // Iniciar la primera notificación muy rápido (2 segundos)
+    timeout = setTimeout(showRandomNotification, 2000);
 
     return () => {
       clearTimeout(timeout);
@@ -48,8 +48,8 @@ export default function SocialProof() {
   return (
     <div style={{
       position: 'fixed',
-      bottom: '20px',
-      left: '20px',
+      top: '120px',
+      left: '50%',
       backgroundColor: 'rgba(0, 0, 0, 0.9)',
       border: '1px solid rgba(255, 215, 0, 0.5)',
       borderLeft: '4px solid #FFD700',
@@ -60,13 +60,14 @@ export default function SocialProof() {
       gap: '12px',
       boxShadow: '0 4px 15px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 215, 0, 0.2)',
       zIndex: 9999,
+      width: 'max-content',
       maxWidth: '320px',
-      animation: 'slideIn 0.5s ease-out forwards'
+      animation: 'slideInTop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards'
     }}>
       <style>{`
-        @keyframes slideIn {
-          from { transform: translateY(100px) scale(0.9); opacity: 0; }
-          to { transform: translateY(0) scale(1); opacity: 1; }
+        @keyframes slideInTop {
+          from { transform: translate(-50%, -50px) scale(0.9); opacity: 0; }
+          to { transform: translate(-50%, 0) scale(1); opacity: 1; }
         }
       `}</style>
       <div style={{

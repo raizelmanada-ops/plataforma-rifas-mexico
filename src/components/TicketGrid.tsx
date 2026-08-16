@@ -18,6 +18,7 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedNumbers, setSelectedNumbers] = useState<string[]>([]);
   const [visibleNumbers, setVisibleNumbers] = useState<string[]>([]);
+  const [soldNumbers, setSoldNumbers] = useState<string[]>([]);
   const [isMaquinitaOpen, setIsMaquinitaOpen] = useState(false);
   const [maquinitaCount, setMaquinitaCount] = useState(bundles[0].count);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -31,7 +32,12 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
       const randomNum = Math.floor(Math.random() * TOTAL_NUMBERS).toString().padStart(5, '0');
       if (!nums.includes(randomNum)) nums.push(randomNum);
     }
-    setVisibleNumbers(nums.sort());
+    const sorted = nums.sort();
+    setVisibleNumbers(sorted);
+    
+    // Simular que un 20% de los visibles ya están vendidos
+    const simulatedSold = sorted.filter(() => Math.random() < 0.20);
+    setSoldNumbers(simulatedSold);
   };
 
   // Inicializar algunos números visibles aleatorios al cargar
@@ -47,6 +53,7 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
       // Filtrar números que empiecen o contengan el valor
       const exact = val.padStart(5, '0');
       setVisibleNumbers([exact]);
+      setSoldNumbers([]); // Si busca uno exacto, dejamos que esté libre
     } else if (val.length === 0) {
       generateRandomVisible();
     }
@@ -172,21 +179,25 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(70px, 1fr))', gap: '8px', boxSizing: 'border-box', width: '100%' }}>
             {visibleNumbers.map(num => {
               const isSelected = selectedNumbers.includes(num);
+              const isSold = soldNumbers.includes(num);
               return (
                 <button
                   key={num}
-                  onClick={() => toggleNumber(num)}
+                  onClick={() => !isSold && toggleNumber(num)}
+                  disabled={isSold}
                   style={{
                     padding: '12px 4px',
                     borderRadius: '8px',
                     fontSize: '1.2rem',
                     fontWeight: '900',
                     border: '2px solid',
-                    cursor: 'pointer',
+                    cursor: isSold ? 'not-allowed' : 'pointer',
                     transition: 'all 0.2s',
                     ...(isSelected 
                       ? { backgroundColor: '#FFD700', color: 'black', borderColor: '#FFD700', boxShadow: '0 0 10px rgba(255,215,0,0.5)', transform: 'scale(1.05)' }
-                      : { backgroundColor: '#ffffff', color: 'black', borderColor: '#ccc' })
+                      : isSold
+                        ? { backgroundColor: 'rgba(220, 38, 38, 0.1)', color: '#ef4444', borderColor: '#ef4444', opacity: 0.8 }
+                        : { backgroundColor: '#ffffff', color: 'black', borderColor: '#ccc' })
                   }}
                 >
                   {num}
