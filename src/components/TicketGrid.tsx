@@ -128,8 +128,76 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
         <p className="text-gray-400">Selecciona tus números de la suerte. Participan 60,000 números con La Nacional.</p>
       </div>
 
+      {/* Quick Bundles Selector */}
+      <div style={{ marginBottom: '32px' }}>
+        <h4 style={{ color: '#FFD700', fontSize: '1.1rem', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '16px' }}>
+          ⚡ 1. Elige tu Paquete de Boletos:
+        </h4>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '12px', marginBottom: '24px' }}>
+          {bundles.map((bundle) => {
+            const isPopular = bundle.count === 25 || bundle.count === 10;
+            return (
+              <div
+                key={bundle.id}
+                onClick={() => {
+                  // Generar boletos al instante para este paquete
+                  const nums: string[] = [];
+                  while (nums.length < bundle.count) {
+                    const rand = Math.floor(Math.random() * TOTAL_NUMBERS).toString().padStart(5, '0');
+                    if (!nums.includes(rand)) nums.push(rand);
+                  }
+                  setSelectedNumbers(nums);
+                  const displayTickets = nums.join(", ");
+                  onSelectTicket(`${displayTickets} (${bundle.count} Boletos)`, bundle.hotmartCode);
+                }}
+                style={{
+                  backgroundColor: isPopular ? 'rgba(255, 215, 0, 0.15)' : 'rgba(255, 255, 255, 0.05)',
+                  border: isPopular ? '2px solid #FFD700' : '1px solid rgba(255, 255, 255, 0.15)',
+                  borderRadius: '12px',
+                  padding: '16px 8px',
+                  cursor: 'pointer',
+                  textAlign: 'center',
+                  transition: 'all 0.2s ease',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.04)';
+                  e.currentTarget.style.borderColor = '#00ff66';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)';
+                  e.currentTarget.style.borderColor = isPopular ? '#FFD700' : 'rgba(255, 255, 255, 0.15)';
+                }}
+              >
+                {isPopular && (
+                  <div style={{ position: 'absolute', top: 0, right: 0, backgroundColor: '#FFD700', color: 'black', fontSize: '9px', fontWeight: '900', padding: '2px 8px', borderBottomLeftRadius: '8px', textTransform: 'uppercase' }}>
+                    🔥 Popular
+                  </div>
+                )}
+                <div style={{ fontSize: '1.4rem', fontWeight: '950', color: 'white', marginBottom: '4px' }}>
+                  {bundle.count} {bundle.count === 1 ? 'Boleto' : 'Boletos'}
+                </div>
+                <div style={{ fontSize: '1.3rem', fontWeight: '900', color: '#00ff66', marginBottom: '8px' }}>
+                  ${bundle.price} MXN
+                </div>
+                <div style={{ backgroundColor: '#FFD700', color: 'black', fontSize: '11px', fontWeight: '900', padding: '6px', borderRadius: '6px', textTransform: 'uppercase' }}>
+                  Elegir Este 👉
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '24px', marginBottom: '24px' }}>
+        <h4 style={{ color: '#ccc', fontSize: '1rem', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '16px' }}>
+          O escoge tus números manualmente:
+        </h4>
+      </div>
+
       {/* Stats Bar */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px', marginBottom: '32px', fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.05em', width: '100%', boxSizing: 'border-box' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px', marginBottom: '24px', fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.05em', width: '100%', boxSizing: 'border-box' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
           <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: 'white', border: '1px solid #999' }}></div>
           <span style={{ color: 'white' }}>Disponibles</span>
@@ -145,26 +213,26 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
       </div>
 
       {/* Máquina rápida */}
-      <div style={{ marginBottom: '32px', width: '100%', boxSizing: 'border-box' }}>
+      <div style={{ marginBottom: '24px', width: '100%', boxSizing: 'border-box' }}>
         <button 
           onClick={() => setIsMaquinitaOpen(true)}
-          style={{ width: '100%', padding: '16px', backgroundColor: '#222', border: '2px solid #555', borderRadius: '12px', color: 'white', fontWeight: '900', fontSize: '1.2rem', cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '1px', boxShadow: '0 4px 15px rgba(0,0,0,0.3)', transition: 'transform 0.2s' }}
+          style={{ width: '100%', padding: '14px', backgroundColor: '#1a1a1a', border: '2px solid #444', borderRadius: '12px', color: 'white', fontWeight: '900', fontSize: '1.1rem', cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '1px', boxShadow: '0 4px 15px rgba(0,0,0,0.3)', transition: 'transform 0.2s' }}
           onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
           onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
         >
-          🎰 MAQUINITA DE LA SUERTE
+          🎰 GENERADOR AL AZAR (MAQUINITA)
         </button>
       </div>
 
       {/* Search Bar */}
-      <div style={{ width: '100%', maxWidth: '400px', position: 'relative', margin: '0 auto 32px auto', boxSizing: 'border-box' }}>
+      <div style={{ width: '100%', maxWidth: '400px', position: 'relative', margin: '0 auto 24px auto', boxSizing: 'border-box' }}>
         <input 
           type="text" 
-          placeholder="Ej. 05432" 
+          placeholder="Buscar número ej. 05432" 
           value={searchTerm}
           onChange={handleSearch}
           maxLength={5}
-          style={{ width: '100%', padding: '16px 40px 16px 16px', fontSize: '1.2rem', fontWeight: '900', textAlign: 'center', backgroundColor: 'rgba(255,255,255,0.05)', border: '2px solid rgba(255,255,255,0.2)', borderRadius: '12px', color: 'white', boxSizing: 'border-box' }}
+          style={{ width: '100%', padding: '14px 40px 14px 16px', fontSize: '1.1rem', fontWeight: '900', textAlign: 'center', backgroundColor: 'rgba(255,255,255,0.05)', border: '2px solid rgba(255,255,255,0.2)', borderRadius: '12px', color: 'white', boxSizing: 'border-box' }}
         />
         <div style={{ position: 'absolute', top: 0, right: '16px', height: '100%', display: 'flex', alignItems: 'center', pointerEvents: 'none' }}>
           <svg width="24" height="24" style={{ color: '#888' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
