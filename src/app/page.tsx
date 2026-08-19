@@ -165,21 +165,30 @@ export default function Home() {
           ticketNumber: selectedTicket,
           name: data.name,
           phone: data.phone,
-          idNumber: data.idNumber
+          email: data.email,
+          idNumber: data.phone
         })
       });
     } catch (error) {
       console.error("Error reservando:", error);
     }
+
+    // Abrir WhatsApp directamente con los datos de pago
+    try {
+      const emailLine = data.email ? `\n📧 Correo: ${data.email}` : '';
+      const waMsg = `¡Hola! Acabo de apartar mis boletos para la GMC Sierra + $20,000 MXN:\n\n👤 Titular: ${data.name}\n📱 Teléfono: ${data.phone}${emailLine}\n🎟️ Boletos / Paquete: ${selectedTicket}\n\nPor favor mándenme mi código de barras / ficha oficial de OXXO para ir a pagar.`;
+      const waUrl = `https://wa.me/${whatsappAdmin}?text=${encodeURIComponent(waMsg)}`;
+      window.open(waUrl, '_blank');
+    } catch (err) {
+      console.error("Error abriendo WhatsApp:", err);
+    }
   };
 
   const faqs = [
-    { q: "¿Es legal y autorizado este evento?", a: "Totalmente legal. Nuestro evento se basa en los resultados oficiales de la La Nacional para la Asistencia Pública, garantizando total transparencia." },
-    { q: "¿Cómo se elige a los ganadores?", a: "La combinación ganadora se toma directamente de los números oficiales del Premio Mayor de la La Nacional en la fecha establecida." },
-    { q: "¿Qué sucede si el número ganador es un boleto NO vendido?", a: "Para garantizar que el premio se entregue, si el número ganador no fue vendido, el evento se repite en la siguiente fecha oficial de la La Nacional hasta que haya un ganador." },
-    { q: "¿Dónde se publica a los ganadores?", a: "Las entregas y ganadores se publican en nuestra página web, y realizamos transmisiones en vivo en nuestras redes sociales oficiales (Facebook e Instagram)." },
-    { q: "¿Dónde y cómo se entregan los premios?", a: "¡Nosotros te lo llevamos a la puerta de tu casa! Nuestro equipo logístico viajará hasta tu ubicación en cualquier parte de la República. Firmaremos el cambio de propietario en tu ciudad." },
-    { q: "¿Debo pagar impuestos si gano?", a: "¡Absolutamente NO! Asumimos el 100% de los impuestos, gastos de placas, tenencia y seguro. El vehículo se entrega a tu nombre sin costo extra." }
+    { q: "¿Cómo se elige al ganador?", a: "El ganador se determina de forma transparente en la fecha oficial establecida ante transmisión en vivo." },
+    { q: "¿Dónde se publica al ganador?", a: "Las entregas y ganadores se publican en nuestra página web y en nuestras transmisiones oficiales de Facebook." },
+    { q: "¿Dónde y cómo se entrega la camioneta?", a: "¡Te la llevamos hasta la puerta de tu casa en cualquier parte de la República Mexicana! Firmaremos el cambio de propietario a tu nombre." },
+    { q: "¿Debo pagar impuestos si gano?", a: "¡No! Asumimos los trámites de entrega para que el vehículo quede listo a tu nombre." }
   ];
 
   return (
@@ -221,12 +230,13 @@ export default function Home() {
         </div>
       </header>
 
-      {/* HERO SECTION - GMC SIERRA (FIRST VISUAL IMPACT) */}
-      <section style={{ width: '100%', position: 'relative', backgroundColor: 'black', borderBottom: '1px solid rgba(255,215,0,0.3)', zIndex: 10, marginBottom: '24px' }}>
-        <div style={{ width: '100%', maxWidth: '1152px', margin: '0 auto', height: '45vh', minHeight: '350px', position: 'relative', overflow: 'hidden' }}>
-          {/* Placeholder for the GMC Sierra Image. Best if replaced with a high-res image of the actual prize */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10"></div>
-          {/* Carousel Images */}
+      {/* HERO SECTION - GMC SIERRA (FOTO LIMPIA Y VISIBLE) */}
+      <section style={{ width: '100%', position: 'relative', backgroundColor: 'black', borderBottom: '1px solid rgba(255,215,0,0.3)', zIndex: 10, marginBottom: '16px' }}>
+        <div style={{ width: '100%', maxWidth: '1152px', margin: '0 auto', height: '48vh', minHeight: '340px', position: 'relative', overflow: 'hidden' }}>
+          {/* Suave degradado inferior solo para legibilidad del texto */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent z-10 pointer-events-none"></div>
+          
+          {/* Carrusel de Fotos de la Camioneta */}
           {heroImages.map((src, index) => (
             <img 
               key={index}
@@ -240,7 +250,7 @@ export default function Home() {
                 height: '100%',
                 objectFit: 'cover',
                 objectPosition: 'center',
-                opacity: index === heroImageIndex ? 0.9 : 0,
+                opacity: index === heroImageIndex ? 1 : 0,
                 transition: 'opacity 1s ease-in-out',
                 zIndex: index === heroImageIndex ? 5 : 1
               }}
@@ -251,7 +261,7 @@ export default function Home() {
           ))}
           
           {/* Indicadores del Carrusel */}
-          <div style={{ position: 'absolute', bottom: '16px', left: 0, width: '100%', display: 'flex', justifyContent: 'center', gap: '8px', zIndex: 20 }}>
+          <div style={{ position: 'absolute', bottom: '12px', left: 0, width: '100%', display: 'flex', justifyContent: 'center', gap: '8px', zIndex: 20 }}>
             {heroImages.map((_, index) => (
               <div 
                 key={index} 
@@ -260,168 +270,53 @@ export default function Home() {
               ></div>
             ))}
           </div>
-          <div style={{ position: 'absolute', bottom: '40px', left: 0, width: '100%', textAlign: 'center', zIndex: 20, padding: '0 16px', pointerEvents: 'none' }}>
-            <div style={{ display: 'inline-block', backgroundColor: '#FFD700', color: 'black', padding: '4px 16px', borderRadius: '50px', fontSize: '0.75rem', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '0.1em', boxShadow: '0 4px 6px rgba(0,0,0,0.5)', marginBottom: '8px' }}>
-              Entrega Especial
-            </div>
-            <h2 style={{ fontSize: '1.8rem', fontWeight: '900', color: 'white', textTransform: 'uppercase', textShadow: '0 2px 10px rgba(0,0,0,1), 0 0 20px rgba(0,0,0,0.8)', margin: 0, lineHeight: 1.2 }}>
-              GMC Sierra + $20,000 MXN
+
+          {/* Información esencial sobre la foto */}
+          <div style={{ position: 'absolute', bottom: '28px', left: 0, width: '100%', textAlign: 'center', zIndex: 20, padding: '0 16px', pointerEvents: 'none' }}>
+            <h2 style={{ fontSize: '1.75rem', fontWeight: '900', color: 'white', textTransform: 'uppercase', textShadow: '0 2px 10px rgba(0,0,0,1), 0 0 20px rgba(0,0,0,0.9)', margin: 0, lineHeight: 1.2 }}>
+              GMC Sierra Denali + $20,000 MXN
             </h2>
-            <p style={{ color: '#FFD700', fontSize: '1.2rem', fontWeight: 'bold', marginTop: '12px', textShadow: '0 2px 4px rgba(0,0,0,0.8)', textTransform: 'uppercase' }}>
-              Juega el: {formattedDate}
-            </p>
-            <div style={{ marginTop: '12px', marginBottom: '8px', backgroundColor: 'rgba(0,0,0,0.7)', padding: '8px 16px', borderRadius: '12px', border: '1px solid rgba(255,215,0,0.4)', display: 'inline-block', maxWidth: '320px', width: '100%', pointerEvents: 'auto' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px', fontSize: '0.85rem', fontWeight: 'bold', color: 'white' }}>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><span style={{ color: '#ff3333' }}>🔥</span> Boletos Vendidos</span>
-                <span style={{ color: '#FFD700' }}>87%</span>
-              </div>
-              <div style={{ width: '100%', backgroundColor: 'rgba(255,255,255,0.2)', height: '10px', borderRadius: '5px', overflow: 'hidden' }}>
-                <div style={{ width: '87%', backgroundColor: '#FFD700', height: '100%', boxShadow: '0 0 10px rgba(255,215,0,0.8)' }}></div>
-              </div>
-              <p style={{ margin: 0, marginTop: '6px', fontSize: '0.75rem', color: '#00ff66', fontWeight: 'bold' }}>¡Últimos boletos disponibles!</p>
+            <div style={{ display: 'inline-block', backgroundColor: 'rgba(0,0,0,0.7)', border: '1px solid #FFD700', color: '#FFD700', padding: '4px 16px', borderRadius: '50px', fontSize: '0.9rem', fontWeight: '900', textTransform: 'uppercase', marginTop: '8px', letterSpacing: '0.05em', boxShadow: '0 2px 8px rgba(0,0,0,0.8)' }}>
+              🗓️ Juega el: {formattedDate}
             </div>
             <br/>
             <button 
               onClick={() => {
                 document.getElementById('grid-section')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              style={{ marginTop: '16px', backgroundColor: '#FFD700', color: 'black', padding: '14px 36px', borderRadius: '50px', fontSize: '1.2rem', fontWeight: '950', textTransform: 'uppercase', letterSpacing: '0.05em', boxShadow: '0 0 25px rgba(255,215,0,0.8)', cursor: 'pointer', border: '2px solid white', pointerEvents: 'auto', display: 'inline-flex', alignItems: 'center', gap: '8px', animation: 'bounce 2s infinite' }}
+              style={{ marginTop: '12px', backgroundColor: '#FFD700', color: 'black', padding: '12px 32px', borderRadius: '50px', fontSize: '1.1rem', fontWeight: '950', textTransform: 'uppercase', letterSpacing: '0.05em', boxShadow: '0 0 25px rgba(255,215,0,0.8)', cursor: 'pointer', border: '2px solid white', pointerEvents: 'auto', display: 'inline-flex', alignItems: 'center', gap: '8px', animation: 'bounce 2s infinite' }}
             >
-              🎟️ ELEGIR BOLETOS DESDE $11 MXN 👇
+              🎟️ VER BOLETOS DESDE $11 MXN 👇
             </button>
           </div>
         </div>
       </section>
 
       {step === "grid" && (
-        <section id="grid-section" style={{ width: '100%', maxWidth: '1152px', margin: '16px auto 0 auto', padding: '0 16px', textAlign: 'center', boxSizing: 'border-box', overflowX: 'hidden' }}>
-          <div style={{ padding: '16px', marginBottom: '48px', position: 'relative', overflow: 'hidden', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: '16px', border: '1px solid rgba(255,215,0,0.2)' }}>
-            {/* Fondo decorativo premium */}
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#FFD700]/10 via-transparent to-transparent pointer-events-none"></div>
-            
-            {/* INSIGNIA LEGAL */}
-            <div className="absolute top-4 left-0 right-0 flex justify-center z-20 pointer-events-none">
-              <div className="bg-black/80 border border-accent/50 text-accent font-bold px-4 py-1 rounded-full text-xs md:text-sm flex items-center gap-2 shadow-[0_0_15px_rgba(255,215,0,0.3)]">
-                <span className="text-base">✅</span> Dinámica basada en Lotería Nacional
-              </div>
-            </div>
-            
-            <div className="w-full max-w-4xl mx-auto mb-10 z-10 relative mt-4">
-              <div className="mt-8 mb-8 bg-black/60 border border-success/30 rounded-xl p-4 shadow-[0_0_20px_rgba(0,255,0,0.1)]">
-                <div className="flex items-center justify-center gap-2 mb-3">
-                  <svg width="24" height="24" className="text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{minWidth: '24px', minHeight: '24px'}}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                  <span className="text-success font-bold text-sm uppercase tracking-widest">Pagos 100% Seguros</span>
-                </div>
-                <div className="flex flex-wrap justify-center items-center opacity-80" style={{ gap: '1.5rem' }}>
-                  <span className="text-white font-black text-xl italic">OXXO</span>
-                  <span className="text-white font-black text-xl italic">VISA</span>
-                  <span className="text-white font-black text-xl italic">MASTERCARD</span>
-                  <span className="text-white font-black text-xl">SPEI</span>
-                </div>
-                <p className="text-[10px] text-gray-400 mt-4 uppercase font-bold tracking-widest">Plataforma oficial respaldada por Hotmart</p>
-              </div>
-
-              <h3 className="text-xl font-black text-[#ff3333] uppercase mb-4 tracking-widest drop-shadow-[0_0_10px_rgba(255,51,51,0.5)]">
-                ▼ BONOS EXTRAS ▼
-              </h3>
-              
-              <ul className="text-left space-y-4 text-sm md:text-base font-bold text-white bg-black/40 p-4 rounded-xl border border-white/5">
-                <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1 text-lg">🎁</span>
-                  <span>En la compra de <strong className="text-accent">1 boleto</strong> llévate $10,000 pesos o envío.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1 text-lg">🎁</span>
-                  <span>En la compra de <strong className="text-accent">2 boletos</strong> llévate envío más $10,000 pesos.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1 text-lg">🎁</span>
-                  <span>En la compra de <strong className="text-accent">3 boletos</strong> llévate envío más $15,000 pesos.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-accent mt-1 text-lg">🎁</span>
-                  <span>En la compra de <strong className="text-accent">5 boletos</strong> llévate $15,000 más envío 🚚.</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* 2. TEXTO DEL PREMIO */}
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '16px', color: 'white', zIndex: 10, position: 'relative', wordWrap: 'break-word', overflowWrap: 'break-word', padding: '0 8px' }}>
-              <span style={{ color: '#00ff66', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', marginBottom: '8px' }}>★ Entrega Especial ★</span>
-              Gran Premio Mayor: <br/>
-              <span style={{ color: '#FFD700', fontSize: '1.6rem', display: 'block', marginTop: '8px', fontWeight: '900', textTransform: 'uppercase', textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>GMC Sierra 2024 <br/>+ Bono de $20,000 MXN</span>
-            </h2>
-
-            {/* BOTÓN DE FICHA TÉCNICA */}
-            <div style={{ display: 'flex', justifyContent: 'center', zIndex: 10, position: 'relative', marginTop: '-4px', marginBottom: '24px' }}>
-              <button 
-                onClick={() => setIsLegalModalOpen(true)}
-                style={{ backgroundColor: 'rgba(255,255,255,0.05)', color: '#d4d4d8', border: '1px solid rgba(255,255,255,0.2)', padding: '6px 14px', borderRadius: '50px', fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', transition: 'all 0.3s ease' }}
-              >
-                📄 Ver Ficha Técnica y Estatus Legal
-              </button>
-            </div>
-
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '16px', marginTop: '24px', zIndex: 10, position: 'relative' }}>
-              <div style={{ backgroundColor: 'rgba(0,0,0,0.8)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', minWidth: '80px', boxSizing: 'border-box' }}>
-                <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'white' }}>{timeLeft.days}</div>
-                <div style={{ fontSize: '0.625rem', color: '#6b7280', textTransform: 'uppercase', marginTop: '4px' }}>Días</div>
-              </div>
-              <div style={{ backgroundColor: 'rgba(0,0,0,0.8)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', minWidth: '80px', boxSizing: 'border-box' }}>
-                <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'white' }}>{timeLeft.hours}</div>
-                <div style={{ fontSize: '0.625rem', color: '#6b7280', textTransform: 'uppercase', marginTop: '4px' }}>Horas</div>
-              </div>
-              <div style={{ backgroundColor: 'rgba(0,0,0,0.8)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', minWidth: '80px', boxSizing: 'border-box' }}>
-                <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'white' }}>{timeLeft.minutes}</div>
-                <div style={{ fontSize: '0.625rem', color: '#6b7280', textTransform: 'uppercase', marginTop: '4px' }}>Minutos</div>
-              </div>
-              <div style={{ backgroundColor: 'rgba(0,0,0,0.8)', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', minWidth: '80px', boxSizing: 'border-box' }}>
-                <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#ef4444', animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}>{timeLeft.seconds}</div>
-                <div style={{ fontSize: '0.625rem', color: '#6b7280', textTransform: 'uppercase', marginTop: '4px' }}>Segundos</div>
-              </div>
-            </div>
-
-            {/* SELLOS DE CONFIANZA */}
-            <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 z-10 relative">
-              <div className="bg-black/60 border border-success/30 rounded-xl p-4 flex flex-col items-center justify-center text-center shadow-[0_0_15px_rgba(0,255,0,0.1)] hover:border-success/60 transition-colors">
-                <div className="w-12 h-12 bg-success/20 rounded-full flex items-center justify-center mb-3">
-                  <svg className="w-6 h-6 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                  </svg>
-                </div>
-                <h4 className="text-white font-bold text-sm uppercase mb-1">Transacción 100% Segura</h4>
-                <p className="text-xs text-gray-400">Tus pagos son procesados automáticamente con OXXO, SPEI y Tarjetas.</p>
-              </div>
-
-              <div className="bg-black/60 border border-accent/30 rounded-xl p-4 flex flex-col items-center justify-center text-center shadow-[0_0_15px_rgba(255,215,0,0.1)] hover:border-accent/60 transition-colors">
-                <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center mb-3">
-                  <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
-                  </svg>
-                </div>
-                <h4 className="text-white font-bold text-sm uppercase mb-1">Entrega Notariada</h4>
-                <p className="text-xs text-gray-400">Cambio de propietario y entrega en toda la República a tu nombre.</p>
-              </div>
-
-              <div className="bg-black/60 border border-[#00d2ff]/30 rounded-xl p-4 flex flex-col items-center justify-center text-center shadow-[0_0_15px_rgba(0,210,255,0.1)] hover:border-[#00d2ff]/60 transition-colors">
-                <div className="w-12 h-12 bg-[#00d2ff]/20 rounded-full flex items-center justify-center mb-3">
-                  <svg className="w-6 h-6 text-[#00d2ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                  </svg>
-                </div>
-                <h4 className="text-white font-bold text-sm uppercase mb-1">Dinámica Transparente</h4>
-                <p className="text-xs text-gray-400">Ganador elegido mediante el premio mayor de la entidad oficial.</p>
-              </div>
-            </div>
-          </div>
+        <section id="grid-section" style={{ width: '100%', maxWidth: '1152px', margin: '0 auto', padding: '0 16px', textAlign: 'center', boxSizing: 'border-box' }}>
           
-          {/* ASISTENTE VIRTUAL (NUEVO) */}
-          <div style={{ width: '100%', maxWidth: '768px', margin: '0 auto 48px auto', padding: '0 16px', display: 'flex', alignItems: 'center', gap: '16px', position: 'relative', zIndex: 10, boxSizing: 'border-box' }}>
+          {/* BARRA DE INFORMACIÓN Y FICHA TÉCNICA */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '12px', margin: '12px 0 20px 0' }}>
+            <div style={{ backgroundColor: 'rgba(0,0,0,0.6)', border: '1px solid rgba(255,215,0,0.3)', padding: '6px 16px', borderRadius: '50px', color: '#FFD700', fontWeight: 'bold', fontSize: '0.85rem' }}>
+              🗓️ Fecha Oficial: <span className="text-white">{formattedDate}</span>
+            </div>
+            <button 
+              onClick={() => setIsLegalModalOpen(true)}
+              style={{ backgroundColor: 'rgba(255,255,255,0.08)', color: '#d4d4d8', border: '1px solid rgba(255,255,255,0.2)', padding: '6px 14px', borderRadius: '50px', fontSize: '0.8rem', display: 'inline-flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}
+            >
+              📄 Ver Ficha Técnica
+            </button>
+          </div>
+
+          {/* 1. SELECTOR DE BOLETOS Y MAQUINITA (INMEDIATAMENTE ARRIBA) */}
+          <TicketGrid onSelectTicket={handleTicketSelect} />
+
+          {/* 2. ASISTENTE VIRTUAL DE AYUDA */}
+          <div style={{ width: '100%', maxWidth: '768px', margin: '36px auto 36px auto', padding: '0 16px', display: 'flex', alignItems: 'center', gap: '16px', position: 'relative', zIndex: 10, boxSizing: 'border-box' }}>
             
             {/* Contenedor del Video */}
             <div 
-              style={{ width: '140px', height: '220px', minWidth: '140px', maxWidth: '140px', borderRadius: '16px', overflow: 'hidden', border: '2px solid #FFD700', backgroundColor: 'black', position: 'relative', cursor: 'pointer', boxShadow: '0 0 20px rgba(255,215,0,0.5)', transform: 'translateZ(0)' }}
+              style={{ width: '130px', height: '200px', minWidth: '130px', maxWidth: '130px', borderRadius: '16px', overflow: 'hidden', border: '2px solid #FFD700', backgroundColor: 'black', position: 'relative', cursor: 'pointer', boxShadow: '0 0 20px rgba(255,215,0,0.5)', transform: 'translateZ(0)' }}
               title={isAssistantMuted ? "Toca para encender el audio" : "Toca para silenciar"}
               onClick={() => {
                 if (assistantVideoRef.current) {
@@ -444,30 +339,25 @@ export default function Home() {
               {/* Botón de Volumen Visual */}
               <div style={{ position: 'absolute', bottom: '8px', left: '8px', backgroundColor: 'rgba(0,0,0,0.6)', borderRadius: '50%', padding: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(4px)', border: '1px solid rgba(255,255,255,0.2)' }}>
                 {isAssistantMuted ? (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
                 ) : (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFD700" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFD700" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
                 )}
               </div>
               
-              {/* Indicador de Línea (Verde = On) */}
-              <div style={{ position: 'absolute', top: '8px', right: '8px', width: '12px', height: '12px', backgroundColor: '#00ff66', borderRadius: '50%', border: '2px solid black', boxShadow: '0 0 10px #00ff66', animation: 'pulse 2s infinite' }}></div>
+              <div style={{ position: 'absolute', top: '8px', right: '8px', width: '10px', height: '10px', backgroundColor: '#00ff66', borderRadius: '50%', border: '2px solid black', boxShadow: '0 0 10px #00ff66', animation: 'pulse 2s infinite' }}></div>
             </div>
             
             {/* Globo de Chat */}
-            <div style={{ flex: 1, backgroundColor: '#111111', color: 'white', padding: '16px', borderRadius: '16px', borderBottomLeftRadius: '0', border: '1px solid rgba(255,215,0,0.3)', position: 'relative', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
+            <div style={{ flex: 1, backgroundColor: '#111111', color: 'white', padding: '14px 16px', borderRadius: '16px', borderBottomLeftRadius: '0', border: '1px solid rgba(255,215,0,0.3)', position: 'relative', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
               <div style={{ position: 'absolute', left: '-8px', bottom: '16px', width: '16px', height: '16px', backgroundColor: '#111111', borderLeft: '1px solid rgba(255,215,0,0.3)', borderBottom: '1px solid rgba(255,215,0,0.3)', transform: 'rotate(45deg)' }}></div>
-              <div style={{ fontWeight: 'bold', fontSize: '14px', lineHeight: '1.5', color: '#e5e7eb' }}>
-                <p style={{ marginBottom: '4px' }}><span style={{ color: '#00ff66' }}>1.</span> Elige tu paquete o tus números de la suerte.</p>
-                <p style={{ marginBottom: '4px' }}><span style={{ color: '#00ff66' }}>2.</span> Llena tus datos y da clic en Pagar Ahora.</p>
-                <p style={{ marginBottom: '4px' }}><span style={{ color: '#00ff66' }}>3.</span> Elige tu medio (OXXO, Tarjeta). Al pagar, tus boletos oficiales llegarán directo a tu WhatsApp.</p>
-                <p style={{ color: '#FFD700', fontWeight: '900', marginTop: '8px' }}>¡Hazlo ahora! 👇</p>
+              <div style={{ fontWeight: 'bold', fontSize: '13px', lineHeight: '1.5', color: '#e5e7eb' }}>
+                <p style={{ marginBottom: '4px' }}><span style={{ color: '#00ff66' }}>1.</span> Elige tu paquete o tus números con la maquinita.</p>
+                <p style={{ marginBottom: '4px' }}><span style={{ color: '#00ff66' }}>2.</span> Ingresa tu nombre y teléfono de WhatsApp.</p>
+                <p style={{ marginBottom: '4px' }}><span style={{ color: '#00ff66' }}>3.</span> Te mandamos directo a WhatsApp tu ficha oficial de OXXO para pagar.</p>
+                <p style={{ color: '#FFD700', fontWeight: '900', marginTop: '6px' }}>¡Aparta tus números ahora! 🍀</p>
               </div>
             </div>
-          </div>
-
-          <div id="grid-section" className="scroll-mt-10">
-            <TicketGrid onSelectTicket={handleTicketSelect} />
           </div>
         </section>
       )}
@@ -479,12 +369,12 @@ export default function Home() {
           </button>
           
           <div className="bg-black/60 p-6 rounded-xl border border-accent/30 text-center mb-8 shadow-[0_0_30px_rgba(255,215,0,0.1)]">
-            <p className="text-gray-400 text-sm uppercase tracking-widest font-bold">Números de la Suerte</p>
-            <p className={`font-black text-accent mt-2 drop-shadow-[0_0_15px_rgba(255,215,0,0.4)] ${selectedTicket && selectedTicket.length > 15 ? 'text-2xl md:text-3xl break-words' : 'text-5xl md:text-7xl'}`}>
+            <p className="text-gray-400 text-sm uppercase tracking-widest font-bold">Boletos Seleccionados</p>
+            <p className={`font-black text-accent mt-2 drop-shadow-[0_0_15px_rgba(255,215,0,0.4)] ${selectedTicket && selectedTicket.length > 15 ? 'text-xl md:text-2xl break-words' : 'text-4xl md:text-6xl'}`}>
               {selectedTicket}
             </p>
-            <p className="text-success font-bold mt-2 animate-pulse">¡Este número está libre!</p>
-            <p className="text-sm text-gray-300 mt-1 text-center">Por favor ingresa tus datos a continuación para continuar al pago seguro.</p>
+            <p className="text-success font-bold mt-2 animate-pulse">¡Boletos disponibles para ti!</p>
+            <p className="text-sm text-gray-300 mt-1 text-center">Ingresa tus datos para enviarte tu ficha de pago a WhatsApp.</p>
           </div>
 
           <CheckoutForm selectedTicket={selectedTicket!} onBack={() => setStep("grid")} onSuccess={handleCheckoutSubmit} />
@@ -493,11 +383,11 @@ export default function Home() {
 
       {step === "ticket" && (
         <section className="w-full max-w-md mx-auto px-4 mt-12 animate-fade-in text-center">
-          <div className="bg-success/20 text-success p-4 rounded-xl mb-8 font-bold border border-success/30 shadow-[0_0_20px_rgba(0,255,0,0.2)]">
-            ✅ ¡Tu número ha sido reservado exitosamente!
+          <div className="bg-success/20 text-success p-4 rounded-xl mb-6 font-bold border border-success/30 shadow-[0_0_20px_rgba(0,255,0,0.2)]">
+            ✅ ¡Tus boletos han sido apartados exitosamente!
           </div>
           
-          <div className="relative glass-panel p-8 mb-8 overflow-hidden rounded-2xl border-2 border-accent/50 shadow-[0_0_40px_rgba(255,215,0,0.2)]">
+          <div className="relative glass-panel p-6 mb-6 overflow-hidden rounded-2xl border-2 border-accent/50 shadow-[0_0_40px_rgba(255,215,0,0.2)] bg-black/80">
             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-accent to-accent-hover"></div>
             
             <div className="relative z-10">
@@ -508,75 +398,53 @@ export default function Home() {
               ) : (
                 <div className="text-center">
                   <h2 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-b from-[#FFD700] to-[#b38728] uppercase font-serif mb-1">
-                    Comunidad VIP
+                    CLUB VIP
                   </h2>
-                  <p className="text-[#00ff66] text-[10px] font-bold uppercase tracking-widest mb-4">La Dinámica Entre Amigos Oficial</p>
+                  <p className="text-[#00ff66] text-[10px] font-bold uppercase tracking-widest mb-4">Comunidad de Amantes de los Motores</p>
                 </div>
               )}
-              <h3 className="text-xl font-bold text-white mb-4 tracking-widest border-b border-white/10 pb-2">PAQUETE ADQUIRIDO</h3>
-              <div className="text-2xl md:text-4xl font-black text-accent tracking-widest mb-6 drop-shadow-[0_0_20px_rgba(255,215,0,0.5)]">
+              <h3 className="text-base font-bold text-white mb-2 tracking-widest border-b border-white/10 pb-2">BOLETOS APARTADOS</h3>
+              <div className="text-xl md:text-2xl font-black text-accent tracking-wide mb-4 drop-shadow-[0_0_20px_rgba(255,215,0,0.5)] break-words">
                 {selectedTicket}
               </div>
               
-              <div className="bg-black/50 p-4 rounded-lg mb-6 border border-white/5">
+              <div className="bg-black/50 p-4 rounded-lg mb-4 border border-white/5">
                 <p className="text-[10px] text-accent font-bold uppercase tracking-widest mb-1">PARTICIPANDO POR:</p>
-                <p className="text-sm font-bold text-white uppercase tracking-wide mb-3">{prizes}</p>
+                <p className="text-sm font-bold text-white uppercase tracking-wide mb-2">{prizes}</p>
                 
-                <div className="w-full mb-4 rounded-lg overflow-hidden border border-white/10">
-                  <img src="/sorteo_millonario.png" alt="Premio de la Dinámica" className="w-full h-auto object-contain" />
-                </div>
-
-                <div className="flex justify-between items-end border-t border-white/10 pt-2">
-                  <div className="text-left">
-                    <p className="text-[9px] text-gray-500 uppercase font-bold">Fecha de Entrega</p>
-                    <p className="text-xs text-gray-300 font-bold capitalize">{formattedDate}</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-[9px] text-gray-500 uppercase font-bold">Sortea Con</p>
-                    <p className="text-xs text-gray-300 font-bold uppercase">{lotteryName}</p>
-                  </div>
+                <div className="flex justify-between items-center border-t border-white/10 pt-2 text-xs text-gray-300">
+                  <span className="text-gray-500 font-bold uppercase text-[10px]">Fecha del Sorteo:</span>
+                  <span className="font-bold text-[#FFD700]">{formattedDate}</span>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-2 md:gap-4 text-left border-t border-white/10 pt-6 mt-4">
+              <div className="grid grid-cols-2 gap-2 text-left border-t border-white/10 pt-4 mt-2">
                 <div className="overflow-hidden">
                   <p className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Titular</p>
-                  <p className="font-bold text-white truncate">{userData?.name}</p>
+                  <p className="font-bold text-white text-sm truncate">{userData?.name}</p>
                 </div>
                 <div className="overflow-hidden">
-                  <p className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">CURP/INE</p>
-                  <p className="font-bold text-white truncate">{userData?.idNumber}</p>
+                  <p className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Teléfono</p>
+                  <p className="font-bold text-white text-sm truncate">{userData?.phone}</p>
                 </div>
-                <div className="col-span-2 mt-2 bg-white/5 p-3 rounded border border-white/10 text-center">
-                  <p className="text-[10px] text-gray-500 uppercase font-bold mb-1">Estado del Ticket</p>
-                  <p className="text-warning font-bold animate-pulse mb-1">⚠️ PENDIENTE DE PAGO</p>
-                  <p className="text-[10px] text-danger font-bold mb-2 uppercase">¡Tienes 15 min para pagar o se libera!</p>
-                  <div className="bg-[#1A0C2B] border border-[#ff00a5]/30 rounded-lg p-3 text-center mt-2 hidden">
-                    {/* El cuadro de Nequi manual fue removido a favor de Hotmart */}
+                {userData?.email && (
+                  <div className="col-span-2 overflow-hidden mt-1">
+                    <p className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Correo</p>
+                    <p className="font-bold text-white text-xs truncate">{userData.email}</p>
                   </div>
+                )}
+                <div className="col-span-2 mt-2 bg-white/5 p-3 rounded border border-white/10 text-center">
+                  <p className="text-[10px] text-gray-500 uppercase font-bold mb-1">Estado</p>
+                  <p className="text-warning font-bold animate-pulse mb-1">⚠️ APARTADO - PENDIENTE DE PAGO</p>
+                  <p className="text-[11px] text-gray-300">Envía tus datos a WhatsApp para entregarte tu ficha OXXO o cuenta de pago.</p>
                 </div>
-              </div>
-              
-              <div className="mt-4 border-t border-white/5 pt-3">
-                <p className="text-[6px] text-gray-600 leading-tight text-justify opacity-40">
-                  * TÉRMINOS Y CONDICIONES: Comunidad VIP actúa como intermediario. La compra te da acceso a nuestro Ebook y como bono gratis obtienes los tickets. La La Nacional no patrocina ni está vinculada con esta plataforma.
-                </p>
               </div>
             </div>
           </div>
           
-          <div className="mb-6 text-gray-300 space-y-2 text-sm text-center bg-black/40 p-4 rounded-xl border border-white/5 shadow-inner">
-            <p className="font-bold text-white text-base">
-              ¿Cómo prefieres realizar tu pago?
-            </p>
-            <p className="text-xs text-gray-400">
-              Te recomendamos pedir tu ficha por WhatsApp para que un asesor te la mande lista.
-            </p>
-          </div>
-          
           {/* BOTÓN PRINCIPAL: PEDIR FICHA OXXO POR WHATSAPP */}
           <a 
-            href={`https://wa.me/${whatsappAdmin}?text=${encodeURIComponent(`¡Hola! Acabo de apartar mis boletos para la GMC Sierra 2024 + $20,000 MXN: \n\n👤 Titular: ${userData?.name || ''}\n📱 Teléfono: ${userData?.phone || ''}\n🎟️ Paquete: ${selectedTicket || ''}\n\nPor favor mándenme mi código de barras oficial de OXXO para ir a pagar.`)}`}
+            href={`https://wa.me/${whatsappAdmin}?text=${encodeURIComponent(`¡Hola! Acabo de apartar mis boletos para la GMC Sierra + $20,000 MXN:\n\n👤 Titular: ${userData?.name || ''}\n📱 Teléfono: ${userData?.phone || ''}${userData?.email ? `\n📧 Correo: ${userData.email}` : ''}\n🎟️ Boletos: ${selectedTicket || ''}\n\nPor favor mándenme mi ficha oficial de OXXO para ir a pagar.`)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full mb-4 flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20ba59] text-white font-black text-base md:text-lg py-4 px-4 rounded-xl shadow-[0_0_25px_rgba(37,211,102,0.6)] transition-all hover:scale-[1.02] border-2 border-white/40 text-center"
@@ -585,20 +453,9 @@ export default function Home() {
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
             </svg>
             <div className="text-left">
-              <div className="text-xs uppercase opacity-90 leading-none">Recomendado</div>
-              <div className="font-black text-sm md:text-base leading-tight">PEDIR FICHA OXXO POR WHATSAPP</div>
+              <div className="text-xs uppercase opacity-90 leading-none">Paso Final</div>
+              <div className="font-black text-sm md:text-base leading-tight">ENVIAR BOLETOS POR WHATSAPP</div>
             </div>
-          </a>
-
-          {/* BOTÓN SECUNDARIO: PAGAR EN LÍNEA */}
-          <a 
-            href={`/checkout-ebook?ticket=${encodeURIComponent(selectedTicket || '')}&id=${userData?.idNumber}&name=${encodeURIComponent(userData?.name || '')}&code=${selectedCode || ''}`}
-            target="_self"
-            rel="noreferrer"
-            className="w-full flex items-center justify-center gap-2 text-xs md:text-sm py-3 px-4 bg-black/60 hover:bg-black/90 text-yellow-400 border border-yellow-400/50 rounded-xl transition-all font-bold shadow-sm"
-          >
-            <span>💳</span>
-            <span>Pagar en línea ahora (Tarjeta / SPEI / Pasarela)</span>
           </a>
         </section>
       )}
@@ -718,12 +575,9 @@ export default function Home() {
             </svg>
           </div>
           <div style={{ textAlign: 'center', padding: '0 10px' }}>
-            <h4 style={{ color: '#FFD700', fontWeight: '900', fontSize: '1.2rem', textTransform: 'uppercase', marginBottom: '8px' }}>Evento Autorizado y Transparente</h4>
-            <p style={{ color: '#ccc', fontSize: '14px', lineHeight: '1.5', marginBottom: '12px' }}>
-              Nuestro evento se basa en los últimos 5 dígitos del Premio Mayor de la <strong>La Nacional</strong> para la Asistencia Pública. Garantizamos total legalidad.
-            </p>
-            <p style={{ color: '#888', fontSize: '10px', textTransform: 'uppercase', fontWeight: 'bold', lineHeight: '1.4' }}>
-              NOTA: Todos nuestros eventos requieren al menos un 80% de venta de boletos para realizarse, en caso contrario se dará aviso en nuestras páginas y se asignará una nueva fecha.
+            <h4 style={{ color: '#FFD700', fontWeight: '900', fontSize: '1.2rem', textTransform: 'uppercase', marginBottom: '8px' }}>Evento 100% Transparente y Garantizado</h4>
+            <p style={{ color: '#ccc', fontSize: '14px', lineHeight: '1.5', marginBottom: '8px' }}>
+              La entrega de la camioneta se realiza con contrato de cesión de derechos ante Notario Público y entrega directa en tu domicilio.
             </p>
           </div>
         </div>

@@ -4,10 +4,10 @@ import { prisma } from "@/lib/prisma";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, phone, idNumber, ticketNumber } = body;
+    const { name, phone, email, idNumber, ticketNumber } = body;
 
-    if (!name || !phone || !idNumber || !ticketNumber) {
-      return NextResponse.json({ error: "Faltan datos" }, { status: 400 });
+    if (!name || !phone || !ticketNumber) {
+      return NextResponse.json({ error: "Faltan datos obligatorios (nombre, teléfono o boletos)" }, { status: 400 });
     }
 
     // Comprobar si el número ya está reservado o pagado
@@ -24,7 +24,7 @@ export async function POST(request: Request) {
       data: {
         name,
         phone,
-        idNumber,
+        idNumber: idNumber || email || "WhatsApp",
         tickets: {
           create: {
             number: ticketNumber,

@@ -121,11 +121,11 @@ export default function TicketGrid({ onSelectTicket }: { onSelectTicket: (ticket
 
   return (
     <div style={{ width: '100%', maxWidth: '1024px', margin: '48px auto 0 auto', backgroundColor: '#0a0a0a', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', padding: '16px', boxSizing: 'border-box', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)', overflow: 'hidden' }}>
-      <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
         <h3 style={{ fontSize: '2rem', fontWeight: '900', color: 'white', textTransform: 'uppercase', letterSpacing: '-0.05em', margin: '0 0 8px 0' }}>
           Busca tu <span style={{ color: '#FFD700' }}>Boleto</span>
         </h3>
-        <p className="text-gray-400">Selecciona tus números de la suerte. Participan 60,000 números con La Nacional.</p>
+        <p className="text-gray-400 text-sm">Elige tu paquete favorito o genera tus números con la maquinita de la suerte.</p>
       </div>
 
       {/* Quick Bundles Selector */}
